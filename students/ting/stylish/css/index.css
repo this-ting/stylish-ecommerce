@@ -30,6 +30,10 @@ body {
 
 
 /* Header */
+.top-header {
+    display: flex;
+}
+
 
 .logo {
     margin: auto;
@@ -39,7 +43,6 @@ body {
 
 .search-icon {
     max-width: 10%;
-    
 }
 
 /* Navigation Bar */
