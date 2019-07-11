@@ -13,7 +13,6 @@ body {
     line-height: normal;
     /* letter-spacing: 30px; */
     text-align: left;
-    color: var(--sepia);
 }
 
 .wrapper {
@@ -27,32 +26,34 @@ body {
     max-width: 45%;
 }
 
-nav {
+/* Navigation Bar */
+.navbar {
     background-color: #313538;
     display: block;
-
-
-    color: #d9d9d9
+    height: 5vh;
+    margin: auto;
 }
 
-nav ul {
-    list-style-type: none;
-    
+.navbar a {
+    color: darkgrey;
+    text-decoration: none;
+    display:inline-block;
+    box-sizing: border-box;
+    margin: auto;
+    width: 30%;
+    text-align: center;
 }
+
+.navbar a:hover {
+    color: #d9d9d9;
+}
+
+
+
 
 .main-banner img {
     max-width: 100%;
   }
-
-
-/* Navigation menu */
-.nav-menu {
-    width: 360px;
-    height: 50px;
-    background-color: #313538;
-  }
-
-
 
 
 
