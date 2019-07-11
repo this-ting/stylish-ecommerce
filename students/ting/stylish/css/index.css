@@ -22,8 +22,16 @@ body {
 
 
 /* Header */
-.logo img {
+
+.logo {
+    margin: auto;
+    display: inline-block;
     max-width: 45%;
+}
+
+.search-icon {
+    max-width: 10%;
+    
 }
 
 /* Navigation Bar */
