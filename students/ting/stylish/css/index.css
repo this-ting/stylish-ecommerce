@@ -3,9 +3,13 @@
 /* ===== Initializr Styles ==================================================
    Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
    ========================================================================== */
+@font-face {
+    font-family: "PingFangTC-Regular";
+    src: url(css/PingFang-TC-Regular.otf) format("opentype");
+}
 
 body {
-    font-family: PingFangTC;
+    font-family: PingFangTC-Regular, sans-serif;
     font-size: 20px;
     font-weight: normal;
     font-style: normal;
@@ -19,6 +23,8 @@ body {
     width: 90%;
     margin: 0 5%;
 }
+
+
 
 
 /* Header */
@@ -58,7 +64,7 @@ body {
 
 
 
-
+/* Main Banner */
 .main-banner img {
     max-width: 100%;
 }
@@ -67,6 +73,9 @@ body {
 /* Main Product */
 .main-content {
     box-sizing: border-box;
+}
+
+.products {
 
 }
 
@@ -80,8 +89,9 @@ body {
     color:#3f3a3a;
     margin: auto;
     padding: 0.7em;
+    float: 
 
-}
+}   
 
 .product img {
     width:100%;
@@ -94,6 +104,17 @@ body {
     display: inline-block;
     border: 0.02px solid rgb(204, 204, 204);
 }
+
+/* feature-mobile */
+.feature-mobile {
+
+}
+
+.feature-mobile img{
+
+}
+
+
 
 
 
