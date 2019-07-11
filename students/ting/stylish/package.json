@@ -10,6 +10,7 @@
   "author": "Ting C",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "xmlhttprequest": "^1.8.0"
   }
 }
