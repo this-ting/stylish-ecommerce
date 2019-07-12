@@ -154,7 +154,7 @@ body {
 
 
 /* Footer */
-.footer {
+.footer-container {
     background-color: #313538;
     font-size: 0.8em;
     padding-top: 2em;
@@ -187,7 +187,6 @@ body {
 }
 
 
-
 .column img {
     height:20px;
     width:20px;
@@ -199,6 +198,7 @@ body {
 .footer-copy {
     color: rgba(169, 169, 169, 0.255);
     display: block;
+    text-align: center;
 }
 
 
