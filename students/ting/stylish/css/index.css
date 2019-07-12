@@ -17,7 +17,6 @@ body {
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
-    /* letter-spacing: 30px; */
     text-align: left;
 }
 
@@ -173,6 +172,8 @@ body {
     float:left;
     width: 32%;
     align-content: center;
+    padding: 0 2em;
+    box-sizing: border-box;
 }
 
 
@@ -182,8 +183,10 @@ body {
     display: block;
     box-sizing: border-box;
     margin: auto;
-    text-align: center;
+    text-align: left;
 }
+
+
 
 .column img {
     height:20px;
