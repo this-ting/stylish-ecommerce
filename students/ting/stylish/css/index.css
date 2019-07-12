@@ -136,6 +136,10 @@ body {
     vertical-align: middle;
 }
 
+.feature-mobile a:hover {
+    color: lightgrey;
+}
+
 .menu-line {
     border-style: none solid none none;
     border-color: #f5f5f5;
