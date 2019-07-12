@@ -69,6 +69,12 @@ body {
     color: #d9d9d9;
 }
 
+/* hide desktop elements */
+.nav-search,
+.cart-icon,
+.user-icon {
+    display: none
+}
 
 
 /* Main Banner */
