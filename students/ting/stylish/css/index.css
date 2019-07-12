@@ -206,12 +206,20 @@ body {
    Media Queries
    ========================================================================== */
 
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 600px) {
 
 
 }
 
 @media only screen and (min-width: 1000px) {
+/* feature-mobile */
+.feature-mobile {
+    display:none;
+}
+
+
+
+
 
 
 }
@@ -247,8 +255,11 @@ body {
     color:#3f3a3a;
     margin: auto;
     padding: 1em;
-
 }   
+
+
+
+
 
 
 
