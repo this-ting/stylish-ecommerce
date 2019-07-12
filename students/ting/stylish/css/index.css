@@ -29,13 +29,14 @@ body {
     margin: auto;
     display: inline-block;
     flex-wrap: wrap;
-    max-width: 45%;    
+    max-width: 45%;   
+    padding-left: 10vh; 
 }
 
 .search-icon {
     height: 2em;
     width: 2em;
-    margin-left:40%;  
+    margin-left:10%;  
 }
 
 /* Navigation Bar */
@@ -238,14 +239,60 @@ body {
 
 @media only screen and (min-width: 1001px) and (max-width: 1199px) {
 
-/* change top nav */
+/* Header - change to 1 line */
+.header{
+    display: flex;
+    padding:1.5em 2em;
 
+}
 
+.logo{
+    margin: 0 2em;
+    width: 25%;
+    padding-left:0;
+}
 
+.navbar {
+    width: 30%;
+    background-color: white;
+    margin-left: 0;
+}
 
+.navbar a{
+    color: #3f3a3a;
+}
 
+.dp-navright{
+   margin: auto 0;
+}
 
+.search-icon {
+    display:none;
+}
 
+.nav-search {
+    display: inline-block;
+    border-radius: 20px;
+    border: 1px solid #979797;
+    padding: 10px; 
+    width: 130px;
+    height: 20px; 
+    background-image: url(../images/search.png);
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-position: 98% center;
+    vertical-align: middle;
+}
+
+.cart-icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.user-icon {
+    display: inline-block;
+    vertical-align: middle;
+}
 
 /* Adjust Product */
 .products {
@@ -309,6 +356,7 @@ body {
 }
 
 @media only screen and (min-width: 1200px) {
+/* Header - change to 1 line */
 .header{
     display: flex;
     padding:1.5em 2em;
@@ -317,11 +365,12 @@ body {
 
 .logo{
     margin: 0 3em;
-    width: 20%;
+    width: 25%;
+    padding-left:0;
 }
 
 .navbar {
-    width: 20%;
+    width: 30%;
     background-color: white;
     margin-left: 0;
 }
