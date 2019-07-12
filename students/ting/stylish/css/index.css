@@ -270,11 +270,10 @@ body {
 
 
 
-    /* feature-mobile */
+    /* feature-mobile - no show*/
 .feature-mobile {
     display:none;
 }
-
 
 
 
@@ -309,6 +308,11 @@ body {
     margin: auto;
     padding: 1em;
 }   
+
+/* feature-mobile - no show*/
+.feature-mobile {
+    display:none;
+}
 
 
 
