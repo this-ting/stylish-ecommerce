@@ -29,21 +29,23 @@ body {
 
 
 /* Header */
-.top-header {
+/* .top-header {
     display: flex;
     padding: 0.5em 0.4em;
-}
+} */
 
 
 .logo {
     margin: auto;
     display: inline-block;
-    max-width: 45%;
+    flex-wrap: wrap;
+    max-width: 45%;    
 }
 
 .search-icon {
     height: 2em;
     width: 2em;
+    margin-left:40%;  
 }
 
 /* Navigation Bar */
@@ -331,25 +333,33 @@ body {
 @media only screen and (min-width: 1200px) {
 .header{
     display: flex;
+    padding:1.5em 2em;
     /* align-items: center; */
+
 }
 
+
+
 .logo{
-    /* max-width: 16%; */
-    
+    margin: 0 3em;
+    width: 20%;
 }
 
 .navbar {
     width: 20%;
     background-color: white;
-
+    margin-left: 0;
 }
 
 .navbar a{
     color: #3f3a3a;
 }
 
-
+.dp-navright{
+   margin: auto 0;
+    /* justify-content: space-around; */
+    
+}
 
 .search-icon {
     display:none;
@@ -366,15 +376,17 @@ body {
     background-repeat: no-repeat;
     background-size: 40px 40px;
     background-position: 98% center;
-
+    vertical-align: middle;
 }
 
 .cart-icon {
     display: inline-block;
+    vertical-align: middle;
 }
 
 .user-icon {
     display: inline-block;
+    vertical-align: middle;
 }
 
 
