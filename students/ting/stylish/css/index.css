@@ -289,6 +289,13 @@ body {
     display: inline;
 }
 
+.footer-line {
+    border-style: none solid none none;
+    border-color: #f5f5f5;
+    border-width: 1px;
+    padding-right: 3em;
+}
+
 .column-menu,
 .column-social,
 .column-footer {
@@ -350,6 +357,13 @@ body {
 
 .footer a{
     display: inline;
+}
+
+.footer-line {
+    border-style: none solid none none;
+    border-color: #f5f5f5;
+    border-width: 1px;
+    padding-right: 3em;
 }
 
 .column-menu,
