@@ -92,9 +92,9 @@ body {
     width: 250px;
     letter-spacing:2px;
     line-height: 250%;
-    position: absolute;
-    top: 300px;
-    left: 15%;
+    margin: 0 12%;
+    padding-top: 160px;
+    text-shadow: 0px 0px 5px #ffffff;
 }
 
 
@@ -329,9 +329,47 @@ body {
 }
 
 @media only screen and (min-width: 1200px) {
-.navbar {
-    background-color: red;
+.header{
+    display: flex;
 }
+
+.logo{
+    /* max-width: 16%; */
+    
+}
+
+.navbar {
+    width: 20%;
+    background-color: white;
+
+}
+
+.navbar a{
+    color: #3f3a3a;
+}
+
+
+
+.search-icon {
+    display:none;
+}
+
+.nav-search {
+    display: inline-block;
+
+}
+
+.cart-icon {
+    display: inline-block;
+}
+
+.user-icon {
+    display: inline-block;
+}
+
+
+
+
 
 
     /* Main Product - fixed width @ 1000px */
