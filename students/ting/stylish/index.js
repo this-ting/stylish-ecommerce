@@ -1,35 +1,50 @@
 
-// Setting up Product page to pull product info (accessories, male & female) from API
-const container = document.getElementById('main-content')
+// Setting up Product page to pull product info (female) from API
+const container = document.getElementById('main-content-female')
 
 const xhr = new XMLHttpRequest();
 xhr.onload = function () {
     const list = JSON.parse(xhr.responseText).data;
-    console.log(list);
+
     if (xhr.status >= 200 && xhr.status < 300) {
         // This will run when the request is successful
-        console.log('success!', xhr);
-
+        console.log('success!');
+        
         for (let i = 0; i < list.length; i++) {
-            const product = document.createElement('div')
-            product.setAttribute('class', 'product')
+            if (list[i].category === 'women') {
+                // Individual product containter
+                const product = document.createElement('div')
+                product.setAttribute('class', 'product')
 
-            const productImg = document.createElement('img')
-            productImg.src = list[i].main_image
-            
-            // const productColor = document.createElement('div')
-            // list[i].colors[i]
+                // Product Main Image
+                const productImg = document.createElement('img')
+                productImg.src = list[i].main_image
+                
+                // Product Color Types
+                const productColor = document.createElement('div')
+                productColor.setAttribute('class', 'color')
+                const colorBox = list[i].colors
+                for (let a = 0; a < colorBox.length; a++) {
+                    productColor.style.backgroundColor = `#`+colorBox[a].code
+                    console.log(colorBox[a].code)
+                }
 
-            const productName = document.createElement('div')
-            productName.textContent = list[i].title
+                // Product Name
+                const productName = document.createElement('div')
+                productName.setAttribute('class', 'name')
+                productName.textContent = list[i].title
 
-            const productPrice = document.createElement('div')
-            productPrice.textContent = 'TWD.' + list[i].price
+                // Product Price
+                const productPrice = document.createElement('div')
+                productPrice.setAttribute('class', 'price')
+                productPrice.textContent = 'TWD.' + list[i].price
 
-            container.appendChild(product)
-            product.appendChild(productImg)
-            product.appendChild(productName)
-            product.appendChild(productPrice)
+                container.appendChild(product)
+                product.appendChild(productImg)
+                product.appendChild(productColor)
+                product.appendChild(productName)
+                product.appendChild(productPrice)
+            }
 
         }
 
