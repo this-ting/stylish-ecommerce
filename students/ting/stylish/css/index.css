@@ -91,7 +91,7 @@ body {
 
 
 /* Main Product */
-.main-content {
+#main-content {
     box-sizing: border-box;
     text-align: center;
 }

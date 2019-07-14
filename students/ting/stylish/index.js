@@ -1,5 +1,5 @@
 
-// Setting up Product page to pull product info from API
+// Setting up Product page to pull product info (accessories, male & female) from API
 const container = document.getElementById('main-content')
 
 const xhr = new XMLHttpRequest();
