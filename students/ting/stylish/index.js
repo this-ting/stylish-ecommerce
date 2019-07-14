@@ -1,20 +1,11 @@
 
-
-const app = document.getElementById('root');
-
-const logo = document.createElement('img');
-logo.src = 'images/search.png';
-
-const container = document.createElement('div');
-container.setAttribute('class', 'main-content')
-
-app.appendChild(logo)
-app.appendChild(container)
-
+// Setting up Product page to pull product info from API
+const container = document.getElementById('main-content')
 
 const xhr = new XMLHttpRequest();
 xhr.onload = function () {
     const list = JSON.parse(xhr.responseText).data;
+    console.log(list);
     if (xhr.status >= 200 && xhr.status < 300) {
         // This will run when the request is successful
         console.log('success!', xhr);
