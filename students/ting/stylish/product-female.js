@@ -1,17 +1,17 @@
 
-// Setting up Product page to pull product info (female) from API
-const container = document.getElementById('main-content-female')
+// Setting up Product page to pull product info (FEMALE) from API
+const container = document.getElementById('main-content')
 
 const xhr = new XMLHttpRequest();
 xhr.onload = function () {
     const list = JSON.parse(xhr.responseText).data;
+    console.log(list)
 
     if (xhr.status >= 200 && xhr.status < 300) {
         // This will run when the request is successful
         console.log('success!');
         
         for (let i = 0; i < list.length; i++) {
-            if (list[i].category === 'women') {
                 // Individual product containter
                 const product = document.createElement('div')
                 product.setAttribute('class', 'product')
@@ -26,7 +26,6 @@ xhr.onload = function () {
                 const colorBox = list[i].colors
                 for (let a = 0; a < colorBox.length; a++) {
                     productColor.style.backgroundColor = `#`+colorBox[a].code
-                    console.log(colorBox[a].code)
                 }
 
                 // Product Name
@@ -44,7 +43,6 @@ xhr.onload = function () {
                 product.appendChild(productColor)
                 product.appendChild(productName)
                 product.appendChild(productPrice)
-            }
 
         }
 
@@ -53,5 +51,5 @@ xhr.onload = function () {
 		console.log('The request failed!');
 	}
 };
-xhr.open('GET', 'https://api.appworks-school.tw/api/1.0/products/all', true);
+xhr.open('GET', 'https://api.appworks-school.tw/api/1.0/products/women', true);
 xhr.send();
