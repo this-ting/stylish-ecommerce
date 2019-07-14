@@ -1,36 +1,51 @@
-// const express = require('express');
-// const port = 3000;
-// const app = express();
 
-// // Setting up server at 3000
-// app.listen(port, function () {
-//     console.log("Server is running on "+ port +" port");
-//   });
 
-// app.get('/', function (req, res) {
-//     res.render(`index.html`)
-// })
+const app = document.getElementById('root');
 
-// const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const logo = document.createElement('img');
+logo.src = 'images/search.png';
 
-// // Create request for Marketing Campaigns API
-// const xhr = new XMLHttpRequest();
+const container = document.createElement('div');
+container.setAttribute('class', 'main-content')
 
-// xhr.open('GET', 'https://api.appworks-school.tw/api/1.0/marketing/campaigns', true )
+app.appendChild(logo)
+app.appendChild(container)
 
-// xhr.onload = function () {
-//     console.log("can GET Marketing Campaigns API");
-//     console.log(this.responseText);
-    
-//     const data = JSON.parse(this.responseText)
-//     console.log(data.data[0].picture)
 
-//     // if (request.status >= 200 && request.status <400) {
-//     //     console.log(data.data[0].picture)
-//     // } else {
-//     //     console.log('WE HAVE AN ERRRRRROR')
-//     // }
-    
-// }
+const xhr = new XMLHttpRequest();
+xhr.onload = function () {
+    const list = JSON.parse(xhr.responseText).data;
+    if (xhr.status >= 200 && xhr.status < 300) {
+        // This will run when the request is successful
+        console.log('success!', xhr);
 
-// xhr.send()
+        for (let i = 0; i < list.length; i++) {
+            const product = document.createElement('div')
+            product.setAttribute('class', 'product')
+
+            const productImg = document.createElement('img')
+            productImg.src = list[i].main_image
+            
+            // const productColor = document.createElement('div')
+            // list[i].colors[i]
+
+            const productName = document.createElement('div')
+            productName.textContent = list[i].title
+
+            const productPrice = document.createElement('div')
+            productPrice.textContent = 'TWD.' + list[i].price
+
+            container.appendChild(product)
+            product.appendChild(productImg)
+            product.appendChild(productName)
+            product.appendChild(productPrice)
+
+        }
+
+    } else {
+		// This will run when it's not
+		console.log('The request failed!');
+	}
+};
+xhr.open('GET', 'https://api.appworks-school.tw/api/1.0/products/all', true);
+xhr.send();
