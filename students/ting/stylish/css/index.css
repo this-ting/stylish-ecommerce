@@ -10,6 +10,7 @@
 
 @import url(https://fonts.google.com/specimen/Noto+Sans+TC?selection.family=Noto+Sans+TC)
 
+
 body {
     font-family: PingFangTC-Regular, sans-serif;
     font-size: 20px;
@@ -86,7 +87,7 @@ body {
     letter-spacing:2px;
     line-height: 250%;
     margin: 0 12%;
-    padding-top: 160px;
+    padding-top: 15%;
     text-shadow: 0px 0px 5px #ffffff;
 }
 
