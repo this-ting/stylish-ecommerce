@@ -21,23 +21,21 @@ body {
     text-align: left;
 }
 
-.wrapper {
-    width: 90%;
-    margin: 0 5%;
+.top-header {
+    display: flex;
+    align-items: center;
 }
 
 .logo {
     margin: auto;
-    display: inline-block;
-    flex-wrap: wrap;
-    max-width: 45%;   
-    padding-left: 10vh; 
+    height: 36px;
+    padding: 0.7em 0;
 }
 
 .search-icon {
-    height: 2em;
-    width: 2em;
-    margin-left:10%;  
+    height: 36px;
+    width: 36px;
+    padding: 0.7em;
 }
 
 /* Navigation Bar */
