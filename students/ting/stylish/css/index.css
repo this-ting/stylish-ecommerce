@@ -33,6 +33,12 @@ body {
     padding: 0.7em;
 }
 
+.noProduct {
+    font-size: 2em;
+    font-weight: 400;
+    padding:3em 1em;
+}
+
 /* Navigation Bar */
 .navbar {
     background-color: #313538;
