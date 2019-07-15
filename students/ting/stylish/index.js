@@ -118,3 +118,28 @@ function searchRender(search) {
         render(search)
     }
 }
+
+// Mobile search text input pop up
+function showSearch() {
+    // Remove top header
+    console.log("i am clicked")
+    const topHeader = document.getElementById('top-header')
+    
+    topHeader.removeChild(topHeader.firstElementChild)
+    topHeader.removeChild(topHeader.lastElementChild);
+
+    // Add in text input
+    const searchForm = document.createElement('form')
+    const searchInput = document.createElement('input')
+    searchInput.setAttribute('class', 'nav-mobile-search')
+    searchInput.setAttribute('type', 'text')
+
+    const searchSubmit = document.createElement('input')
+    searchSubmit.style.display = 'none'
+
+    topHeader.appendChild(searchForm)
+    searchForm.appendChild(searchInput)
+    searchForm.appendChild(searchSubmit)
+
+
+}
