@@ -101,11 +101,13 @@ function searchRender(search) {
         // Show "No product available" message
         console.log('Sorry! No such product');
 
+        // Make Existing Products disappear
         container.removeChild(container.firstElementChild);
         
+        // No Product Message
         const noProduct = document.createElement('div')
         noProduct.setAttribute('class', 'noProduct')
-        noProduct.textContent = '沒有搜尋到任何產品哦'
+        noProduct.textContent = 'Error 404 沒有所搜尋的產品哦'
         
         container.appendChild(noProduct)
 
