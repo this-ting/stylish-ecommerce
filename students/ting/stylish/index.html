@@ -18,9 +18,9 @@
                     <img class="search-icon" src="images/search.png" />
                 </div> <!-- end of top-header div -->
                 <div class="navbar"> 
-                    <a href="#" class="menu-line">女裝 </a> 
-                    <a href="#" class="menu-line">男裝 </a> 
-                    <a href="#">配件</a>
+                    <a href="#" class="menu-line female" onClick="ajax(`${API}/products/women`,render)">女裝 </a> 
+                    <a href="#" class="menu-line male" onClick="ajax(`${API}/products/men`,render)">男裝 </a> 
+                    <a href="#" class ="acc" onClick="ajax(`${API}/products/accessories`,render)">配件</a>
                 </div> <!-- end of navbar div -->
 
 
@@ -37,7 +37,7 @@
                 <div class="banner-text">於是\r\n我也想要給你\r\n一個那麼美好的自己。\r\n不朽《與自己和好如初》</div>
             </div> <!-- end of main-banner div -->
             
-            <div class="main-content">
+            <div id="main-content">
                 <div class="products">
                     <a class="product" href=#>
                         <img src="https://api.appworks-school.tw/assets/201807201824/main.jpg" />

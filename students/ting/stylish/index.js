@@ -1,36 +1,71 @@
-// const express = require('express');
-// const port = 3000;
-// const app = express();
+/* ==========================================================================
+   Week 1 Part 3
+   ========================================================================== */
+// Destination of API
+const API = 'https://api.appworks-school.tw/api/1.0'
 
-// // Setting up server at 3000
-// app.listen(port, function () {
-//     console.log("Server is running on "+ port +" port");
-//   });
+// Set up GET function
+function ajax(src, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            // This will run when the request is successful
+            console.log('success!');
+            const list = JSON.parse(xhr.responseText);
+            callback(list);
+        } else {
+            // This will run when it's not
+            console.log('The request failed!');
+        };
+    }
+    xhr.open('GET', src , true);
+    xhr.send();
+};
 
-// app.get('/', function (req, res) {
-//     res.render(`index.html`)
-// })
+// Set up render function
+const container = document.getElementById('main-content')
 
-// const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+function render(list) {
+    // Make homepage's Products disappear
+    container.removeChild(container.firstElementChild);
 
-// // Create request for Marketing Campaigns API
-// const xhr = new XMLHttpRequest();
+    const products = document.createElement('div')
+    products.setAttribute('class', 'products')
 
-// xhr.open('GET', 'https://api.appworks-school.tw/api/1.0/marketing/campaigns', true )
+    const productData = list.data;
+    for (let i = 0; i < productData.length; i++) {
+        // Individual product containter
+        const product = document.createElement('div')
+        product.setAttribute('class', 'product')
 
-// xhr.onload = function () {
-//     console.log("can GET Marketing Campaigns API");
-//     console.log(this.responseText);
-    
-//     const data = JSON.parse(this.responseText)
-//     console.log(data.data[0].picture)
+        // Product Main Image
+        const productImg = document.createElement('img')
+        productImg.src = productData[i].main_image
+        
+        // Product Color Types
+        const productColor = document.createElement('div')
+        productColor.setAttribute('class', 'color')
+        const colorBox = productData[i].colors
+        for (let a = 0; a < colorBox.length; a++) {
+            productColor.style.backgroundColor = `#`+colorBox[a].code
+        }
 
-//     // if (request.status >= 200 && request.status <400) {
-//     //     console.log(data.data[0].picture)
-//     // } else {
-//     //     console.log('WE HAVE AN ERRRRRROR')
-//     // }
-    
-// }
+        // Product Name
+        const productName = document.createElement('div')
+        productName.setAttribute('class', 'name')
+        productName.textContent = productData[i].title
 
-// xhr.send()
+        // Product Price
+        const productPrice = document.createElement('div')
+        productPrice.setAttribute('class', 'price')
+        productPrice.textContent = 'TWD.' + productData[i].price
+
+        container.appendChild(products)
+        products.appendChild(product)
+        product.appendChild(productImg)
+        product.appendChild(productColor)
+        product.appendChild(productName)
+        product.appendChild(productPrice)
+    }
+
+};
