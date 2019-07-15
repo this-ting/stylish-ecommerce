@@ -25,8 +25,9 @@
 
 
                 <div class="dp-navright">
-                    <form onsubmit="myFunction()"> 
-                        <input class="nav-search" type="text"> 
+                    <form id="search" onsubmit="searchProduct()"> 
+                        <input class="nav-search" id="nav-search" type="text"> 
+                        <input type="submit" style="display:none;" />
                     </form>
                     <img class="cart-icon" src="images/cart.png" />
                     <img class="user-icon" src="images/member.png" />

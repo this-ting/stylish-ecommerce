@@ -2,11 +2,11 @@
    Week 1 Part 3
    ========================================================================== */
 // Destination of API
-const API = 'https://api.appworks-school.tw/api/1.0'
+const API = `https://api.appworks-school.tw/api/1.0`
 
 // Set up GET function
+const xhr = new XMLHttpRequest();
 function productLoad(src, callback) {
-    const xhr = new XMLHttpRequest();
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
             // This will run when the request is successful
@@ -73,3 +73,25 @@ function render(list) {
 /* ==========================================================================
    Week 1 Part 4
    ========================================================================== */
+   
+   const searchInput = document.getElementById('nav-search');
+   const APIsearch = 'https://api.appworks-school.tw/api/1.0/products/search?keyword=';
+
+
+   function searchProduct(src, callback) {
+    xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            console.log('Search Success!')
+            console.log(`You searched up '${searchInput.value}'`)
+            console.log(`${APIsearch}${searchInput.value}`)
+
+
+        } else {
+            console.log('The request has failed');
+        };
+    };
+    xhr.open('GET', `${APIsearch}${searchInput.value}`, true);
+    xhr.send();
+}
+
+
