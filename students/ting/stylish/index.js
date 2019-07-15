@@ -12,7 +12,6 @@ function ajax(src, callback) {
             // This will run when the request is successful
             console.log('success!');
             const list = JSON.parse(xhr.responseText);
-            console.log(list)
             callback(list);
         } else {
             // This will run when it's not
