@@ -283,6 +283,10 @@ body {
    margin: auto 0;
 }
 
+.dp-navright form {
+    display: inline-block;
+}
+
 .search-icon {
     display:none;
 }
