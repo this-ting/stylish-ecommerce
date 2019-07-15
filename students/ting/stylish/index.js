@@ -5,7 +5,7 @@
 const API = 'https://api.appworks-school.tw/api/1.0'
 
 // Set up GET function
-function ajax(src, callback) {
+function productLoad(src, callback) {
     const xhr = new XMLHttpRequest();
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
@@ -69,3 +69,7 @@ function render(list) {
     }
 
 };
+
+/* ==========================================================================
+   Week 1 Part 4
+   ========================================================================== */
