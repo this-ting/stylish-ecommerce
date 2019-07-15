@@ -78,20 +78,41 @@ function render(list) {
    const APIsearch = 'https://api.appworks-school.tw/api/1.0/products/search?keyword=';
 
 
-   function searchProduct(src, callback) {
+function searchProduct(src, callback) {
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
             console.log('Search Success!')
-            console.log(`You searched up '${searchInput.value}'`)
-            console.log(`${APIsearch}${searchInput.value}`)
-
+            console.log(`You searched up '${searchInput.value}'.`)
+            const search = JSON.parse(xhr.responseText);
+            console.log(search)
+            callback(search);
 
         } else {
             console.log('The request has failed');
         };
     };
-    xhr.open('GET', `${APIsearch}${searchInput.value}`, true);
+    xhr.open('GET', src, true);
     xhr.send();
 }
 
+// Function will check if there is such product then render appropriate output
+function searchRender(search) {
+    if (search.data.length === 0) {
+        // Show "No product available" message
+        console.log('Sorry! No such product');
 
+        container.removeChild(container.firstElementChild);
+        
+        const noProduct = document.createElement('div')
+        noProduct.setAttribute('class', 'noProduct')
+        noProduct.textContent = '沒有搜尋到任何產品哦'
+        
+        container.appendChild(noProduct)
+
+
+    } else {
+        // Make homepage's Products disappear
+        console.log('Here is your product!');
+        render(search)
+    }
+}
