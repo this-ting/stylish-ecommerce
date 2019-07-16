@@ -14,8 +14,8 @@ function productLoad(src, callback) {
             console.log('success!');
             const list = JSON.parse(xhr.responseText);
             console.log(list);
-            console.log(list.paging);
             isPg = list.paging;
+            console.log(isPg);
             callback(list);
         } else {
             // This will run when it's not
@@ -152,7 +152,7 @@ function showSearch() {
 
 
 // Paging & Infinite Scroll
-const APIpage = 'https://api.appworks-school.tw/api/1.0/products/women?paging=';
+const APIpage = 'https://api.appworks-school.tw/api/1.0/products/all?paging=';
 
 
 window.addEventListener('scroll', function () {
@@ -172,13 +172,14 @@ window.addEventListener('scroll', function () {
 
 // Function to check if there is a next page and produce URL to API
 let nextPg = 0;
-function checkPage(list) {
+function checkPage() {
     // if have next page
-    if (list.paging !== undefined) {
-        let page = 0;
+    if (isPg !== undefined) {
         nextPg = `${APIpage}${page += 1}`;
         console.log(nextPg);
-    } 
+    } else {
+        console.log('There are no more pages to load')
+    }
 };
 
 // Infinite scroll function to add products from the next page 
