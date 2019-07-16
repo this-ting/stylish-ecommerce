@@ -5,6 +5,7 @@
 const API = `https://api.appworks-school.tw/api/1.0`
 
 // Set up GET function
+let isPg;
 const xhr = new XMLHttpRequest();
 function productLoad(src, callback) {
     xhr.onload = function () {
@@ -13,7 +14,8 @@ function productLoad(src, callback) {
             console.log('success!');
             const list = JSON.parse(xhr.responseText);
             console.log(list);
-            console.log(list.paging)
+            console.log(list.paging);
+            isPg = list.paging;
             callback(list);
         } else {
             // This will run when it's not
@@ -150,7 +152,7 @@ function showSearch() {
 
 
 // Paging & Infinite Scroll
-const APIpage = 'https://api.appworks-school.tw/api/1.0/products/all?paging=';
+const APIpage = 'https://api.appworks-school.tw/api/1.0/products/women?paging=';
 
 
 window.addEventListener('scroll', function () {
@@ -158,8 +160,13 @@ window.addEventListener('scroll', function () {
     if (window.innerHeight >= container.getBoundingClientRect().bottom) {
         this.console.log('You have reached the scroll trigger point');
         // add in load page function
-
-        productLoad(nextPg, renderScroll)
+        // if have next page load it, if not, stop
+        if (isPg !== undefined) {
+            productLoad(nextPg, renderScroll)
+        } else {
+            return;
+        }
+        
     }
 })
 
@@ -169,8 +176,7 @@ function checkPage(list) {
     // if have next page
     if (list.paging !== undefined) {
         let page = 0;
-        page += 1;
-        nextPg = `${APIpage}${page}`;
+        nextPg = `${APIpage}${page += 1}`;
         console.log(nextPg);
     } 
 };
