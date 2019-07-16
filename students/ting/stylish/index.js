@@ -159,13 +159,18 @@ function showMobileSearch() {
     searchInputMobile.setAttribute('class', 'nav-mobile-search')
     searchInputMobile.setAttribute('type', 'text')
 
-    const searchSubmitMobile = document.createElement('input')
-    searchSubmitMobile.style.display = 'none'
+    const searchSubmitMobile = document.createElement('button')
+    searchSubmitMobile.style.visibility = 'hidden'
 
     topHeader.appendChild(searchFormMobile)
     searchFormMobile.appendChild(searchInputMobile)
     searchFormMobile.appendChild(searchSubmitMobile)
-    searchFormMobile.onsubmit = searchProduct(`${APIsearch}${document.querySelector("input.nav-mobile-search").value}`,searchRender, false)
+
+    document.querySelector("form").addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log('hi')
+        searchProduct(`${APIsearch}${searchInputMobile.value}`,searchRender);
+    });
 
 }
 
