@@ -3,6 +3,9 @@
    ========================================================================== */
 // Destination of API
 const API = `https://api.appworks-school.tw/api/1.0/`
+const APIproducts = `${API}products/`;
+const APIsearch = `${APIproducts}search?keyword=`;
+const APImarketing = `${API}marketing/campaigns`;
 
 // Set up GET function for API
 let haveNext;
@@ -73,12 +76,25 @@ function render(list) {
     };
 };
 
+// Set Home Page Product Rendering
+const body = document.querySelector("body");
+
+// onload="productLoad(`${APIproducts}all`,render)"
+
+body.onload = 
+    productLoad(`${APIproducts}all`,render);
+
+
+
+
+
+
+
+
 /* ==========================================================================
    Paging & Infinite Scroll
    ========================================================================== */
-const APIproducts = `${API}products/`;
 const searchInput = document.getElementById('nav-search');
-const APIsearch = `${APIproducts}search?keyword=`;
 
 function searchProduct(src, callback) {
     xhr.onload = function () {
@@ -228,3 +244,55 @@ function renderScroll(list) {
 /* ==========================================================================
    Marketing Campaigns
    ========================================================================== */
+const marketingContainer = document.getElementById('main-banner');
+
+function renderMarketing(list) {
+    // set up for each function to create 3 marketing banners
+    const productData = list.data
+
+    // for (let i = 0; i < productData.length; i++) {}
+
+        // Marketing Background Image
+        const marketingImg = document.createElement('a')
+        marketingImg.setAttribute('class', 'banner')
+        marketingImg.style.backgroundImage = url(`${API}${productData[0].picture}`)
+        
+        // Marketing Background Text
+        const marketingText = document.createElement('div')
+        marketingText.setAttribute('class', 'banner-text')
+        marketingText.innerText = productData[0].story
+
+
+        marketingContainer.appendChild(marketingImg)
+        marketingImg.appendChild(marketingText)
+    
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
