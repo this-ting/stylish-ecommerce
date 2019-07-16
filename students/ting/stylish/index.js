@@ -76,20 +76,6 @@ function render(list) {
     };
 };
 
-// Set Home Page Product Rendering
-const body = document.querySelector("body");
-
-// onload="productLoad(`${APIproducts}all`,render)"
-
-body.onload = 
-    productLoad(`${APIproducts}all`,render);
-
-
-
-
-
-
-
 
 /* ==========================================================================
    Paging & Infinite Scroll
@@ -268,11 +254,13 @@ function renderMarketing(list) {
     
 
 
-
-
-
 }
 
+
+window.onloadstart = productLoad(`${APImarketing}`,renderMarketing);
+
+
+      
 
 
 
