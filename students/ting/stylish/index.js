@@ -143,3 +143,36 @@ function showSearch() {
 
 
 }
+
+
+// Paging & Infinite Scroll
+const APIpage = 'https://api.appworks-school.tw/api/1.0/products/all?paging=';
+
+
+// function loadNextPg (src, callback) {
+//     xhr.onload = function () {
+//         if (xhr.status >= 200 && xhr.status < 300) {
+//             // This will run when the request is successful
+//             console.log('success!');
+//             const list = JSON.parse(xhr.responseText);
+//             console.log(list.paging)
+//             callback(list.paging);
+//         } else {
+//             // This will run when it's not
+//             console.log('The request failed!');
+//         };
+//     }
+//     xhr.open('GET', src , true);
+//     xhr.send();
+// }
+
+window.addEventListener('scroll', function () {
+    // set event to fire when scrolling reaches end of container
+    if (window.innerHeight >= container.getBoundingClientRect().bottom) {
+        this.console.log('YAYYY');
+
+    }
+})
+
+
+
