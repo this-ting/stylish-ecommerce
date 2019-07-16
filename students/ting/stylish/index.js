@@ -2,10 +2,11 @@
    Week 1 Part 3
    ========================================================================== */
 // Destination of API
-const API = `https://api.appworks-school.tw/api/1.0`
+const API = `https://api.appworks-school.tw/api/1.0/products/`
 
 // Set up GET function
 let haveNext;
+let category;
 const xhr = new XMLHttpRequest();
 function productLoad(src, callback) {
     xhr.onload = function () {
@@ -16,6 +17,8 @@ function productLoad(src, callback) {
             console.log(list);
             haveNext = list.paging;
             console.log(haveNext);
+            category = list.data[0].category
+            console.log(category);
             callback(list);
         } else {
             // This will run when it's not
@@ -152,12 +155,13 @@ function showSearch() {
 // Paging & Infinite Scroll
 const APIpage = 'https://api.appworks-school.tw/api/1.0/products/all?paging=';
 
-let nextPg = 0;
+let nextPg;
 window.addEventListener('scroll', function () {
     // set event to fire when scrolling reaches end of container
     if (window.innerHeight >= container.getBoundingClientRect().bottom) {
         this.console.log('You have reached the scroll trigger point');
         
+    
         // Function to check if there is a next page and produce URL to API
         nextPg = `${APIpage}${haveNext}`
         if (haveNext !== undefined) {

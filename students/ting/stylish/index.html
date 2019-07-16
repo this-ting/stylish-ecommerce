@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="css/index.css">
     </head>
     
-    <body onload="productLoad(`${API}/products/all`,render)">
+    <body onload="productLoad(`${API}all`,render)">
         <div class="root">
         
             <div class="header">
@@ -18,9 +18,9 @@
                     <img class="search-icon" src="images/search.png" onclick="showSearch()"/>
                 </div> <!-- end of top-header div -->
                 <div class="navbar"> 
-                    <a href="#" class="menu-line female" onclick="productLoad(`${API}/products/women`,render)">女裝 </a> 
-                    <a href="#" class="menu-line male" onclick="productLoad(`${API}/products/men`,render)">男裝 </a> 
-                    <a href="#" class ="acc" onClick="productLoad(`${API}/products/accessories`,render)">配件</a>
+                    <a href="#" class="menu-line female" onclick="productLoad(`${API}women`,render)">女裝 </a> 
+                    <a href="#" class="menu-line male" onclick="productLoad(`${API}men`,render)">男裝 </a> 
+                    <a href="#" class ="acc" onClick="productLoad(`${API}accessories`,render)">配件</a>
                 </div> <!-- end of navbar div -->
 
 
