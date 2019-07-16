@@ -12,6 +12,8 @@ function productLoad(src, callback) {
             // This will run when the request is successful
             console.log('success!');
             const list = JSON.parse(xhr.responseText);
+            console.log(list);
+            console.log(list.paging)
             callback(list);
         } else {
             // This will run when it's not
@@ -149,30 +151,69 @@ function showSearch() {
 const APIpage = 'https://api.appworks-school.tw/api/1.0/products/all?paging=';
 
 
-// function loadNextPg (src, callback) {
-//     xhr.onload = function () {
-//         if (xhr.status >= 200 && xhr.status < 300) {
-//             // This will run when the request is successful
-//             console.log('success!');
-//             const list = JSON.parse(xhr.responseText);
-//             console.log(list.paging)
-//             callback(list.paging);
-//         } else {
-//             // This will run when it's not
-//             console.log('The request failed!');
-//         };
-//     }
-//     xhr.open('GET', src , true);
-//     xhr.send();
-// }
-
 window.addEventListener('scroll', function () {
     // set event to fire when scrolling reaches end of container
     if (window.innerHeight >= container.getBoundingClientRect().bottom) {
-        this.console.log('YAYYY');
+        this.console.log('You have reached the scroll trigger point');
+        // add in load page function
 
+        productLoad(nextPg, renderScroll)
     }
 })
 
+// Function to check if there is a next page and produce URL to API
+let nextPg = 0;
+function checkPage(list) {
+    // if have next page
+    if (list.paging !== undefined) {
+        let page = 0;
+        page += 1;
+        nextPg = `${APIpage}${page}`;
+        console.log(nextPg);
+    } 
+};
 
+// Infinite scroll function to add products from the next page 
+function renderScroll(list) {
+    checkPage(list);
 
+    const products = document.createElement('div')
+    products.setAttribute('class', 'products')
+
+    const productData = list.data;
+    for (let i = 0; i < productData.length; i++) {
+        // Individual product containter
+        const product = document.createElement('div')
+        product.setAttribute('class', 'product')
+
+        // Product Main Image
+        const productImg = document.createElement('img')
+        productImg.src = productData[i].main_image
+        
+        // Product Color Types
+        const productColor = document.createElement('div')
+        productColor.setAttribute('class', 'color')
+        const colorBox = productData[i].colors
+        for (let a = 0; a < colorBox.length; a++) {
+            productColor.style.backgroundColor = `#`+colorBox[a].code
+        }
+
+        // Product Name
+        const productName = document.createElement('div')
+        productName.setAttribute('class', 'name')
+        productName.textContent = productData[i].title
+
+        // Product Price
+        const productPrice = document.createElement('div')
+        productPrice.setAttribute('class', 'price')
+        productPrice.textContent = 'TWD.' + productData[i].price
+
+        container.appendChild(products)
+        products.appendChild(product)
+        product.appendChild(productImg)
+        product.appendChild(productColor)
+        product.appendChild(productName)
+        product.appendChild(productPrice)
+    }
+
+};
