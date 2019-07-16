@@ -122,6 +122,8 @@ function searchRender(search) {
         console.log('Here is your product!');
         render(search)
     }
+    // remove event listener
+    window.removeEventListener('scroll', infiniteScroll);
 }
 
 // Mobile search text input pop up
@@ -151,7 +153,7 @@ function showSearch() {
 
 // Paging & Infinite Scroll
 let nextPg;
-window.addEventListener('scroll', function () {
+const infiniteScroll = function () {
     // set event to fire when scrolling reaches end of container
     if (window.innerHeight >= container.getBoundingClientRect().bottom) {
         this.console.log('You have reached the scroll trigger point');
@@ -165,7 +167,8 @@ window.addEventListener('scroll', function () {
             return;
         };
     };
-});
+}
+window.addEventListener('scroll', infiniteScroll);
 
 // Infinite scroll function to add products from the next page 
 function renderScroll(list) {
