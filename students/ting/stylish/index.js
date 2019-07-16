@@ -82,7 +82,7 @@ function render(list) {
    ========================================================================== */
    
    const searchInput = document.getElementById('nav-search');
-   const APIsearch = 'https://api.appworks-school.tw/api/1.0/products/search?keyword=';
+   const APIsearch = `${API}search?keyword=`;
 
 
 function searchProduct(src, callback) {
