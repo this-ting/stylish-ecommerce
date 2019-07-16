@@ -6,7 +6,7 @@ const API = `https://api.appworks-school.tw/api/1.0/products/`
 
 // Set up GET function for API
 let haveNext;
-let category;
+let category = 'all';
 const xhr = new XMLHttpRequest();
 function productLoad(src, callback) {
     xhr.onload = function () {
@@ -79,8 +79,8 @@ function render(list) {
    Week 1 Part 4
    ========================================================================== */
    
-   const searchInput = document.getElementById('nav-search');
-   const APIsearch = `${API}search?keyword=`;
+const searchInput = document.getElementById('nav-search');
+const APIsearch = `${API}search?keyword=`;
 
 
 function searchProduct(src, callback) {
@@ -149,25 +149,22 @@ function showSearch() {
 
 }
 
-
 // Paging & Infinite Scroll
-const APIpage = `${API}all?paging=`;
-
 let nextPg;
 window.addEventListener('scroll', function () {
     // set event to fire when scrolling reaches end of container
     if (window.innerHeight >= container.getBoundingClientRect().bottom) {
         this.console.log('You have reached the scroll trigger point');
-        
     
         // Function to check if there is a next page and produce URL to API
+        let APIpage = `${API}${category}?paging=`;
         nextPg = `${APIpage}${haveNext}`
         if (haveNext !== undefined) {
             productLoad(nextPg, renderScroll);
         } else {
             return;
-        }
-    }
+        };
+    };
 });
 
 // Infinite scroll function to add products from the next page 
