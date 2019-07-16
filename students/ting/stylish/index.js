@@ -71,7 +71,12 @@ function render(list) {
         product.appendChild(productColor)
         product.appendChild(productName)
         product.appendChild(productPrice)
-    }
+    };
+
+    
+
+
+    
 
 };
 
@@ -127,7 +132,7 @@ function searchRender(search) {
 }
 
 // Mobile search text input pop up
-function showSearch() {
+function showMobileSearch() {
     // Remove top header
     console.log("i am clicked")
     const topHeader = document.getElementById('top-header')
@@ -136,18 +141,18 @@ function showSearch() {
     topHeader.removeChild(topHeader.lastElementChild);
 
     // Add in text input
-    const searchForm = document.createElement('form')
-    const searchInput = document.createElement('input')
-    searchInput.setAttribute('class', 'nav-mobile-search')
-    searchInput.setAttribute('type', 'text')
+    const searchFormMobile = document.createElement('form')
+    const searchInputMobile = document.createElement('input')
+    searchInputMobile.setAttribute('class', 'nav-mobile-search')
+    searchInputMobile.setAttribute('type', 'text')
 
-    const searchSubmit = document.createElement('input')
-    searchSubmit.style.display = 'none'
+    const searchSubmitMobile = document.createElement('input')
+    searchSubmitMobile.style.display = 'none'
 
-    topHeader.appendChild(searchForm)
-    searchForm.appendChild(searchInput)
-    searchForm.appendChild(searchSubmit)
-
+    topHeader.appendChild(searchFormMobile)
+    searchFormMobile.appendChild(searchInputMobile)
+    searchFormMobile.appendChild(searchSubmitMobile)
+    searchFormMobile.onsubmit = searchProduct(`${APIsearch}${document.querySelector("input.nav-mobile-search").value}`,searchRender, false)
 
 }
 
