@@ -4,7 +4,7 @@
 // Destination of API
 const API = `https://api.appworks-school.tw/api/1.0/products/`
 
-// Set up GET function
+// Set up GET function for API
 let haveNext;
 let category;
 const xhr = new XMLHttpRequest();
@@ -17,8 +17,6 @@ function productLoad(src, callback) {
             console.log(list);
             haveNext = list.paging;
             console.log(haveNext);
-            category = list.data[0].category
-            console.log(category);
             callback(list);
         } else {
             // This will run when it's not

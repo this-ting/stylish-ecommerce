@@ -18,9 +18,9 @@
                     <img class="search-icon" src="images/search.png" onclick="showSearch()"/>
                 </div> <!-- end of top-header div -->
                 <div class="navbar"> 
-                    <a href="#" class="menu-line female" onclick="productLoad(`${API}women`,render)">女裝 </a> 
-                    <a href="#" class="menu-line male" onclick="productLoad(`${API}men`,render)">男裝 </a> 
-                    <a href="#" class ="acc" onClick="productLoad(`${API}accessories`,render)">配件</a>
+                    <a href="#" class="menu-line female" onclick="productLoad(`${API}${category = 'women'}`,render)">女裝 </a> 
+                    <a href="#" class="menu-line male" onclick="productLoad(`${API}${category = 'men'}`,render)">男裝 </a> 
+                    <a href="#" class ="acc" onclick="productLoad(`${API}${category = 'accessories'}`,render)">配件</a>
                 </div> <!-- end of navbar div -->
 
 
