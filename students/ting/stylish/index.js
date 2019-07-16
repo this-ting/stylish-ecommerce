@@ -8,7 +8,7 @@ const APIsearch = `${APIproducts}search?keyword=`;
 const APImarketing = `${API}marketing/campaigns`;
 
 // Set up GET function for API
-let haveNext;
+let haveNext; // for product paging
 let category = 'all';
 const xhr = new XMLHttpRequest();
 function productLoad(src, callback) {
@@ -18,7 +18,7 @@ function productLoad(src, callback) {
             console.log('success!');
             const list = JSON.parse(xhr.responseText);
             console.log(list);
-            haveNext = list.paging;
+            haveNext = list.paging; // for product paging
             console.log(haveNext);
             callback(list);
         } else {
@@ -30,7 +30,7 @@ function productLoad(src, callback) {
     xhr.send();
 };
 
-// Set up render function
+// Set up products render function
 const container = document.getElementById('main-content')
 
 function render(list) {
@@ -230,7 +230,7 @@ function renderScroll(list) {
 /* ==========================================================================
    Marketing Campaigns
    ========================================================================== */
-const marketingContainer = document.getElementById('main-banner');
+const marketingContainer = document.getElementById('marketing-container');
 
 function renderMarketing(list) {
     // set up for each function to create 3 marketing banners

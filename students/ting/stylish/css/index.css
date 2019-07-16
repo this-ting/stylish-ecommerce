@@ -90,7 +90,7 @@ body {
 
 /* Main Banner */
 .main-banner {
-    background-image:url('https://api.appworks-school.tw/assets/keyvisuals/201807242228.jpg');
+    /* background-image:url('https://api.appworks-school.tw/assets/keyvisuals/201807242228.jpg'); */
     background-repeat: no-repeat;
     background-size: auto;
     background-size: cover;
