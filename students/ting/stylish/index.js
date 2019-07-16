@@ -5,7 +5,7 @@
 const API = `https://api.appworks-school.tw/api/1.0`
 
 // Set up GET function
-let isPg;
+let haveNext;
 const xhr = new XMLHttpRequest();
 function productLoad(src, callback) {
     xhr.onload = function () {
@@ -14,8 +14,8 @@ function productLoad(src, callback) {
             console.log('success!');
             const list = JSON.parse(xhr.responseText);
             console.log(list);
-            isPg = list.paging;
-            console.log(isPg);
+            haveNext = list.paging;
+            console.log(haveNext);
             callback(list);
         } else {
             // This will run when it's not
@@ -30,8 +30,6 @@ function productLoad(src, callback) {
 const container = document.getElementById('main-content')
 
 function render(list) {
-    checkPage(list);
-
     // Make homepage's Products disappear
     container.removeChild(container.firstElementChild);
 
@@ -154,37 +152,24 @@ function showSearch() {
 // Paging & Infinite Scroll
 const APIpage = 'https://api.appworks-school.tw/api/1.0/products/all?paging=';
 
-
+let nextPg = 0;
 window.addEventListener('scroll', function () {
     // set event to fire when scrolling reaches end of container
     if (window.innerHeight >= container.getBoundingClientRect().bottom) {
         this.console.log('You have reached the scroll trigger point');
-        // add in load page function
-        // if have next page load it, if not, stop
-        if (isPg !== undefined) {
-            productLoad(nextPg, renderScroll)
+        
+        // Function to check if there is a next page and produce URL to API
+        nextPg = `${APIpage}${haveNext}`
+        if (haveNext !== undefined) {
+            productLoad(nextPg, renderScroll);
         } else {
             return;
         }
-        
     }
-})
-
-// Function to check if there is a next page and produce URL to API
-let nextPg = 0;
-function checkPage() {
-    // if have next page
-    if (isPg !== undefined) {
-        nextPg = `${APIpage}${page += 1}`;
-        console.log(nextPg);
-    } else {
-        console.log('There are no more pages to load')
-    }
-};
+});
 
 // Infinite scroll function to add products from the next page 
 function renderScroll(list) {
-    checkPage(list);
 
     const products = document.createElement('div')
     products.setAttribute('class', 'products')
