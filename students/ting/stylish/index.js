@@ -1,8 +1,8 @@
 /* ==========================================================================
-   Week 1 Part 3
+   Render Home Page & Product Page
    ========================================================================== */
 // Destination of API
-const API = `https://api.appworks-school.tw/api/1.0/products/`
+const API = `https://api.appworks-school.tw/api/1.0/`
 
 // Set up GET function for API
 let haveNext;
@@ -74,11 +74,11 @@ function render(list) {
 };
 
 /* ==========================================================================
-   Week 1 Part 4
+   Paging & Infinite Scroll
    ========================================================================== */
-   
+const APIproducts = `${API}products/`;
 const searchInput = document.getElementById('nav-search');
-const APIsearch = `${API}search?keyword=`;
+const APIsearch = `${APIproducts}search?keyword=`;
 
 function searchProduct(src, callback) {
     xhr.onload = function () {
@@ -173,7 +173,7 @@ const infiniteScroll = function () {
         this.console.log('You have reached the scroll trigger point');
     
         // Function to check if there is a next page and produce URL to API
-        let APIpage = `${API}${category}?paging=`;
+        let APIpage = `${APIproducts}${category}?paging=`;
         nextPg = `${APIpage}${haveNext}`
         if (haveNext !== undefined) {
             productLoad(nextPg, renderScroll);
@@ -225,3 +225,6 @@ function renderScroll(list) {
     }
 
 };
+/* ==========================================================================
+   Marketing Campaigns
+   ========================================================================== */
