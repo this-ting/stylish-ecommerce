@@ -173,8 +173,7 @@ window.addEventListener('scroll', function () {
 // Infinite scroll function to add products from the next page 
 function renderScroll(list) {
 
-    const products = document.createElement('div')
-    products.setAttribute('class', 'products')
+    const products = document.querySelector(".products")
 
     const productData = list.data;
     for (let i = 0; i < productData.length; i++) {
@@ -204,7 +203,6 @@ function renderScroll(list) {
         productPrice.setAttribute('class', 'price')
         productPrice.textContent = 'TWD.' + productData[i].price
 
-        container.appendChild(products)
         products.appendChild(product)
         product.appendChild(productImg)
         product.appendChild(productColor)
