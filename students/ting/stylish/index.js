@@ -107,7 +107,20 @@ function searchProduct(src, callback) {
 
 // Function will check if there is such product then render appropriate output
 function searchRender(search) {
-    if (search.data.length === 0) {
+    if (search.error ==  "Wrong Request") {
+        // Show "Type search" message
+        console.log('Please enter into the search bar')
+        // Make Existing Products disappear
+        container.removeChild(container.firstElementChild);
+    
+        // No Product Message
+        const noProduct = document.createElement('div')
+        noProduct.setAttribute('class', 'noProduct')
+        noProduct.textContent = '請輸入搜尋的產品哦'
+        
+        container.appendChild(noProduct)
+
+    } else if (search.data.length === 0) {
         // Show "No product available" message
         console.log('Sorry! No such product');
 
