@@ -153,7 +153,7 @@ function showSearch() {
 
 
 // Paging & Infinite Scroll
-const APIpage = 'https://api.appworks-school.tw/api/1.0/products/all?paging=';
+const APIpage = `${API}all?paging=`;
 
 let nextPg;
 window.addEventListener('scroll', function () {
