@@ -28,6 +28,8 @@ function productLoad(src, callback) {
 const container = document.getElementById('main-content')
 
 function render(list) {
+    checkPage(list);
+
     // Make homepage's Products disappear
     container.removeChild(container.firstElementChild);
 
