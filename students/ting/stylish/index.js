@@ -54,7 +54,6 @@ function render(list) {
         for (let a = 0; a < colorBox.length; a++) {
             productColor.style.backgroundColor = `#`+colorBox[a].code
         }
-
         // Product Name
         const productName = document.createElement('div')
         productName.setAttribute('class', 'name')
@@ -72,12 +71,6 @@ function render(list) {
         product.appendChild(productName)
         product.appendChild(productPrice)
     };
-
-    
-
-
-    
-
 };
 
 /* ==========================================================================
@@ -86,7 +79,6 @@ function render(list) {
    
 const searchInput = document.getElementById('nav-search');
 const APIsearch = `${API}search?keyword=`;
-
 
 function searchProduct(src, callback) {
     xhr.onload = function () {
@@ -133,7 +125,6 @@ function searchRender(search) {
         noProduct.textContent = 'Error 404 沒有所搜尋的產品哦'
         
         container.appendChild(noProduct)
-
 
     } else {
         // Make homepage's Products disappear
