@@ -94,13 +94,14 @@ body {
     height: 55vh;
     width:100%;
     position: relative;
+
 }
 
 .main-banner {
     background-repeat: no-repeat;
     background-size: auto;
     background-size: cover;
-    /* display: none; */ 
+    display: none; 
     height: 55vh;
     width:100%;
     position: absolute;
@@ -135,6 +136,29 @@ body {
     to {opacity: 1}
   }
 
+/* Main Banner Dots */
+  .dots {
+    position: absolute;
+    bottom: 1.5em;
+    left: 47%;
+}
+
+.dots ul {
+    padding-inline-start: 0;
+}
+
+.dots ul li {
+    list-style: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    background-color: darkgrey;
+    display: inline-block;
+}
+
+.dots ul li:hover {
+    background-color: white;
+}
 
 /* Main Product */
 #main-content {
