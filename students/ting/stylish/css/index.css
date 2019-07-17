@@ -141,6 +141,7 @@ body {
     position: absolute;
     bottom: 1.5em;
     left: 47%;
+    z-index: 2;
 }
 
 .dots ul {
