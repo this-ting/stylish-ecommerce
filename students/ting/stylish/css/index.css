@@ -93,13 +93,17 @@ body {
     box-sizing:border-box;
     height: 55vh;
     width:100%;
+    position: relative;
 }
 
 .main-banner {
     background-repeat: no-repeat;
     background-size: auto;
     background-size: cover;
-    display: none;
+    /* display: none; */ 
+    height: 55vh;
+    width:100%;
+    position: absolute;
 
 }
 
