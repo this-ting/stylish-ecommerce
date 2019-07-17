@@ -242,20 +242,21 @@ function renderMarketing(list) {
     // set up for each function to create 3 marketing banners
     const productData = list.data
    
-    // for (let i = 0; i < productData.length; i++) {}
-
+    for (let i = 0; i < productData.length; i++) {
         // Marketing Background Image
         const marketingImg = document.createElement('div')
         marketingImg.setAttribute('class', 'main-banner')
-        marketingImg.style.backgroundImage = `url(${APIasset}${productData[0].picture})`
+        marketingImg.style.backgroundImage = `url(${APIasset}${productData[i].picture})`
         
         // Marketing Background Text
         const marketingText = document.createElement('div')
         marketingText.setAttribute('class', 'banner-text')
-        marketingText.innerText = productData[0].story
+        marketingText.innerText = productData[i].story
 
         marketingContainer.appendChild(marketingImg)
         marketingImg.appendChild(marketingText)
+    }
+       
     
 }
 
