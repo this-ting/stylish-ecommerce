@@ -101,7 +101,7 @@ body {
     background-repeat: no-repeat;
     background-size: auto;
     background-size: cover;
-    display: none; 
+    display: block; 
     height: 55vh;
     width:100%;
     position: absolute;
@@ -157,9 +157,12 @@ body {
     display: inline-block;
 }
 
-.dots ul li:hover {
-    background-color: white;
+.dots ul li:hover, 
+.active
+ {
+    background-color: red;
 }
+
 
 /* Main Product */
 #main-content {
