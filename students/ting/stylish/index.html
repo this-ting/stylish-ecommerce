@@ -8,13 +8,13 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/index.css">
     </head>
-    
-    <body onload="productLoad(`${APIproducts}all`,render)">
+
+    <body >
         <div class="root">
         
             <div class="header">
                 <div class="top-header" id="top-header">
-                    <img class="logo" src="https://api.appworks-school.tw/imgs/logo.png" />
+                    <img class="logo" src="https://api.appworks-school.tw/imgs/logo.png" onclick="productLoad(`${APIproducts}all`,render)" />
                     <img class="search-icon" src="images/search.png" onclick="showMobileSearch()"/>
                 </div> <!-- end of top-header div -->
                 <div class="navbar"> 
@@ -35,10 +35,7 @@
             </div> <!-- end of header div -->
 
             <div id="marketing-container">
-                <div class="main-banner" >
-                    <!-- <div class="banner-text">於是\r\n我也想要給你\r\n一個那麼美好的自己。\r\n不朽《與自己和好如初》</div> -->
-                </div>
-            </div> <!-- end of main-banner div -->
+            </div> <!-- end of main-container div -->
 
             
             <div id="main-content">

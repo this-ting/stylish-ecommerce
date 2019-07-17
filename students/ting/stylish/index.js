@@ -2,33 +2,38 @@
    Render Home Page & Product Page
    ========================================================================== */
 // Destination of API
-const API = `https://api.appworks-school.tw/api/1.0/`
-const APIproducts = `${API}products/`;
+const API = `https://api.appworks-school.tw/api/1.0`;
+const APIproducts = `${API}/products/`;
 const APIsearch = `${APIproducts}search?keyword=`;
-const APImarketing = `${API}marketing/campaigns`;
+const APImarketing = `${API}/marketing/campaigns`;
+const APIasset = `https://api.appworks-school.tw`;
 
 // Set up GET function for API
 let haveNext; // for product paging
 let category = 'all';
-const xhr = new XMLHttpRequest();
+
 function productLoad(src, callback) {
+    const xhr = new XMLHttpRequest();
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
             // This will run when the request is successful
             console.log('success!');
             const list = JSON.parse(xhr.responseText);
-            console.log(list);
+            console.log(list.data[0].story);
             haveNext = list.paging; // for product paging
-            console.log(haveNext);
+            
             callback(list);
         } else {
             // This will run when it's not
             console.log('The request failed!');
         };
     }
-    xhr.open('GET', src , true);
+    xhr.open('GET', src);
     xhr.send();
 };
+
+// Render homepage products
+productLoad(`${APIproducts}all`,render);
 
 // Set up products render function
 const container = document.getElementById('main-content')
@@ -75,6 +80,7 @@ function render(list) {
         product.appendChild(productPrice)
     };
 };
+
 
 
 /* ==========================================================================
@@ -235,29 +241,28 @@ const marketingContainer = document.getElementById('marketing-container');
 function renderMarketing(list) {
     // set up for each function to create 3 marketing banners
     const productData = list.data
-
+   
     // for (let i = 0; i < productData.length; i++) {}
 
         // Marketing Background Image
-        const marketingImg = document.createElement('a')
-        marketingImg.setAttribute('class', 'banner')
-        marketingImg.style.backgroundImage = url(`${API}${productData[0].picture}`)
+        const marketingImg = document.createElement('div')
+        marketingImg.setAttribute('class', 'main-banner')
+        marketingImg.style.backgroundImage = `url(${APIasset}${productData[0].picture})`
         
         // Marketing Background Text
         const marketingText = document.createElement('div')
         marketingText.setAttribute('class', 'banner-text')
         marketingText.innerText = productData[0].story
 
-
         marketingContainer.appendChild(marketingImg)
         marketingImg.appendChild(marketingText)
     
-
-
 }
 
+// Render marketing campaign banner
+productLoad(`${APImarketing}`,renderMarketing);
 
-window.onloadstart = productLoad(`${APImarketing}`,renderMarketing);
+
 
 
       
