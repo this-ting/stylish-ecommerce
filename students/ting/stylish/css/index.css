@@ -158,9 +158,9 @@ body {
 }
 
 .dots ul li:hover, 
-.active
+li.dot.active
  {
-    background-color: red;
+    background-color: white;
 }
 
 
