@@ -150,11 +150,12 @@ body {
 
 .dots ul li {
     list-style: none;
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     border-radius: 100%;
     background-color: darkgrey;
     display: inline-block;
+    
 }
 
 .dots ul li:hover, 
