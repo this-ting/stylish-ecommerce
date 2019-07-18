@@ -322,6 +322,12 @@ li.dot.active
 }
 
 @media only screen and (min-width: 1001px) and (max-width: 1199px) {
+.black-bar {
+    display: block;
+    background-color: #313538;
+    width: 100%;
+    height: 20px;
+}
 
 /* Header - change to 1 line */
 .header{
@@ -450,6 +456,13 @@ li.dot.active
 }
 
 @media only screen and (min-width: 1200px) {
+.black-bar {
+    display: block;
+    background-color: #313538;
+    width: 100%;
+    height: 20px;
+}
+
 /* Header - change to 1 line */
 .header{
     display: flex;
@@ -574,17 +587,5 @@ li.dot.active
 .column-social img{
     padding-left: 1em;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
