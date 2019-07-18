@@ -1,8 +1,50 @@
 /* ==========================================================================
    Product
    ========================================================================== */
+/* Main Product Image */
+   .main-img {
+    width:100%;
+}
 
 
+/* Details Container */
+.details-container {
+    margin:1.25em;
+    color: #3f3a3a;
+}
+
+
+
+
+
+/* Description Container */
+.description-container {
+    text-align: center;
+    margin: 1.25em;
+}
+
+.description-title {
+    color: #8b572a;
+    font-weight: bold;
+    text-align: left;
+    letter-spacing: 0.1em;
+}
+
+.line {
+    vertical-align: center;
+}
+
+.story {
+    text-align: left;
+    color: #3f3a3a;
+    padding: 1em 0;
+}
+
+.image {
+    width:100%;
+    padding-bottom:1em;
+    display: inline-block;
+}
 
 
 
