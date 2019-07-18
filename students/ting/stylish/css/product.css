@@ -68,7 +68,11 @@
 }
 
 /* Quantity Button */
-.qty {
+.qty-title {
+    display: none;
+}
+
+.qty-box {
     box-sizing: border-box;
     border: 1px solid #979797;
     width: 100%;
@@ -78,7 +82,7 @@
     display: flex;
 }
 
-.qty div {
+.qty-box div {
     flex-grow:1;
     font-weight: 600;
 }
@@ -104,7 +108,6 @@
     letter-spacing: 1px;
 }
 
-
 /* Description Container */
 .description-container {
     text-align: center;
@@ -121,8 +124,6 @@
 
     /* line behind title */
     position: relative;
-
-
 }
 
 /* line behind title */
@@ -155,36 +156,86 @@
     display: inline-block;
 }
 
-
 /* ==========================================================================
    Media Queries
    ========================================================================== */
-
-@media only screen and (min-width: 601px) and (max-width: 700px) {
-
-}
-
-@media only screen and (min-width: 701px) and (max-width: 999px) {
-
-}
-
-
-@media only screen and (min-width: 1001px) and (max-width: 1199px) {
+@media only screen and (min-width: 701px) {
 .product-container {
-    /* to remove padding for sticky header */
-    padding-top: 0; 
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+    /* padding-top: 0; take out padding for sticky header */
 }
 
-
+.title, 
+.price {
+    font-size: 1.5em;
+    font-weight: 600; 
 }
 
-@media only screen and (min-width: 1200px) {
+/* Main Product Image */
+.main-img {
+    width:50%;
+    margin: 1.1em;
+}
+
+.id {
+    font-size: 1.1em;
+    color: #bababa; 
+    font-weight: 600;
+}
+
+.details-container {
+    width: calc(50% - 6em)
+}
+
+.colors {
+    font-size: 1.1em;
+}
+
+.size {
+    font-size: 1.1em;
+}
+
+.size div {
+    margin-left: 0;
+}
+
+/* show qty title */
+.qty {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0.5em 0;
+    font-size: 1.1em;
+}
+
+.qty-title {
+    display: flex;
+}
+
+.qty-box {
+    width: 63%;
+    padding: 0.5em 0;
+    margin: 0 0 0 1em;
+}
+
+/* Add to cart button */
+.add-cart{
+    width: 80%;
+    margin-left: 0;
+    font-size: 1.1em;
+}
+
+.specs {
+    font-size: 1.1em;
+}
+    
+}
+
+@media only screen and (min-width: 1001px) {
 .product-container {
-    /* to remove padding for sticky header */
-    padding-top: 0; 
+    padding-top: 0; /* take out padding for sticky header */
 }
-
-
-
 }
-
