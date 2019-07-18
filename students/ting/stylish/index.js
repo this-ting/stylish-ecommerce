@@ -12,7 +12,7 @@ const APIasset = `https://api.appworks-school.tw`;
 let haveNext; // for product paging
 let category = 'all';
 
-function productLoad(src, callback) {
+function callAPI(src, callback) {
     const xhr = new XMLHttpRequest();
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
@@ -32,8 +32,8 @@ function productLoad(src, callback) {
     xhr.send();
 };
 
-// Render homepage products
-productLoad(`${APIproducts}all`,render);
+// ___________Render homepage products
+callAPI(`${APIproducts}all`,render);
 
 // Set up products render function
 const container = document.getElementById('main-content')
@@ -185,7 +185,7 @@ const infiniteScroll = function () {
         let APIpage = `${APIproducts}${category}?paging=`;
         nextPg = `${APIpage}${haveNext}`
         if (haveNext !== undefined) {
-            productLoad(nextPg, renderScroll);
+            callAPI(nextPg, renderScroll);
         } else {
             return;
         };
@@ -261,7 +261,7 @@ function renderMarketing(list) {
 }
 
 // Render marketing campaign banner
-productLoad(`${APImarketing}`,renderMarketing);
+callAPI(`${APImarketing}`,renderMarketing);
 
 // Slideshow function
 let slideIndex = 0;

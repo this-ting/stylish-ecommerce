@@ -14,13 +14,13 @@
         
             <div class="header">
                 <div class="top-header" id="top-header">
-                    <img class="logo" src="https://api.appworks-school.tw/imgs/logo.png" onclick="productLoad(`${APIproducts}all`,render)" />
+                    <img class="logo" src="https://api.appworks-school.tw/imgs/logo.png" onclick="callAPI(`${APIproducts}all`,render)" />
                     <img class="search-icon" src="images/search.png" onclick="showMobileSearch()"/>
                 </div> <!-- end of top-header div -->
                 <div class="navbar"> 
-                    <a href="#" class="menu-line female" onclick="productLoad(`${APIproducts}${category = 'women'}`,render)">女裝 </a> 
-                    <a href="#" class="menu-line male" onclick="productLoad(`${APIproducts}${category = 'men'}`,render)">男裝 </a> 
-                    <a href="#" class ="acc" onclick="productLoad(`${APIproducts}${category = 'accessories'}`,render)">配件</a>
+                    <a href="#" class="menu-line female" onclick="callAPI(`${APIproducts}${category = 'women'}`,render)">女裝 </a> 
+                    <a href="#" class="menu-line male" onclick="callAPI(`${APIproducts}${category = 'men'}`,render)">男裝 </a> 
+                    <a href="#" class ="acc" onclick="callAPI(`${APIproducts}${category = 'accessories'}`,render)">配件</a>
                 </div> <!-- end of navbar div -->
 
                 <div class="dp-navright">
