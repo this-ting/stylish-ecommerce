@@ -9,8 +9,79 @@
 
 /* Details Container */
 .details-container {
-    margin:1.25em;
+    margin:1.1em;
     color: #3f3a3a;
+    letter-spacing: 3px;
+}
+
+.title {
+    font-size: 1.1em;
+    letter-spacing: 3px;
+    font-weight: 550;
+    
+}
+
+.id {
+    font-size: 0.7em;
+    color: #bababa; 
+    font-weight: 500;
+}
+
+.price {
+    font-size: 1.1em;
+    padding: 1em 0;
+}
+
+.colors,
+.size {
+    letter-spacing: 2.8px;
+    align-items: center;
+    padding: 0.5em 0;
+    /* vertical-align: middle; */
+}
+
+
+
+.size div {
+    background-color:#ececec;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    text-align: center;
+    /* vertical-align: middle; */
+    display: inline-block;
+}
+
+.qty {
+    box-sizing: border-box;
+    border: 1px solid #979797;
+    width:90%;
+    padding: 0.3em 0;
+    text-align: center;
+    margin: 0 auto;
+    /* justify-content: space-between; */
+
+}
+
+.qty div{
+    display: inline-block;
+    
+}
+
+.add-cart{
+    background-color: black;
+    color: #ffffff;
+    font-weight: 500;
+    width: 90%;
+    padding: 0.3em 0;
+    text-align: center;
+    justify-content: center;
+    margin: 1em auto;
+
+}
+
+.specs {
+    /* padding: 1em 0; */
 }
 
 
