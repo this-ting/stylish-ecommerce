@@ -6,7 +6,6 @@
     width:100%;
 }
 
-
 /* Details Container */
 .details-container {
     margin:1.1em;
@@ -16,82 +15,96 @@
 
 .title {
     font-size: 1.1em;
-    letter-spacing: 3px;
     font-weight: 550;
-    
 }
 
 .id {
-    font-size: 0.7em;
+    font-size: 0.9em;
     color: #bababa; 
-    font-weight: 500;
+    font-weight: 550;
 }
 
 .price {
     font-size: 1.1em;
     padding: 1em 0;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .colors,
 .size {
-    letter-spacing: 2.8px;
     align-items: center;
     padding: 0.5em 0;
-    /* vertical-align: middle; */
 }
 
+/* Individual color boxes */
+.colorbox {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    border: 4px solid white;
+    vertical-align: middle;
+    box-shadow: 0px 0px 0.5px #bbbbbb;
+    margin-left: 0.5em;
+}
 
-
+/* Size circles */
 .size div {
     background-color:#ececec;
     width: 34px;
     height: 34px;
     border-radius: 50%;
     text-align: center;
-    /* vertical-align: middle; */
+    vertical-align: middle;
     display: inline-block;
+    margin-left: 0.5em; 
+    line-height: 30px;
 }
 
+/* Quantity Button */
 .qty {
     box-sizing: border-box;
     border: 1px solid #979797;
-    width:90%;
-    padding: 0.3em 0;
+    width: 100%;
+    padding: 0.5em 0;
     text-align: center;
-    margin: 0 auto;
-    /* justify-content: space-between; */
-
+    margin: 1em auto;
+    display: flex;
 }
 
-.qty div{
-    display: inline-block;
-    
+.qty div {
+    flex-grow:1;
+    font-weight: 600;
 }
 
+.qty-no {
+    color: #8b572a;
+}
+
+/* Add to cart button */
 .add-cart{
     background-color: black;
     color: #ffffff;
     font-weight: 500;
-    width: 90%;
-    padding: 0.3em 0;
+    width: 100%;
+    padding: 0.5em 0;
     text-align: center;
     justify-content: center;
     margin: 1em auto;
-
 }
 
+/* Specs  */
 .specs {
-    /* padding: 1em 0; */
+    letter-spacing: 1px;
 }
-
-
-
 
 
 /* Description Container */
 .description-container {
     text-align: center;
     margin: 1.25em;
+    align-items: center;
+    position: relative;
 }
 
 .description-title {
@@ -99,27 +112,42 @@
     font-weight: bold;
     text-align: left;
     letter-spacing: 0.1em;
+
+    /* line behind title */
+    position: relative;
+    z-index: 1;
+
 }
 
-.line {
-    vertical-align: center;
+/* line behind title */
+.description-title:before {
+    border-top: 1px solid #3f3a3a;
+    content:"";
+    margin: 0 auto; /* this centers the line to the full width specified */
+    position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+    top: 50%; right: 0; bottom: 0;
+    width: 95%;
+    z-index: -1;
+}
+
+/* line behind title */
+.description-title span{
+    background-color: white;
+    z-index: 1;
+    padding-right:1em;
 }
 
 .story {
     text-align: left;
     color: #3f3a3a;
-    padding: 1em 0;
+    padding: 1.5em 0;
 }
 
 .image {
     width:100%;
-    padding-bottom:1em;
+    padding-bottom:1.5em;
     display: inline-block;
 }
-
-
-
-
 
 
 /* ==========================================================================

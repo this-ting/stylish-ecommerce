@@ -194,6 +194,7 @@ li.dot.active
     bottom: 0;
     width: 100%;
     padding: 0.75em;
+    z-index: 1; /* to overlay description-title span*/
 }
 
 .feature-mobile a{
