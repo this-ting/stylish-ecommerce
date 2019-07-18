@@ -7,9 +7,10 @@
  */
 
 html {
-  font-family: sans-serif; /* 1 */
+  font-family: "PingFangTC-Regular", "Noto Sans TC", sans-serif; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
+
 }
 
 @font-face {
@@ -22,7 +23,6 @@ html {
 
 body {
   margin: 0;
-  font-family: PingFangTC-Regular, sans-serif;
   font-size: 20px;
   font-weight: normal;
   font-style: normal;
