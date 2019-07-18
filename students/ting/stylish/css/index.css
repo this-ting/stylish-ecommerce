@@ -1,21 +1,6 @@
-@font-face {
-    font-family: "PingFangTC-Regular";
-    src: url(PingFang-TC-Regular.otf) format("opentype");
-}
-
-@import url(https://fonts.google.com/specimen/Noto+Sans+TC?selection.family=Noto+Sans+TC)
-
-
-body {
-    font-family: PingFangTC-Regular, sans-serif;
-    font-size: 20px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    text-align: left;
-}
-
+/* ==========================================================================
+   Header
+   ========================================================================== */
 .top-header {
     display: flex;
     align-items: center;
@@ -88,7 +73,9 @@ body {
 }
 
 
-/* Main Banner */
+/* ==========================================================================
+   Main Banner
+   ========================================================================== */
 #marketing-container {
     box-sizing:border-box;
     height: 55vh;
@@ -165,7 +152,9 @@ li.dot.active
 }
 
 
-/* Main Product */
+/* ==========================================================================
+   Main Homepage Products
+   ========================================================================== */
 #main-content {
     box-sizing: border-box;
     text-align: center;
@@ -196,7 +185,9 @@ li.dot.active
     border: 0.02px solid rgb(204, 204, 204);
 }
 
-/* feature-mobile */
+/* ==========================================================================
+   Feature Mobile
+   ========================================================================== */
 .feature-mobile {
     position: fixed;
     background-color: #313538;
@@ -232,7 +223,9 @@ li.dot.active
     height: 40px;
 }
 
-/* Footer */
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 .footer-container {
     background-color: #313538;
     font-size: 0.8em;

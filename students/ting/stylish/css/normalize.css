@@ -12,12 +12,23 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
-/**
- * Remove default margin.
- */
+@font-face {
+  font-family: "PingFangTC-Regular";
+  src: url(PingFang-TC-Regular.otf) format("opentype");
+}
+
+@import url(https://fonts.google.com/specimen/Noto+Sans+TC?selection.family=Noto+Sans+TC)
+
 
 body {
   margin: 0;
+  font-family: PingFangTC-Regular, sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  text-align: left;
 }
 
 /* HTML5 display definitions
