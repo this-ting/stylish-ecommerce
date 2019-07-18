@@ -7,8 +7,8 @@
 }
 
 
-   /* Main Product Image */
-   .main-img {
+/* Main Product Image */
+.main-img {
     width:100%;
 }
 
@@ -170,10 +170,20 @@
 
 
 @media only screen and (min-width: 1001px) and (max-width: 1199px) {
+.product-container {
+    /* to remove padding for sticky header */
+    padding-top: 0; 
+}
+
 
 }
 
 @media only screen and (min-width: 1200px) {
+.product-container {
+    /* to remove padding for sticky header */
+    padding-top: 0; 
+}
+
 
 
 }
