@@ -1,7 +1,13 @@
 /* ==========================================================================
    Product
    ========================================================================== */
-/* Main Product Image */
+.product-container {
+    /* for sticky header */
+    padding-top: calc(36px + 1.4em + 1.2em + 22px); 
+}
+
+
+   /* Main Product Image */
    .main-img {
     width:100%;
 }
@@ -115,7 +121,7 @@
 
     /* line behind title */
     position: relative;
-    z-index: 1;
+
 
 }
 

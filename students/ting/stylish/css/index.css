@@ -1,9 +1,22 @@
 /* ==========================================================================
    Header
    ========================================================================== */
+/* Sticky header */
+   .header {
+    position: fixed;
+    top:0;
+    width: 100%;
+    display: block;
+    z-index: 2;
+}
+
+
+
 .top-header {
     display: flex;
     align-items: center;
+    background-color: white;
+    z-index: 1;
 }
 
 .logo {
@@ -77,10 +90,13 @@
    Main Banner
    ========================================================================== */
 #marketing-container {
-    box-sizing:border-box;
+    /* box-sizing:border-box; */
     height: 55vh;
     width:100%;
     position: relative;
+
+    /* for sticky header */
+    padding-top: calc(36px + 1.4em + 1.2em + 22px); 
 
 }
 
@@ -311,7 +327,14 @@ li.dot.active
 .header{
     display: flex;
     padding:1.5em 2em;
+    /* remove sticky header */
+    position: static;
+    box-sizing: border-box;
+}
 
+#marketing-container {
+    /* to remove padding for sticky header */
+    padding-top: 0; 
 }
 
 .logo{
@@ -431,7 +454,14 @@ li.dot.active
 .header{
     display: flex;
     padding:1.5em 2em;
+    /* remove sticky header */
+    position: static;
+    box-sizing: border-box;
+}
 
+#marketing-container {
+    /* to remove padding for sticky header */
+    padding-top: 0; 
 }
 
 .logo{
