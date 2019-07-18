@@ -176,19 +176,22 @@ function showMobileSearch() {
    ========================================================================== */
 // Paging & Infinite Scroll
 let nextPg;
+let pageLoading=false; // to prevent renderScroll from running multiple times when scroll event triggered
 const infiniteScroll = function () {
     // set event to fire when scrolling reaches end of container
-    if (window.innerHeight >= container.getBoundingClientRect().bottom) {
+    if (window.innerHeight = container.getBoundingClientRect().bottom) {
         this.console.log('You have reached the scroll trigger point');
     
         // Function to check if there is a next page and produce URL to API
         let APIpage = `${APIproducts}${category}?paging=`;
         nextPg = `${APIpage}${haveNext}`
-        if (haveNext !== undefined) {
+        if (haveNext !== undefined && pageLoading === false) {
+            pageLoading = true;
             callAPI(nextPg, renderScroll);
         } else {
             return;
         };
+
     };
 }
 window.addEventListener('scroll', infiniteScroll);
@@ -232,7 +235,7 @@ function renderScroll(list) {
         product.appendChild(productName)
         product.appendChild(productPrice)
     }
-
+    pageLoading = false; /// to prevent renderScroll from running multiple times when scroll event triggered
 };
 /* ==========================================================================
    Marketing Campaigns
