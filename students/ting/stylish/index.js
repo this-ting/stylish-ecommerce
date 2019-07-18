@@ -81,10 +81,8 @@ function render(list) {
     };
 };
 
-
-
 /* ==========================================================================
-   Paging & Infinite Scroll
+   Search Function
    ========================================================================== */
 const searchInput = document.getElementById('nav-search');
 
@@ -173,6 +171,9 @@ function showMobileSearch() {
 
 }
 
+/* ==========================================================================
+   Paging & Infinite Scroll
+   ========================================================================== */
 // Paging & Infinite Scroll
 let nextPg;
 const infiniteScroll = function () {
