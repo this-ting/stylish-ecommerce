@@ -3,6 +3,7 @@
    ========================================================================== */
 // Destination of API
 const API = `https://api.appworks-school.tw/api/1.0`;
+const APIproducts = `${API}/products/`;
 
 
 // Set up GET function for API
