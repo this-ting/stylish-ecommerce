@@ -90,17 +90,36 @@ function quantityBar(){
     })
 
     const selectSize = document.querySelector(".selectSize")
-    const selectColor = document.querySelector(".SelectColor")
+    const selectColor = document.querySelector(".selectColor")
 
-    const size = document.querySelector(".size div")
+    
+    // Highlights the selected colorbox
     const color = document.querySelectorAll(".colorbox")
-
     for (let i = 0; i < color.length ; i++) {
         color[i].addEventListener("click", function() {
             console.log("selected a color")
-        
+            // resets all class name to default (unselected)
+            for (let i = 0; i < color.length ; i++) {
+                color[i].className = color[i].className.replace(" selectColor", "")
+            }
+            color[i].className += " selectColor"
         })
     }
+
+    // // Highlights the selected size
+    // const size = document.querySelector(".size div")
+    // for (let i = 0; i < size.length ; i++) {
+    //     size[i].addEventListener("click", function() {
+    //         console.log("selected a size")
+    //         // resets all class name to default (unselected)
+    //         for (let i = 0; i < color.length ; i++) {
+    //             size[i].className = size[i].className.remove("selectSize")
+    //         }
+    //         color[i].className += "selectSize"
+    //     })
+    // }
+
+
 
 
 }

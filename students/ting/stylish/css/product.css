@@ -54,6 +54,11 @@
     margin-left: 0.5em;
 }
 
+.selectColor {
+    outline: 1px solid #979797;
+}
+
+
 /* Size circles */
 .size div {
     background-color:#ececec;
