@@ -43,16 +43,27 @@ function renderProduct(list) {
     sizes.appendChild(size)
     } 
 
-    
-    
-
-
-
 
     
+
+
+
+
+
+
+
+
+    // story
+    const story = document.querySelector(".story")
+    story.textContent = productData.story
+
+    // images
     
-    
-
-
-
+    for( let b = 0; b < productData.images.length; b++ ) {
+        const descriptionContainer = document.querySelector(".description-container")
+        const img = document.createElement('img')
+        img.setAttribute('class', 'image')
+        img.src = productData.images[b]
+        descriptionContainer.appendChild(img)
+    }
 }
