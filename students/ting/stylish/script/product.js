@@ -1,10 +1,8 @@
 /* ==========================================================================
    Render Product Page
    ========================================================================== */
-    const APIsingleProduct = `${APIproducts}details?id=201807242216`;
-    
-    callAPI(`${APIsingleProduct}`,renderProduct);
-
+const APIsingleProduct = `${APIproducts}details?id=201807242216`;
+callAPI(`${APIsingleProduct}`,renderProduct);
 
 function renderProduct(list) {
     const productData = list.data;
