@@ -199,6 +199,7 @@ li.dot.active
     width: 20px;
     display: inline-block;
     border: 0.02px solid rgb(204, 204, 204);
+    margin-right: 0.4em;
 }
 
 /* ==========================================================================

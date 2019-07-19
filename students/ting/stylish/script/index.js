@@ -20,6 +20,7 @@ function render(list) {
 
     const products = document.createElement('div')
     products.setAttribute('class', 'products')
+    container.appendChild(products)
 
     const productData = list.data;
     for (let i = 0; i < productData.length; i++) {
@@ -27,34 +28,33 @@ function render(list) {
         const product = document.createElement('a')
         product.setAttribute('class', 'product')
         product.setAttribute('href', `product.html?id=${productData[i].id}`)
-        
+        products.appendChild(product)
+
         // Product Main Image
         const productImg = document.createElement('img')
         productImg.src = productData[i].main_image
+        product.appendChild(productImg)
         
         // Product Color Types
-        const productColor = document.createElement('div')
-        productColor.setAttribute('class', 'color')
         const colorBox = productData[i].colors
         for (let a = 0; a < colorBox.length; a++) {
+            const productColor = document.createElement('div')
+            productColor.setAttribute('class', 'color')
             productColor.style.backgroundColor = `#`+colorBox[a].code
+            product.appendChild(productColor)
         }
         // Product Name
         const productName = document.createElement('div')
         productName.setAttribute('class', 'name')
         productName.textContent = productData[i].title
+        product.appendChild(productName)
 
         // Product Price
         const productPrice = document.createElement('div')
         productPrice.setAttribute('class', 'price')
         productPrice.textContent = 'TWD.' + productData[i].price
-
-        container.appendChild(products)
-        products.appendChild(product)
-        product.appendChild(productImg)
-        product.appendChild(productColor)
-        product.appendChild(productName)
         product.appendChild(productPrice)
+
     };
 };
 
@@ -182,35 +182,34 @@ function renderScroll(list) {
     const productData = list.data;
     for (let i = 0; i < productData.length; i++) {
         // Individual product containter
-        const product = document.createElement('div')
+        const product = document.createElement('a')
         product.setAttribute('class', 'product')
+        product.setAttribute('href', `product.html?id=${productData[i].id}`)
+        products.appendChild(product)
 
         // Product Main Image
         const productImg = document.createElement('img')
         productImg.src = productData[i].main_image
+        product.appendChild(productImg)
         
         // Product Color Types
-        const productColor = document.createElement('div')
-        productColor.setAttribute('class', 'color')
         const colorBox = productData[i].colors
         for (let a = 0; a < colorBox.length; a++) {
+            const productColor = document.createElement('div')
+            productColor.setAttribute('class', 'color')
             productColor.style.backgroundColor = `#`+colorBox[a].code
+            product.appendChild(productColor)
         }
-
         // Product Name
         const productName = document.createElement('div')
         productName.setAttribute('class', 'name')
         productName.textContent = productData[i].title
+        product.appendChild(productName)
 
         // Product Price
         const productPrice = document.createElement('div')
         productPrice.setAttribute('class', 'price')
         productPrice.textContent = 'TWD.' + productData[i].price
-
-        products.appendChild(product)
-        product.appendChild(productImg)
-        product.appendChild(productColor)
-        product.appendChild(productName)
         product.appendChild(productPrice)
     }
     pageLoading = false; /// to prevent renderScroll from running multiple times when scroll event triggered
