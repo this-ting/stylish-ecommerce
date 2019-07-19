@@ -60,7 +60,7 @@
 
 
 /* Size circles */
-.size div {
+.size-circle {
     background-color:#ececec;
     width: 34px;
     height: 34px;
@@ -70,6 +70,11 @@
     display: inline-block;
     margin-left: 0.5em; 
     line-height: 30px;
+}
+
+.selectSize {
+    background-color:black;
+    color: white;
 }
 
 /* Quantity Button */

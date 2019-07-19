@@ -39,6 +39,7 @@ function renderProduct(list) {
     APIsize.forEach(function(APIsize) {
         const sizes = document.querySelector(".size")
         const size = document.createElement('div')
+        size.setAttribute('class', 'size-circle')
         size.textContent = APIsize
         sizes.appendChild(size)
     })
@@ -97,7 +98,6 @@ function quantityBar(){
     const color = document.querySelectorAll(".colorbox")
     for (let i = 0; i < color.length ; i++) {
         color[i].addEventListener("click", function() {
-            console.log("selected a color")
             // resets all class name to default (unselected)
             for (let i = 0; i < color.length ; i++) {
                 color[i].className = color[i].className.replace(" selectColor", "")
@@ -106,18 +106,17 @@ function quantityBar(){
         })
     }
 
-    // // Highlights the selected size
-    // const size = document.querySelector(".size div")
-    // for (let i = 0; i < size.length ; i++) {
-    //     size[i].addEventListener("click", function() {
-    //         console.log("selected a size")
-    //         // resets all class name to default (unselected)
-    //         for (let i = 0; i < color.length ; i++) {
-    //             size[i].className = size[i].className.remove("selectSize")
-    //         }
-    //         color[i].className += "selectSize"
-    //     })
-    // }
+    // Highlights the selected size
+    const size = document.querySelectorAll(".size div")
+    for (let i = 0; i < size.length ; i++) {
+        size[i].addEventListener("click", function() {
+            // resets all class name to default (unselected)
+            for (let i = 0; i < size.length ; i++) {
+                size[i].className = size[i].className.replace(" selectSize", "")
+            }
+            size[i].className += " selectSize"
+        })
+    }
 
 
 
