@@ -5,9 +5,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>STYLish Product</title>
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/index.css">
-        <link rel="stylesheet" href="css/product.css">
+        <link rel="stylesheet" href="../css/normalize.css">
+        <link rel="stylesheet" href="../css/index.css">
+        <link rel="stylesheet" href="../css/product.css">
     </head>
 
     <body >
@@ -16,7 +16,7 @@
             <div class="header">
                 <div class="top-header" id="top-header">
                     <img class="logo" src="https://api.appworks-school.tw/imgs/logo.png" onclick="callAPI(`${APIproducts}all`,render)" />
-                    <img class="search-icon" src="images/search.png" onclick="showMobileSearch()"/>
+                    <img class="search-icon" src="../images/search.png" onclick="showMobileSearch()"/>
                 </div> <!-- end of top-header div -->
                 <div class="navbar"> 
                     <a href="#" class="menu-line female" onclick="callAPI(`${APIproducts}${category = 'women'}`,render)">女裝 </a> 
@@ -29,8 +29,8 @@
                         <input class="nav-search" id="nav-search" type="text"> 
                         <input type="submit" style="display:none;" />
                     </form>
-                    <img class="cart-icon" src="images/cart.png" />
-                    <img class="user-icon" src="images/member.png" />
+                    <img class="cart-icon" src="../images/cart.png" />
+                    <img class="user-icon" src="../images/member.png" />
                 </div>
             </div> <!-- end of header div -->
 
@@ -96,10 +96,10 @@
 
             <div class="feature-mobile">
                 <a href="#"  class="menu-line">
-                    <img src="images/cart-mobile.png" />
+                    <img src="../images/cart-mobile.png" />
                     購物車</a>
                 <a href="#">
-                    <img src="images/member-mobile.png" />
+                    <img src="../images/member-mobile.png" />
                     會員</a>
             </div> <!-- end of feature-bottom div -->
 
@@ -113,16 +113,16 @@
                         <a href="#">FAQ</a> 
                     </div>
                     <div class="column-social">
-                        <img src="images/line.png" />
-                        <img src="images/facebook.png" />
-                        <img src="images/twitter.png" />
+                        <img src="../images/line.png" />
+                        <img src="../images/facebook.png" />
+                        <img src="../images/twitter.png" />
                     </div>
                 </div> <!-- end of footer div -->
                 <div class="column-footer">&copy;2018. All rights reserved.</div>
             </div> <!-- end of footer-container div -->
             
         </div> <!-- end of root div -->
-        <!-- <script src="index.js"></script> -->
-        <!-- <script src="product.js"></script> -->
+        <!-- <script src="../script/index.js"></script> -->
+        <!-- <script src="../script/product.js"></script> -->
     </body>
 </html>
