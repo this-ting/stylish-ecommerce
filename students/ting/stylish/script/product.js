@@ -27,9 +27,6 @@ function renderProduct(list) {
     price.textContent = `TWD.${productData.price}`
 
     // colors
-    
-    
-    
     for(let i = 0; i < productData.colors.length; i++ ) {
         const colors = document.querySelector(".colors")
         const colorbox = document.createElement('div') 
@@ -37,15 +34,18 @@ function renderProduct(list) {
         colorbox.style.backgroundColor = `#`+productData.colors[i].code
         colors.appendChild(colorbox)
     }
+
+    //size
+    for (let a = 0; a < productData.colors.length; a++ ) {
+    const sizes = document.querySelector(".size")
+    const size = document.createElement('div')
+    size.textContent = productData.sizes[a]
+    sizes.appendChild(size)
+    } 
+
+    
     
 
-
-
-
-
-
-    const size = document.querySelector(".size div") // maybe create in dom
-    
 
 
 
