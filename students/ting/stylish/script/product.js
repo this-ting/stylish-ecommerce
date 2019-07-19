@@ -35,7 +35,7 @@ function renderProduct(list) {
         colors.appendChild(colorbox)
     }
 
-    //size
+    // size
     for (let a = 0; a < productData.colors.length; a++ ) {
     const sizes = document.querySelector(".size")
     const size = document.createElement('div')
@@ -43,22 +43,19 @@ function renderProduct(list) {
     sizes.appendChild(size)
     } 
 
-
-    
-
-
-
-
-
-
-
+    // specs
+    const specs = document.querySelector(".specs")
+    specs.innerText = productData.note + '\r\n' + '\r\n' + 
+                      productData.texture + '\r\n'+ 
+                      productData.description + '\r\n' + '\r\n' + 
+                      '清洗：' +productData.wash + '\r\n' +
+                      '產地：' +productData.place 
 
     // story
     const story = document.querySelector(".story")
     story.textContent = productData.story
 
     // images
-    
     for( let b = 0; b < productData.images.length; b++ ) {
         const descriptionContainer = document.querySelector(".description-container")
         const img = document.createElement('img')
