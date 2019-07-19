@@ -63,3 +63,26 @@ function renderProduct(list) {
         descriptionContainer.appendChild(img)
     }
 }
+
+/* ==========================================================================
+   Quantity Bar
+   ========================================================================== */
+const qtyBox = document.querySelector(".qty-box");
+const minus = document.querySelector(".qty-minus");
+const plus = document.querySelector(".qty-plus");
+
+plus.addEventListener("click", function(){
+    let number = document.querySelector(".qty-no").innerText;
+    number = parseInt(number) + 1;
+    document.querySelector(".qty-no").textContent = number
+})
+
+minus.addEventListener("click", function(){
+    let number = document.querySelector(".qty-no").innerText;
+    if (number > 1 ) {
+    number = parseInt(number) - 1;
+    document.querySelector(".qty-no").textContent = number 
+    } 
+})
+
+
