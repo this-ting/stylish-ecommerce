@@ -35,13 +35,14 @@ function renderProduct(list) {
     }
 
     // size
-    for (let a = 0; a < productData.colors.length; a++ ) {
-    const sizes = document.querySelector(".size")
-    const size = document.createElement('div')
-    size.textContent = productData.sizes[a]
-    sizes.appendChild(size)
-    } 
-
+    let APIsize = productData.sizes;
+    APIsize.forEach(function(APIsize) {
+        const sizes = document.querySelector(".size")
+        const size = document.createElement('div')
+        size.textContent = APIsize
+        sizes.appendChild(size)
+    })
+    
     // specs
     const specs = document.querySelector(".specs")
     specs.innerText = productData.note + '\r\n' + '\r\n' + 
@@ -55,13 +56,15 @@ function renderProduct(list) {
     story.textContent = productData.story
 
     // images
-    for( let b = 0; b < productData.images.length; b++ ) {
+    const APIimg = productData.images
+    APIimg.forEach(function(APIimg){
         const descriptionContainer = document.querySelector(".description-container")
         const img = document.createElement('img')
         img.setAttribute('class', 'image')
-        img.src = productData.images[b]
+        img.src = APIimg
         descriptionContainer.appendChild(img)
-    }
+    });
+    
 }
 
 /* ==========================================================================
@@ -85,4 +88,37 @@ minus.addEventListener("click", function(){
     } 
 })
 
+const selectSize = document.querySelector(".selectSize")
+const selectColor = document.querySelector(".SelectColor")
 
+const size = document.querySelector(".size div")
+const color = document.querySelectorAll(".colorbox")
+
+for (let i = 0; i < color.length ; i++) {
+    color[i].addEventListener("click", function() {
+        console.log("SEE ME?")
+    
+    })
+}
+
+
+
+
+
+
+
+// function () {
+
+//     const productData = list.data.variants;
+//     for (let i = 0; i < productData.length; i ++) {
+//         if (productData[i].size === 'S' && productData[i].color_code === ) {
+
+//         }
+
+
+
+//     }
+
+
+
+// }
