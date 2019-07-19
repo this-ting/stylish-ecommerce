@@ -13,9 +13,8 @@ function callAPI(src, callback) {
             // This will run when the request is successful
             console.log('success!');
             const list = JSON.parse(xhr.responseText);
-            console.log(list.data[0].story);
+            // console.log(list.data[0].id);
             haveNext = list.paging; // for product paging
-            
             callback(list);
         } else {
             // This will run when it's not

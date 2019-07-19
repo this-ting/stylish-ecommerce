@@ -25,9 +25,10 @@ function render(list) {
     const productData = list.data;
     for (let i = 0; i < productData.length; i++) {
         // Individual product containter
-        const product = document.createElement('div')
+        const product = document.createElement('a')
         product.setAttribute('class', 'product')
-
+        product.setAttribute('href', `product.html?id=${productData[i].id}`)
+        
         // Product Main Image
         const productImg = document.createElement('img')
         productImg.src = productData[i].main_image
@@ -57,6 +58,7 @@ function render(list) {
         product.appendChild(productPrice)
     };
 };
+
 
 /* ==========================================================================
    Search Function
@@ -278,8 +280,6 @@ function oneShow(n) {
     slides[n].style.display = 'block'
 }
 
-
-      
 
 
 
