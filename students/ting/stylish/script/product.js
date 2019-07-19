@@ -64,61 +64,44 @@ function renderProduct(list) {
         img.src = APIimg
         descriptionContainer.appendChild(img)
     });
-    
+    quantityBar(); // call quantityBar functions
 }
 
 /* ==========================================================================
    Quantity Bar
    ========================================================================== */
-const qtyBox = document.querySelector(".qty-box");
-const minus = document.querySelector(".qty-minus");
-const plus = document.querySelector(".qty-plus");
+function quantityBar(){
+    const qtyBox = document.querySelector(".qty-box");
+    const minus = document.querySelector(".qty-minus");
+    const plus = document.querySelector(".qty-plus");
 
-plus.addEventListener("click", function(){
-    let number = document.querySelector(".qty-no").innerText;
-    number = parseInt(number) + 1;
-    document.querySelector(".qty-no").textContent = number
-})
-
-minus.addEventListener("click", function(){
-    let number = document.querySelector(".qty-no").innerText;
-    if (number > 1 ) {
-    number = parseInt(number) - 1;
-    document.querySelector(".qty-no").textContent = number 
-    } 
-})
-
-const selectSize = document.querySelector(".selectSize")
-const selectColor = document.querySelector(".SelectColor")
-
-const size = document.querySelector(".size div")
-const color = document.querySelectorAll(".colorbox")
-
-for (let i = 0; i < color.length ; i++) {
-    color[i].addEventListener("click", function() {
-        console.log("SEE ME?")
-    
+    plus.addEventListener("click", function(){
+        let number = document.querySelector(".qty-no").innerText;
+        number = parseInt(number) + 1;
+        document.querySelector(".qty-no").textContent = number
     })
+
+    minus.addEventListener("click", function(){
+        let number = document.querySelector(".qty-no").innerText;
+        if (number > 1 ) {
+        number = parseInt(number) - 1;
+        document.querySelector(".qty-no").textContent = number 
+        } 
+    })
+
+    const selectSize = document.querySelector(".selectSize")
+    const selectColor = document.querySelector(".SelectColor")
+
+    const size = document.querySelector(".size div")
+    const color = document.querySelectorAll(".colorbox")
+
+    for (let i = 0; i < color.length ; i++) {
+        color[i].addEventListener("click", function() {
+            console.log("selected a color")
+        
+        })
+    }
+
+
 }
 
-
-
-
-
-
-
-// function () {
-
-//     const productData = list.data.variants;
-//     for (let i = 0; i < productData.length; i ++) {
-//         if (productData[i].size === 'S' && productData[i].color_code === ) {
-
-//         }
-
-
-
-//     }
-
-
-
-// }
