@@ -1,38 +1,15 @@
 /* ==========================================================================
-   Render Home Page & Product Page
+   Render Home Page & Category Page
    ========================================================================== */
-// Destination of API
-const API = `https://api.appworks-school.tw/api/1.0`;
+// Variables
 const APIproducts = `${API}/products/`;
 const APIsearch = `${APIproducts}search?keyword=`;
 const APImarketing = `${API}/marketing/campaigns`;
 const APIasset = `https://api.appworks-school.tw`;
-
-// Set up GET function for API
 let haveNext; // for product paging
 let category = 'all';
 
-function callAPI(src, callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-        if (xhr.status >= 200 && xhr.status < 300) {
-            // This will run when the request is successful
-            console.log('success!');
-            const list = JSON.parse(xhr.responseText);
-            console.log(list.data[0].story);
-            haveNext = list.paging; // for product paging
-            
-            callback(list);
-        } else {
-            // This will run when it's not
-            console.log('The request failed!');
-        };
-    }
-    xhr.open('GET', src);
-    xhr.send();
-};
-
-// ___________Render homepage products
+// Render homepage products on load
 callAPI(`${APIproducts}all`,render);
 
 // Set up products render function
