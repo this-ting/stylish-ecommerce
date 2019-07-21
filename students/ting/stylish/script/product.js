@@ -29,7 +29,7 @@ function renderProduct(list) {
         const colors = document.querySelector(".colors")
         const colorbox = document.createElement('div') 
         colorbox.setAttribute('class', 'colorbox')
-        colorbox.setAttribute('hex', `${productData.colors[i].code}`) // creates easy tag to match color
+        colorbox.setAttribute('hex', `${productData.colors[i].code}`) // creates easy tag to grab color
         colorbox.style.backgroundColor = `#`+productData.colors[i].code
         colors.appendChild(colorbox)
     }
@@ -91,16 +91,21 @@ function quantityBar(list){
             console.log(document.querySelector(".selectColor").getAttribute("hex"))
             document.querySelector(".qty-no").textContent = 1 // resets qty to 1 whenever new select
 
-            // to check when both size and color are selected
+            // get stock when both size and color are selected
             if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
+                zeroStock(); // checks for lack of stock
+            
                 getStock();
-                let stock = getStock();
-                console.log(stock)
+                // let stock = getStock();
+                console.log(getStock())
 
                 // inputs stock as max for quantity selector
                 const plus = document.querySelector(".qty-plus");
                 plus.addEventListener("click", function(){
                     let number = document.querySelector(".qty-no").innerText;
+                    let stock = getStock();
+                    console.log(stock)
+                    
                     if (number < stock ) {
                         number = parseInt(number) + 1;
                         document.querySelector(".qty-no").textContent = number
@@ -108,9 +113,9 @@ function quantityBar(list){
                         return
                     }
                     
-                });
+                })
                 
-            };
+            }
         })
     }
 
@@ -128,14 +133,18 @@ function quantityBar(list){
 
             // get stock when both size and color are selected
             if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
+                zeroStock(); // checks for lack of stock
                 getStock();
-                let stock = getStock();
-                console.log(stock)
+                // let stock = getStock();
+                console.log(getStock())
 
                 // inputs stock as max for quantity selector
                 const plus = document.querySelector(".qty-plus");
                 plus.addEventListener("click", function(){
                     let number = document.querySelector(".qty-no").innerText;
+                    let stock = getStock();
+                    console.log(stock)
+                    
                     if (number < stock ) {
                         number = parseInt(number) + 1;
                         document.querySelector(".qty-no").textContent = number
@@ -163,6 +172,20 @@ function quantityBar(list){
 
         };
     }
+
+    function zeroStock() {
+        for (let c = 0; c < stockData.length; c++) {
+            let selectColor = document.querySelector(".selectColor").getAttribute("hex")
+
+            if (selectColor === stockData[c].color_code && 0 === stockData[c].stock) {
+                console.log(`${stockData[c].size} has no stock`)
+                return stockData[c].size;
+            }
+
+        };
+    }
+
+
 
     // Set up plus & minus for quantity bar
     const minus = document.querySelector(".qty-minus");
