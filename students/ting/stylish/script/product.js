@@ -77,7 +77,7 @@ function quantityBar(list){
     // When color and size are selected, run getStock funtion
 
     
-    // Highlights the selected colorbox
+    // Select Color => change class to .selectColor & reset qty to 1
     const color = document.querySelectorAll(".colorbox")
     for (let i = 0; i < color.length ; i++) {
     
@@ -85,79 +85,82 @@ function quantityBar(list){
 
             // resets all class name to default (unselected)
             for (let i = 0; i < color.length ; i++) {
-                color[i].className = color[i].className.replace(" selectColor", "")
+                color[i].className = color[i].className.replace(" selectColor", "");
             }
             color[i].className += " selectColor";
             console.log(document.querySelector(".selectColor").getAttribute("hex"))
-            document.querySelector(".qty-no").textContent = 1 // resets qty to 1 whenever new select
+            document.querySelector(".qty-no").textContent = 1; // resets qty to 1 whenever new select
 
-            // get stock when both size and color are selected
-            if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
-                zeroStock(); // checks for lack of stock
-            
-                getStock();
-                // let stock = getStock();
-                console.log(getStock())
-
-                // inputs stock as max for quantity selector
-                const plus = document.querySelector(".qty-plus");
-                plus.addEventListener("click", function(){
-                    let number = document.querySelector(".qty-no").innerText;
-                    let stock = getStock();
-                    console.log(stock)
-                    
-                    if (number < stock ) {
-                        number = parseInt(number) + 1;
-                        document.querySelector(".qty-no").textContent = number
-                    } else {
-                        return
-                    }
-                    
-                })
-                
+            // When there is no stock, will 
+            let noStock = zeroStock(); // M
+            console.log(`${noStock} has no stock`);
+            const size = document.querySelectorAll(".size-circle")
+            for (let t = 0; t < size.length; t++) {
+                size[t].style.opacity = 1; // resets opacity when clicked
+                size[t].className = size[t].className.replace(" disableSize", "");
+                if (size[t].innerHTML === noStock) {
+                    size[t].style.opacity = 0.2;
+                    size[i].className += " disableSize";
+                } 
             }
-        })
+        });
     }
 
-    // Highlights the selected size
-    const size = document.querySelectorAll(".size div")
+    function zeroStock() {
+        for (let c = 0; c < stockData.length; c++) {
+            let selectColor = document.querySelector(".selectColor").getAttribute("hex")
+
+            if (selectColor === stockData[c].color_code && 0 === stockData[c].stock) {
+                // console.log(`${stockData[c].size} has no stock`)x
+                return stockData[c].size;
+            }
+        };
+    }
+
+    // Select Size => change class to .selectSize & reset qty to 1
+    const size = document.querySelectorAll(".size-circle")
     for (let i = 0; i < size.length ; i++) {
-        size[i].addEventListener("click", function() {
-            // resets all class name to default (unselected)
-            for (let i = 0; i < size.length ; i++) {
-                size[i].className = size[i].className.replace(" selectSize", "")
-            }
-            size[i].className += " selectSize";
-            console.log(document.querySelector(".selectSize").innerHTML)
-            document.querySelector(".qty-no").textContent = 1 // resets qty to 1 whenever new select
-
-            // get stock when both size and color are selected
-            if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
-                zeroStock(); // checks for lack of stock
-                getStock();
-                // let stock = getStock();
-                console.log(getStock())
-
-                // inputs stock as max for quantity selector
-                const plus = document.querySelector(".qty-plus");
-                plus.addEventListener("click", function(){
-                    let number = document.querySelector(".qty-no").innerText;
-                    let stock = getStock();
-                    console.log(stock)
-                    
-                    if (number < stock ) {
-                        number = parseInt(number) + 1;
-                        document.querySelector(".qty-no").textContent = number
-                    } else {
-                        return
+            size[i].addEventListener("click", function() {
+                // disables click function if no stock
+                if (size[i].className === "size-circle disableSize") {
+                    return
+                } else {
+                    // resets all class name to default (unselected)
+                    for (let i = 0; i < size.length ; i++) {
+                        size[i].className = size[i].className.replace(" selectSize", "")
                     }
-                    
-                })
-                
-            }
-
-        })
+                    size[i].className += " selectSize";
+                }
+                console.log(document.querySelector(".selectSize").innerHTML)
+                document.querySelector(".qty-no").textContent = 1 // resets qty to 1 whenever new select
+            })
     }
+
+    // inputs stock as max for quantity selector
+    const plus = document.querySelector(".qty-plus");
+    plus.addEventListener("click", function(){
+        
+        // When color and size are selected, set max qty as stock
+        if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
+            let number = document.querySelector(".qty-no").innerText;
+            let stock = getStock();
+            console.log(stock)
+
+            if (number < stock ) {
+                number = parseInt(number) + 1;
+                document.querySelector(".qty-no").textContent = number
+            } else {
+                return
+            };
+
+        } else {
+            return
+        };
+ 
+    })
+
+
+
 
     // set up function to get stock number
     const stockData = list.data.variants; 
@@ -173,29 +176,16 @@ function quantityBar(list){
         };
     }
 
-    function zeroStock() {
-        for (let c = 0; c < stockData.length; c++) {
-            let selectColor = document.querySelector(".selectColor").getAttribute("hex")
-
-            if (selectColor === stockData[c].color_code && 0 === stockData[c].stock) {
-                console.log(`${stockData[c].size} has no stock`)
-                return stockData[c].size;
-            }
-
-        };
-    }
 
 
 
-    // Set up plus & minus for quantity bar
+
+
+
+
+
+    // Click event for minus on quantity bar
     const minus = document.querySelector(".qty-minus");
-    // const plus = document.querySelector(".qty-plus");
-    // plus.addEventListener("click", function(){
-    //     let number = document.querySelector(".qty-no").innerText;
-    //     number = parseInt(number) + 1;
-    //     document.querySelector(".qty-no").textContent = number
-    // })
-
     minus.addEventListener("click", function(){
         let number = document.querySelector(".qty-no").innerText;
         if (number > 1 ) {
