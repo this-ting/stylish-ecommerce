@@ -15,7 +15,6 @@ function renderProduct(list) {
     // title
     const title = document.querySelector(".title")
     title.textContent = productData.title
-    console.log(productData.title)
 
     // id
     const id = document.querySelector(".id")
@@ -30,6 +29,7 @@ function renderProduct(list) {
         const colors = document.querySelector(".colors")
         const colorbox = document.createElement('div') 
         colorbox.setAttribute('class', 'colorbox')
+        colorbox.setAttribute('hex', `${productData.colors[i].code}`) // creates easy tag to match color
         colorbox.style.backgroundColor = `#`+productData.colors[i].code
         colors.appendChild(colorbox)
     }
@@ -65,17 +65,75 @@ function renderProduct(list) {
         img.src = APIimg
         descriptionContainer.appendChild(img)
     });
-    quantityBar(); // call quantityBar functions
+    quantityBar(list); // call quantityBar functions
+
 }
 
 /* ==========================================================================
    Quantity Bar
    ========================================================================== */
-function quantityBar(){
-    const qtyBox = document.querySelector(".qty-box");
+function quantityBar(list){
+    
+    // When color and size are selected, run getStock funtion
+
+    
+    // Highlights the selected colorbox
+    const color = document.querySelectorAll(".colorbox")
+    for (let i = 0; i < color.length ; i++) {
+    
+        color[i].addEventListener("click", function() {
+
+            // resets all class name to default (unselected)
+            for (let i = 0; i < color.length ; i++) {
+                color[i].className = color[i].className.replace(" selectColor", "")
+            }
+            color[i].className += " selectColor";
+            console.log(document.querySelector(".selectColor").getAttribute("hex"))
+
+            // to check when both size and color are selected
+            if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
+                getStock();
+                // console.log(`Both size and color are selected`)
+            }
+        })
+    }
+
+    // Highlights the selected size
+    const size = document.querySelectorAll(".size div")
+    for (let i = 0; i < size.length ; i++) {
+        size[i].addEventListener("click", function() {
+            // resets all class name to default (unselected)
+            for (let i = 0; i < size.length ; i++) {
+                size[i].className = size[i].className.replace(" selectSize", "")
+            }
+            size[i].className += " selectSize";
+            console.log(document.querySelector(".selectSize").innerHTML)
+
+            // to check when both size and color are selected
+            if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
+                getStock();
+                // console.log(`Both size and color are selected`)
+            }
+
+        })
+    }
+
+    // set up function to get stock number
+    const stockData = list.data.variants; 
+    function getStock() {
+        for (let c = 0; c < stockData.length; c++) {
+            let selectColor = document.querySelector(".selectColor").getAttribute("hex")
+            let selectSize = document.querySelector(".selectSize").innerHTML
+            if (selectColor === stockData[c].color_code && selectSize === stockData[c].size) {
+                console.log(`The stock is ${stockData[c].stock}`)
+            }
+
+        };
+    }
+
+    // Set up plus & minus for quantity bar
     const minus = document.querySelector(".qty-minus");
     const plus = document.querySelector(".qty-plus");
-
     plus.addEventListener("click", function(){
         let number = document.querySelector(".qty-no").innerText;
         number = parseInt(number) + 1;
@@ -90,33 +148,6 @@ function quantityBar(){
         } 
     })
 
-    const selectSize = document.querySelector(".selectSize")
-    const selectColor = document.querySelector(".selectColor")
-
-    
-    // Highlights the selected colorbox
-    const color = document.querySelectorAll(".colorbox")
-    for (let i = 0; i < color.length ; i++) {
-        color[i].addEventListener("click", function() {
-            // resets all class name to default (unselected)
-            for (let i = 0; i < color.length ; i++) {
-                color[i].className = color[i].className.replace(" selectColor", "")
-            }
-            color[i].className += " selectColor"
-        })
-    }
-
-    // Highlights the selected size
-    const size = document.querySelectorAll(".size div")
-    for (let i = 0; i < size.length ; i++) {
-        size[i].addEventListener("click", function() {
-            // resets all class name to default (unselected)
-            for (let i = 0; i < size.length ; i++) {
-                size[i].className = size[i].className.replace(" selectSize", "")
-            }
-            size[i].className += " selectSize"
-        })
-    }
 
 
 
