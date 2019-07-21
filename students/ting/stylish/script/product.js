@@ -99,26 +99,28 @@ function quantityBar(list){
                     size[i].className += " disableSize";
                 } 
             }
+            addCartText(); // change text of add-cart button
         });
     }
 
     // set up event handler for size
     const size = document.querySelectorAll(".size-circle")
     for (let i = 0; i < size.length ; i++) {
-            size[i].addEventListener("click", function() {
-                // disables click function if labeled no stock
-                if (size[i].className === "size-circle disableSize") {
-                    return
-                } else {
-                    // resets all class name to default (unselected)
-                    for (let i = 0; i < size.length ; i++) {
-                        size[i].className = size[i].className.replace(" selectSize", "")
-                    }
-                    size[i].className += " selectSize";
+        size[i].addEventListener("click", function() {
+            // disables click function if labeled no stock
+            if (size[i].className === "size-circle disableSize") {
+                return
+            } else {
+                // resets all class name to default (unselected)
+                for (let i = 0; i < size.length ; i++) {
+                    size[i].className = size[i].className.replace(" selectSize", "")
                 }
-                console.log(document.querySelector(".selectSize").innerHTML)
-                document.querySelector(".qty-no").textContent = 1 // resets qty to 1 whenever new select
-            })
+                size[i].className += " selectSize";
+            }
+            console.log(document.querySelector(".selectSize").innerHTML)
+            document.querySelector(".qty-no").textContent = 1 // resets qty to 1 whenever new select
+            addCartText(); // change text of add-cart button
+        })            
     }
 
     // set up event handler for plus on quantity bar
@@ -179,5 +181,11 @@ function quantityBar(list){
         };
     }
 
-    
+    // set up function for add-cart text change when size and color selected
+    function addCartText() {
+        if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
+            document.querySelector(".add-cart").textContent = '加入購物車'
+        };
+    }
+
 }
