@@ -74,15 +74,11 @@ function renderProduct(list) {
    ========================================================================== */
 function quantityBar(list){
     
-    // When color and size are selected, run getStock funtion
-
-    
-    // Select Color => change class to .selectColor & reset qty to 1
+    // set up event handler for color
     const color = document.querySelectorAll(".colorbox")
     for (let i = 0; i < color.length ; i++) {
     
         color[i].addEventListener("click", function() {
-
             // resets all class name to default (unselected)
             for (let i = 0; i < color.length ; i++) {
                 color[i].className = color[i].className.replace(" selectColor", "");
@@ -91,8 +87,8 @@ function quantityBar(list){
             console.log(document.querySelector(".selectColor").getAttribute("hex"))
             document.querySelector(".qty-no").textContent = 1; // resets qty to 1 whenever new select
 
-            // When there is no stock, will 
-            let noStock = zeroStock(); // M
+            // When there is no stock, will change opacity & class name
+            let noStock = zeroStock();
             console.log(`${noStock} has no stock`);
             const size = document.querySelectorAll(".size-circle")
             for (let t = 0; t < size.length; t++) {
@@ -106,22 +102,11 @@ function quantityBar(list){
         });
     }
 
-    function zeroStock() {
-        for (let c = 0; c < stockData.length; c++) {
-            let selectColor = document.querySelector(".selectColor").getAttribute("hex")
-
-            if (selectColor === stockData[c].color_code && 0 === stockData[c].stock) {
-                // console.log(`${stockData[c].size} has no stock`)x
-                return stockData[c].size;
-            }
-        };
-    }
-
-    // Select Size => change class to .selectSize & reset qty to 1
+    // set up event handler for size
     const size = document.querySelectorAll(".size-circle")
     for (let i = 0; i < size.length ; i++) {
             size[i].addEventListener("click", function() {
-                // disables click function if no stock
+                // disables click function if labeled no stock
                 if (size[i].className === "size-circle disableSize") {
                     return
                 } else {
@@ -136,11 +121,11 @@ function quantityBar(list){
             })
     }
 
-    // inputs stock as max for quantity selector
+    // set up event handler for plus on quantity bar
     const plus = document.querySelector(".qty-plus");
     plus.addEventListener("click", function(){
         
-        // When color and size are selected, set max qty as stock
+        // When color and size are selected, run getStock funtion
         if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
             let number = document.querySelector(".qty-no").innerText;
             let stock = getStock();
@@ -159,8 +144,15 @@ function quantityBar(list){
  
     })
 
-
-
+    // set up event handler for minus on quantity bar
+    const minus = document.querySelector(".qty-minus");
+    minus.addEventListener("click", function(){
+        let number = document.querySelector(".qty-no").innerText;
+        if (number > 1 ) {
+        number = parseInt(number) - 1;
+        document.querySelector(".qty-no").textContent = number 
+        } 
+    })
 
     // set up function to get stock number
     const stockData = list.data.variants; 
@@ -172,31 +164,20 @@ function quantityBar(list){
                 // console.log(`The stock is ${stockData[c].stock}`)
                 return stockData[c].stock;
             }
-
         };
     }
 
+    // set up function to check for zeroStock for a color
+    function zeroStock() {
+        for (let c = 0; c < stockData.length; c++) {
+            let selectColor = document.querySelector(".selectColor").getAttribute("hex")
 
+            if (selectColor === stockData[c].color_code && 0 === stockData[c].stock) {
+                // console.log(`${stockData[c].size} has no stock`)x
+                return stockData[c].size;
+            }
+        };
+    }
 
-
-
-
-
-
-
-    // Click event for minus on quantity bar
-    const minus = document.querySelector(".qty-minus");
-    minus.addEventListener("click", function(){
-        let number = document.querySelector(".qty-no").innerText;
-        if (number > 1 ) {
-        number = parseInt(number) - 1;
-        document.querySelector(".qty-no").textContent = number 
-        } 
-    })
-
-
-
-
-
+    
 }
-
