@@ -39,42 +39,52 @@ let cartItem = {
     qty: 1
     }
 
-  let cartDetails = {
+
+let cartList;
+
+let cartDetails = {
     "prime": "", 
     "order": {
-      "shipping": "delivery",
-      "payment": "credit_card",
-      "subtotal": "", 
-      "freight": "", 
-      "total": "",
-      "recipient": {
-        "name": "", 
-        "phone": "", 
-        "email": "",
-        "address": "", 
-        "time": "", 
-      },
-      "list": [cartItem, cartItem, cartItem]
+        "shipping": "delivery",
+        "payment": "credit_card",
+        "subtotal": "", 
+        "freight": "", 
+        "total": "",
+        "recipient": {
+            "name": "", 
+            "phone": "", 
+            "email": "",
+            "address": "", 
+            "time": "", 
+        },
+        "list": []
     }
-  }
+}
 
 // Check local storage for 'cart'
-
 if (localStorage.getItem("cart") === null ) {
     console.log('there is no cart') 
-    localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`)
-    
-    //sets cart quantity
-    let cartQty = JSON.parse(localStorage.getItem("cart")).order.list.length;
-    document.querySelector(".cart-mobile-qty").innerHTML = cartQty
-    document.querySelector(".cart-icon-qty").innerHTML = cartQty
+    localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
 
+    setCartQty(); // call setCartQty function
 } else {
     localStorage.getItem("cart")
     console.log('there is a cart')
 
-    //sets cart quantity
-    document.querySelector(".cart-mobile-qty").innerHTML = cartQty
-    document.querySelector(".cart-icon-qty").innerHTML = cartQty
+    setCartQty(); // call setCartQty function
+
+}
+
+
+//sets cart quantity
+function setCartQty() {
+    let cartQty = JSON.parse(localStorage.getItem("cart")).order.list;
+    // if (cartQty === undefined || cartQty === null) {
+    //     document.querySelector(".cart-mobile-qty").innerHTML = 0
+    //     document.querySelector(".cart-icon-qty").innerHTML = 0
+    // } else {
+        document.querySelector(".cart-mobile-qty").innerHTML = cartQty.length
+        document.querySelector(".cart-icon-qty").innerHTML = cartQty.length
+    // }
 }
 
