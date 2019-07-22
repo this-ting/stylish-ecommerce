@@ -108,6 +108,7 @@
     background-repeat: no-repeat;
     background-size: auto;
     background-size: cover;
+    background-position: center center;
     display: block; 
     height: 55vh;
     width:100%;
