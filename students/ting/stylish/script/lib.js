@@ -27,21 +27,6 @@ function callAPI(src, callback) {
 };
 
 // Set up cart local storage layout
-let cartItem = {
-    id: 123456,
-    name: "洋裝",
-    price: 299,
-    color: {
-        name: "blue",
-        code: "FFFFFF"
-    },
-    size: "S",
-    qty: 1
-    }
-
-
-let cartList;
-
 let cartDetails = {
     "prime": "", 
     "order": {
