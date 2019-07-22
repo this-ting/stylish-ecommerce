@@ -414,6 +414,24 @@ li.dot.active
 .cart-icon {
     display: inline-block;
     vertical-align: middle;
+    position: relative;
+}
+
+.cart-icon-qty {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    background-color: #8b572a;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    opacity: 0.8;
+    font-size: 0.7em;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
 }
 
 .user-icon {
@@ -548,6 +566,24 @@ li.dot.active
 .cart-icon {
     display: inline-block;
     vertical-align: middle;
+    position: relative;
+}
+
+.cart-icon-qty {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    background-color: #8b572a;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    opacity: 0.8;
+    font-size: 0.7em;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
 }
 
 .user-icon {
