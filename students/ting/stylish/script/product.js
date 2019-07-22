@@ -66,6 +66,7 @@ function renderProduct(list) {
         descriptionContainer.appendChild(img)
     });
     quantityBar(list); // call quantityBar functions
+    cart(); // call cart function
 
 }
 
@@ -183,3 +184,19 @@ function quantityBar(list){
     }
 
 }
+
+/* ==========================================================================
+   Add to cart Button
+   ========================================================================== */
+
+function cart() {
+    console.log('cart function activated')
+
+    let cartButton = document.querySelector(".add-cart");
+    cartButton.addEventListener("submit", function(e) {
+        event.preventDefault(e)
+        console.log('cart function submitted')
+    })
+
+
+} 
