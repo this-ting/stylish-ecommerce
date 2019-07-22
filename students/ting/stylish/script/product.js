@@ -66,7 +66,7 @@ function renderProduct(list) {
         descriptionContainer.appendChild(img)
     });
     quantityBar(list); // call quantityBar functions
-    cart(); // call cart function
+    cart(list); // call cart function
 
 }
 
@@ -95,7 +95,7 @@ function quantityBar(list){
                 size[t].className = size[t].className.replace(" disableSize", "");
                 if (size[t].innerHTML === noStock) {
                     size[t].style.opacity = 0.2;
-                    size[i].className += " disableSize";
+                    size[t].className += " disableSize";
                 } 
             }
             addCartText(); // change text of add-cart button
@@ -179,7 +179,7 @@ function quantityBar(list){
     // set up function for add-cart text change when size and color selected
     function addCartText() {
         if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
-            document.querySelector(".add-cart").textContent = '加入購物車'
+            document.querySelector(".add-cart input").setAttribute('value','加入購物車')
         };
     }
 
@@ -188,15 +188,81 @@ function quantityBar(list){
 /* ==========================================================================
    Add to cart Button
    ========================================================================== */
+// let cartItem;
 
-function cart() {
-    console.log('cart function activated')
-
+function cart(list) {
+    // set up event handler for on submit
     let cartButton = document.querySelector(".add-cart");
     cartButton.addEventListener("submit", function(e) {
-        event.preventDefault(e)
-        console.log('cart function submitted')
+        event.preventDefault(e) // prevents page from reloading
+        // if size and color are selected, proceed
+        if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
+            console.log('cart function submitted')
+            
+            const productData = list.data; 
+            const selectColor = document.querySelector(".selectColor").getAttribute("hex")
+            const selectSize = document.querySelector(".selectSize").innerHTML 
+            const number = parseInt(document.querySelector(".qty-no").innerText)
+            
+            let cartItem = {
+                id: `${productData.id}`,
+                name: `${productData.title}`,
+                price: `${productData.price}`,
+                color: {
+                    name: "blue",
+                    code: `${selectColor}`
+                },
+                size: `${selectSize}`,
+                qty: `${number}`, 
+                main_image: `${productData.main_image}`
+                }
+
+            // function addCartItem() {
+            //     let currentList = JSON.parse(localStorage.getItem("cart")).order.list;
+
+            //     let newItem = cartItem;
+
+            //     // array push to add item to array
+            //     currentList.push(newItem)
+            // }
+
+            // let updateList = addCartItem()
+
+            let cartDetails = {
+                "prime": "", 
+                "order": {
+                    "shipping": "delivery",
+                    "payment": "credit_card",
+                    "subtotal": "", 
+                    "freight": "", 
+                    "total": "",
+                    "recipient": {
+                    "name": "", 
+                    "phone": "", 
+                    "email": "",
+                    "address": "", 
+                    "time": "", 
+                    },
+                    "list": [cartItem]
+                }
+            }
+
+
+            // on submit will rewrite the local storage "cart"
+            localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`)
+            setCartQty()
+        } else {
+            console.log('please select')
+            
+        }
+        
+        
+        
     })
 
 
 } 
+
+
+
+
