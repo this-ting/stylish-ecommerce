@@ -84,12 +84,10 @@ function quantityBar(list){
                 color[i].className = color[i].className.replace(" selectColor", "");
             }
             color[i].className += " selectColor";
-            console.log(document.querySelector(".selectColor").getAttribute("hex"))
             document.querySelector(".qty-no").textContent = 1; // resets qty to 1 whenever new select
 
             // When there is no stock, will change opacity & class name
             let noStock = zeroStock();
-            console.log(`${noStock} has no stock`);
             const size = document.querySelectorAll(".size-circle")
             for (let t = 0; t < size.length; t++) {
                 size[t].style.opacity = 1; // resets opacity when clicked
@@ -117,7 +115,6 @@ function quantityBar(list){
                 }
                 size[i].className += " selectSize";
             }
-            console.log(document.querySelector(".selectSize").innerHTML)
             document.querySelector(".qty-no").textContent = 1 // resets qty to 1 whenever new select
             addCartText(); // change text of add-cart button
         })            
@@ -131,7 +128,6 @@ function quantityBar(list){
         if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
             let number = document.querySelector(".qty-no").innerText;
             let stock = getStock();
-            console.log(stock)
 
             if (number < stock ) {
                 number = parseInt(number) + 1;
@@ -163,7 +159,6 @@ function quantityBar(list){
             let selectColor = document.querySelector(".selectColor").getAttribute("hex")
             let selectSize = document.querySelector(".selectSize").innerHTML
             if (selectColor === stockData[c].color_code && selectSize === stockData[c].size) {
-                // console.log(`The stock is ${stockData[c].stock}`)
                 return stockData[c].stock;
             }
         };
@@ -175,7 +170,6 @@ function quantityBar(list){
             let selectColor = document.querySelector(".selectColor").getAttribute("hex")
 
             if (selectColor === stockData[c].color_code && 0 === stockData[c].stock) {
-                // console.log(`${stockData[c].size} has no stock`)x
                 return stockData[c].size;
             }
         };
