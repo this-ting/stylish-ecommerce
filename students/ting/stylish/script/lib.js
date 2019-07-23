@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Library of functions
+   Call API
    ========================================================================== */
 // Destination of API
 const API = `https://api.appworks-school.tw/api/1.0`;
@@ -26,7 +26,16 @@ function callAPI(src, callback) {
     xhr.send();
 };
 
-// Set up cart local storage layout
+/* ==========================================================================
+   Shopping cart to local storage
+   ========================================================================== */
+/* 
+1. Check if local storage has 'cart' key
+2. If not, add template for 'cart' value
+3. If has, update cart quantity
+*/
+
+   // Set up cart local storage layout
 let cartDetails = {
     "prime": "", 
     "order": {
@@ -48,28 +57,22 @@ let cartDetails = {
 
 // Check local storage for 'cart'
 if (localStorage.getItem("cart") === null ) {
-    console.log('there is no cart') 
     localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
-
     setCartQty(); // call setCartQty function
 } else {
     localStorage.getItem("cart")
-    console.log('there is a cart')
-
     setCartQty(); // call setCartQty function
-
 }
 
-
-//sets cart quantity
+//Set up cart quantity update function
 function setCartQty() {
-    let cartQty = JSON.parse(localStorage.getItem("cart")).order.list;
-    // if (cartQty === undefined || cartQty === null) {
-    //     document.querySelector(".cart-mobile-qty").innerHTML = 0
-    //     document.querySelector(".cart-icon-qty").innerHTML = 0
-    // } else {
+    if (localStorage.cart === "undefined") {
+        document.querySelector(".cart-mobile-qty").innerHTML = 0
+        document.querySelector(".cart-icon-qty").innerHTML = 0
+    } else {
+        let cartQty = JSON.parse(localStorage.getItem("cart")).order.list;
         document.querySelector(".cart-mobile-qty").innerHTML = cartQty.length
         document.querySelector(".cart-icon-qty").innerHTML = cartQty.length
-    // }
+    }
 }
 
