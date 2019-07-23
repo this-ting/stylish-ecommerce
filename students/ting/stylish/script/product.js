@@ -211,7 +211,11 @@ function renderProduct(list) {
    Add to cart Button
    ========================================================================== */
 /* Set up cart function
-1. addCartItem() => adds the cart item into the list array
+1. addCartItem() => 
+    checks if have exisiting products in cart ==> 
+    if not, will create array list
+    if have, check for duplicates &
+    adds the cart item into the list array
 2. updatedCart() => updates 'cart' value with the newest info
 3. if color and size are selected => overwrites 'cart' to local storage
 */

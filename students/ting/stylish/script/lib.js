@@ -30,9 +30,9 @@ function callAPI(src, callback) {
    Shopping cart to local storage
    ========================================================================== */
 /* 
-1. Check if local storage has 'cart' key
+1. Upon loading, check if local storage has 'cart' key
 2. If not, add template for 'cart' value
-3. If has, update cart quantity
+3. If has, update cart icon quantity
 */
 
    // Set up cart local storage layout
