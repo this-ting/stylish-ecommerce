@@ -222,8 +222,8 @@ function cart(list) {
         event.preventDefault(e) // prevents page from reloading
         // if size and color are selected, proceed
         if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
-            console.log('cart function submitted')
             // on submit will rewrite the local storage "cart"
+            console.log('Updated shopping cart!')
             let cartDetails = updatedCart();
             localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`)
             setCartQty()
