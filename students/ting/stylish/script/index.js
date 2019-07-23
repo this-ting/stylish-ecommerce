@@ -2,8 +2,6 @@
    Render Home Page & Category Page
    ========================================================================== */
 // Variables
-const API = `https://api.appworks-school.tw/api/1.0`;
-const APIproducts = `${API}/products/`;
 const APIsearch = `${APIproducts}search?keyword=`;
 const APImarketing = `${API}/marketing/campaigns`;
 const APIasset = `https://api.appworks-school.tw`;
