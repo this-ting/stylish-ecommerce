@@ -75,7 +75,7 @@ function renderProduct(list) {
    ========================================================================== */
 function quantityBar(list){
     
-    // set up event handler for color
+    // Set up event handler for color
     const color = document.querySelectorAll(".colorbox")
     for (let i = 0; i < color.length ; i++) {
     
@@ -102,7 +102,7 @@ function quantityBar(list){
         });
     }
 
-    // set up event handler for size
+    // Set up event handler for size
     const size = document.querySelectorAll(".size-circle")
     for (let i = 0; i < size.length ; i++) {
         size[i].addEventListener("click", function() {
@@ -121,7 +121,7 @@ function quantityBar(list){
         })            
     }
 
-    // set up event handler for plus on quantity bar
+    // Set up event handler for plus on quantity bar
     const plus = document.querySelector(".qty-plus");
     plus.addEventListener("click", function(){
         
@@ -143,7 +143,7 @@ function quantityBar(list){
  
     })
 
-    // set up event handler for minus on quantity bar
+    // Set up event handler for minus on quantity bar
     const minus = document.querySelector(".qty-minus");
     minus.addEventListener("click", function(){
         let number = document.querySelector(".qty-no").innerText;
@@ -153,7 +153,7 @@ function quantityBar(list){
         } 
     })
 
-    // set up function to get stock number
+    // Set up function to get stock number
     const stockData = list.data.variants; 
     function getStock() {
         for (let c = 0; c < stockData.length; c++) {
@@ -165,7 +165,7 @@ function quantityBar(list){
         };
     }
 
-    // set up function to check for zeroStock for a color
+    // Set up function to check for zeroStock for a color
     function zeroStock() {
         for (let c = 0; c < stockData.length; c++) {
             let selectColor = document.querySelector(".selectColor").getAttribute("hex")
@@ -176,7 +176,7 @@ function quantityBar(list){
         };
     }
 
-    // set up function for add-cart text change when size and color selected
+    // Set up function for add-cart text change when size and color selected
     function addCartText() {
         if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
             document.querySelector(".add-cart input").setAttribute('value','加入購物車')
@@ -188,23 +188,39 @@ function quantityBar(list){
 /* ==========================================================================
    Add to cart Button
    ========================================================================== */
-// let cartItem;
+/* Set up cart function
+1. addCartItem() => adds the cart item into the list array
+2. updatedCart() => updates 'cart' value with the newest info
+3. if color and size are selected => overwrites 'cart' to local storage
+*/
 
 function cart(list) {
-    // set up event handler for on submit
+    // Set up event handler for on submit
     let cartButton = document.querySelector(".add-cart");
     cartButton.addEventListener("submit", function(e) {
         event.preventDefault(e) // prevents page from reloading
         // if size and color are selected, proceed
         if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
             console.log('cart function submitted')
-            
-            const productData = list.data; 
-            const selectColor = document.querySelector(".selectColor").getAttribute("hex")
-            const selectSize = document.querySelector(".selectSize").innerHTML 
-            const number = parseInt(document.querySelector(".qty-no").innerText)
-            
-            let cartItem = {
+            // on submit will rewrite the local storage "cart"
+            let cartDetails = updatedCart();
+            localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`)
+            setCartQty()
+        } 
+    })
+
+    // Set up function to update item 
+    function addCartItem() {
+        const productData = list.data; 
+        const currentList = JSON.parse(localStorage.getItem("cart")).order.list;
+        const selectColor = document.querySelector(".selectColor").getAttribute("hex")
+        const selectSize = document.querySelector(".selectSize").innerHTML 
+        const number = parseInt(document.querySelector(".qty-no").innerText)
+        
+        // if no exisiting products in cart => create new array
+        if (currentList.length === 0 ){
+            let currentList = [
+                {
                 id: `${productData.id}`,
                 name: `${productData.title}`,
                 price: `${productData.price}`,
@@ -216,50 +232,51 @@ function cart(list) {
                 qty: `${number}`, 
                 main_image: `${productData.main_image}`
                 }
+            ];
+            return currentList
 
-            // function addCartItem() {
-            //     let currentList = JSON.parse(localStorage.getItem("cart")).order.list;
-
-            //     let newItem = cartItem;
-
-            //     // array push to add item to array
-            //     currentList.push(newItem)
-            // }
-
-            // let updateList = addCartItem()
-
-            let cartDetails = {
-                "prime": "", 
-                "order": {
-                    "shipping": "delivery",
-                    "payment": "credit_card",
-                    "subtotal": "", 
-                    "freight": "", 
-                    "total": "",
-                    "recipient": {
-                    "name": "", 
-                    "phone": "", 
-                    "email": "",
-                    "address": "", 
-                    "time": "", 
-                    },
-                    "list": [cartItem]
-                }
-            }
-
-
-            // on submit will rewrite the local storage "cart"
-            localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`)
-            setCartQty()
         } else {
-            console.log('please select')
-            
-        }
-        
-        
-        
-    })
+            let newItem =  {
+                id: `${productData.id}`,
+                name: `${productData.title}`,
+                price: `${productData.price}`,
+                color: {
+                    name: "blue",
+                    code: `${selectColor}`
+                },
+                size: `${selectSize}`,
+                qty: `${number}`, 
+                main_image: `${productData.main_image}`
+                };
+            // array push to add item to array
+            currentList.push(newItem)
+            return currentList
+        } 
+    }
 
+    // Set up function to combine entire updated cart
+    function updatedCart() {
+        let newList = addCartItem();
+        let cartDetails = {
+            "prime": "", 
+            "order": {
+                "shipping": "delivery",
+                "payment": "credit_card",
+                "subtotal": "", 
+                "freight": "", 
+                "total": "",
+                "recipient": {
+                "name": "", 
+                "phone": "", 
+                "email": "",
+                "address": "", 
+                "time": "", 
+                },
+                "list": newList
+            }
+        }
+        return cartDetails;
+    }
 
 } 
 
