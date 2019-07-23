@@ -14,7 +14,6 @@ function callAPI(src, callback) {
             // This will run when the request is successful
             console.log('success!');
             const list = JSON.parse(xhr.responseText);
-            // console.log(list.data[0].id);
             haveNext = list.paging; // for product paging
             callback(list);
         } else {
@@ -53,26 +52,26 @@ let cartDetails = {
         },
         "list": []
     }
-}
+};
 
 // Check local storage for 'cart'
 if (localStorage.getItem("cart") === null ) {
     localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
     setCartQty(); // call setCartQty function
 } else {
-    localStorage.getItem("cart")
+    localStorage.getItem("cart");
     setCartQty(); // call setCartQty function
-}
+};
 
 //Set up cart quantity update function
 function setCartQty() {
     if (localStorage.cart === "undefined" || localStorage.cart.list === undefined) {
-        document.querySelector(".cart-mobile-qty").innerHTML = 0
-        document.querySelector(".cart-icon-qty").innerHTML = 0
+        document.querySelector(".cart-mobile-qty").innerHTML = 0;
+        document.querySelector(".cart-icon-qty").innerHTML = 0;
     } else {
         let cartQty = JSON.parse(localStorage.getItem("cart")).order.list;
-        document.querySelector(".cart-mobile-qty").innerHTML = cartQty.length
-        document.querySelector(".cart-icon-qty").innerHTML = cartQty.length
-    }
-}
+        document.querySelector(".cart-mobile-qty").innerHTML = cartQty.length;
+        document.querySelector(".cart-icon-qty").innerHTML = cartQty.length;
+    };
+};
 
