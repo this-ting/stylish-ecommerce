@@ -44,20 +44,86 @@
 
             <main>
                 <div class="black-bar"></div>
+                <div class="cart-container">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    
+                    <div class="shipping">
+                        <div>
+                            配送國家 
+                            <select name="location">
+                                <option value="台灣或離島">台灣或離島</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            付款方式
+                            <select name="location">
+                                <option value="信用可付款">信用可付款</option>
+                            </select>
+                        </div>
+                    </div><!-- end of shipping div-->
 
 
-
-
-
-
+                    <div class="reminder">
+                            <div>※ 提醒您：</div>
+                            <div>● 請填寫正確收件人資訊，避免包裹配送不達</div>
+                            <div>● 請填寫正確收件人姓名 ( 與證件相符 )，避免無法領取</div>
+                    </div> <!-- end of reminder div-->
             
 
+                    <div class="form"> <form>
+                        收件資料 <hr>
 
+                        收件人姓名<br>
+                        <input type="text" name="name"><br>
+                        Email<br>
+                        <input type="text" name="email"><br>
+                        手機號碼<br>
+                        <input type="text" name="cell"><br>
+                        配送時間指數<br>
+                        <input type="radio">08:00 - 12:00<br>
+                        <input type="radio">14:00 - 18:00<br>
+                        <input type="radio">不指定<br>
+
+                        付款資料 <hr>
+                        信用卡號碼<br>
+                        <input type="text" name="cc" placeholder="&#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183;" ><br>
+                        有效期限<br>
+                        <input type="text" name="expiry" placeholder="MM/YY" ><br>
+                        安全碼<br>
+                        <input type="text" name="ccv" placeholder="ccv" ><br>
+                    </form> </div> <!-- end of form div-->
+
+                    <hr>
+                    <div class="costs">
+                        <div class="costs">
+                            總金額 NT. 12345 <br>
+                            運費 NT. 60 <br>
+                            <hr>
+                            應付金額 NT. 12345
+                        </div>
+                        <input type="submit" value="確認付款">
+                    </div> <!-- end of costs div-->
+
+                </div> <!-- end of cart-container div-->
             </main> <!-- end of cart main -->
 
 
 
-
+            <div class="feature-mobile">
+                <a href="#"  class="menu-line">
+                    <div class="mobile-cart">
+                        <img src="../images/cart-mobile.png" />
+                        <div class="cart-mobile-qty"></div>
+                    </div>
+                    購物車</a>
+                <a href="#">
+                    <img src="../images/member-mobile.png" />
+                    會員</a>
+            </div> <!-- end of feature-bottom div -->
 
             <div class="footer-container">
                 <div class="footer">
