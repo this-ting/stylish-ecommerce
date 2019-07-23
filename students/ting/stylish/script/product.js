@@ -69,7 +69,7 @@ function renderProduct(list) {
     quantityBar(list); // call quantityBar functions
     cart(list); // call cart function
 
-}
+};
 
 /* ==========================================================================
    Quantity Bar
@@ -95,8 +95,37 @@ function renderProduct(list) {
     can't go lower than 1
 */
 
-   function quantityBar(list){
-    
+function quantityBar(list){
+    // Set up function to get stock number
+    const stockData = list.data.variants; 
+    function getStock() {
+        for (let c = 0; c < stockData.length; c++) {
+            let selectColor = document.querySelector(".selectColor").getAttribute("hex");
+            let selectSize = document.querySelector(".selectSize").innerHTML;
+            if (selectColor === stockData[c].color_code && selectSize === stockData[c].size) {
+                return stockData[c].stock;
+            };
+        };
+    };
+   
+    // Set up function to check for zeroStock for a color
+    function zeroStock() {
+        for (let c = 0; c < stockData.length; c++) {
+            let selectColor = document.querySelector(".selectColor").getAttribute("hex");
+
+            if (selectColor === stockData[c].color_code && 0 === stockData[c].stock) {
+                return stockData[c].size;
+            };
+        };
+    };
+
+    // Set up function for add-cart text change when size and color selected
+    function addCartText() {
+        if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
+            document.querySelector(".add-cart input").setAttribute('value','加入購物車')
+        };
+    };
+
     // Set up event handler for color
     const color = document.querySelectorAll(".colorbox");
     for (let i = 0; i < color.length ; i++) {
@@ -174,37 +203,6 @@ function renderProduct(list) {
         document.querySelector(".qty-no").textContent = number;
         }; 
     });
-
-    // Set up function to get stock number
-    const stockData = list.data.variants; 
-    function getStock() {
-        for (let c = 0; c < stockData.length; c++) {
-            let selectColor = document.querySelector(".selectColor").getAttribute("hex");
-            let selectSize = document.querySelector(".selectSize").innerHTML;
-            if (selectColor === stockData[c].color_code && selectSize === stockData[c].size) {
-                return stockData[c].stock;
-            };
-        };
-    };
-
-    // Set up function to check for zeroStock for a color
-    function zeroStock() {
-        for (let c = 0; c < stockData.length; c++) {
-            let selectColor = document.querySelector(".selectColor").getAttribute("hex");
-
-            if (selectColor === stockData[c].color_code && 0 === stockData[c].stock) {
-                return stockData[c].size;
-            };
-        };
-    };
-
-    // Set up function for add-cart text change when size and color selected
-    function addCartText() {
-        if (document.querySelector(".selectColor") !== null && document.querySelector(".selectSize") !== null) {
-            document.querySelector(".add-cart input").setAttribute('value','加入購物車')
-        };
-    };
-
 };
 
 /* ==========================================================================
@@ -221,21 +219,6 @@ function renderProduct(list) {
 */
 
 function cart(list) {
-    // Set up event handler for on submit
-    let cartButton = document.querySelector(".add-cart");
-
-    cartButton.addEventListener("submit", function(e) {
-        event.preventDefault(e) // prevents page from reloading
-        // if size and color are selected, proceed
-        if (document.querySelector(".selectColor") !== null && 
-            document.querySelector(".selectSize") !== null) {
-            // on submit will rewrite the local storage "cart"
-            let cartDetails = updatedCart();
-            localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
-            setCartQty();
-        }; 
-    });
-
     // Set up function to update item 
     function addCartItem() {
         const productData = list.data; 
@@ -315,6 +298,20 @@ function cart(list) {
         }
         return cartDetails;
     };
+
+    // Set up event handler for on submit
+    let cartButton = document.querySelector(".add-cart");
+    cartButton.addEventListener("submit", function(e) {
+        event.preventDefault(e) // prevents page from reloading
+        // if size and color are selected, proceed
+        if (document.querySelector(".selectColor") !== null && 
+            document.querySelector(".selectSize") !== null) {
+            // on submit will rewrite the local storage "cart"
+            let cartDetails = updatedCart();
+            localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
+            setCartQty();
+        }; 
+    });
 
 };
 
