@@ -73,7 +73,28 @@ function renderProduct(list) {
 /* ==========================================================================
    Quantity Bar
    ========================================================================== */
-function quantityBar(list){
+/* 
+1. Color Click Event Handler => 
+    resets class name to default (.colorbox) & 
+    add class name to the clicked (.selectColor) &
+    resets qty to 1 &
+    check for zeroStock in size to label (.disableSize) & change opacity
+
+2. Size Click Event Handler => 
+    if (.disableSize) => return, 
+    else 
+    resets class name to default (.size-circle) & 
+    add class name to the clicked (.selectsize) &
+    resets qty to 1
+
+3. Plus Click Event Handler => 
+    if size && color selected =>
+    can add number until stock max number (checkStock())
+4. Minus Click Event Handler => 
+    can't go lower than 1
+*/
+
+   function quantityBar(list){
     
     // Set up event handler for color
     const color = document.querySelectorAll(".colorbox")
@@ -169,7 +190,7 @@ function quantityBar(list){
     function zeroStock() {
         for (let c = 0; c < stockData.length; c++) {
             let selectColor = document.querySelector(".selectColor").getAttribute("hex")
-
+            
             if (selectColor === stockData[c].color_code && 0 === stockData[c].stock) {
                 return stockData[c].size;
             }
