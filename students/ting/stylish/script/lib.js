@@ -66,7 +66,7 @@ if (localStorage.getItem("cart") === null ) {
 
 //Set up cart quantity update function
 function setCartQty() {
-    if (localStorage.cart === "undefined") {
+    if (localStorage.cart === "undefined" || localStorage.cart.list === undefined) {
         document.querySelector(".cart-mobile-qty").innerHTML = 0
         document.querySelector(".cart-icon-qty").innerHTML = 0
     } else {

@@ -239,9 +239,10 @@ function cart(list) {
         const colorName = document.querySelector(".selectColor").getAttribute("color")
         const selectSize = document.querySelector(".selectSize").innerHTML 
         const number = parseInt(document.querySelector(".qty-no").innerText)
+        const id = document.querySelector(".id").innerHTML
         
         // if no exisiting products in cart => create new array
-        if (currentList.length === 0 ){
+        if (currentList.length === 0 || currentList ===  undefined){
             let currentList = [
                 {
                 id: `${productData.id}`,
@@ -257,43 +258,33 @@ function cart(list) {
                 }
             ];
             return currentList
-
         } else {
-            // add if same color size, should overwrite 
+            console.log(currentList);
+            // check for duplicates, will overwrite if do
             for(let i = 0; i < currentList.length ; i++) {
-                if (selectSize === currentList[i].size && selectColor === currentList[i].color.code ) {
-                    let newItem =  {
-                        id: `${productData.id}`,
-                        name: `${productData.title}`,
-                        price: `${productData.price}`,
-                        color: {
-                            name: `${colorName}`,
-                            code: `${selectColor}`
-                        },
-                        size: `${selectSize}`,
-                        qty: `${number}`, 
-                        main_image: `${productData.main_image}`
-                        };
-                    return newItem
-                } else {
-                    let newItem =  {
-                        id: `${productData.id}`,
-                        name: `${productData.title}`,
-                        price: `${productData.price}`,
-                        color: {
-                            name: `${colorName}`,
-                            code: `${selectColor}`
-                        },
-                        size: `${selectSize}`,
-                        qty: `${number}`, 
-                        main_image: `${productData.main_image}`
-                        };
-                    // array push to add item to array 
-                    currentList.push(newItem)
+                if (selectSize === currentList[i].size && 
+                    selectColor === currentList[i].color.code &&
+                    id === currentList[i].id ) {
+                    currentList[i].qty = number;
                     return currentList
                 }
-
             }
+            // once done checking for duplicates, will log new
+            let newItem =  {
+                id: `${productData.id}`,
+                name: `${productData.title}`,
+                price: `${productData.price}`,
+                color: {
+                    name: `${colorName}`,
+                    code: `${selectColor}`
+                },
+                size: `${selectSize}`,
+                qty: `${number}`, 
+                main_image: `${productData.main_image}`
+                };
+            // array push to add item to array 
+            currentList.push(newItem)
+            return currentList
             
         
         } 
@@ -302,6 +293,7 @@ function cart(list) {
     // Set up function to combine entire updated cart
     function updatedCart() {
         let newList = addCartItem();
+        // console.log(newList);
         let cartDetails = {
             "prime": "", 
             "order": {
