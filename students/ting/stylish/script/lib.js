@@ -12,9 +12,8 @@ function callAPI(src, callback) {
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
             // This will run when the request is successful
-            console.log('success!');
+            console.log('API success!');
             const list = JSON.parse(xhr.responseText);
-            haveNext = list.paging; // for product paging
             callback(list);
         } else {
             // This will run when it's not

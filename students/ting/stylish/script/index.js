@@ -5,7 +5,6 @@
 const APIsearch = `${APIproducts}search?keyword=`;
 const APImarketing = `${API}/marketing/campaigns`;
 const APIasset = `https://api.appworks-school.tw`;
-let haveNext; // for product paging
 let category = 'all';
 
 // Set up products render function
@@ -55,15 +54,28 @@ function render(list) {
     };
 };
 
+let nextPg; // for product paging
+let haveNext; // for product paging
+
+function getProductList(category){
+    callAPI(`${APIproducts}${category}`, function(list){
+        haveNext=list.paging;
+        render(list);
+    });
+}
+
 // Render homepage products on load
 if ( window.location.search === '?tag=women') {
-    callAPI(`${APIproducts}women`,render);
+    getProductList("women");
+
 } else if ( window.location.search === '?tag=men') {
-    callAPI(`${APIproducts}men`,render);
+    getProductList("men");
+
 } else if ( window.location.search === "?tag=accessories") {
-    callAPI(`${APIproducts}accessories`,render);
+    getProductList("accessories");
+
 } else {
-    callAPI(`${APIproducts}all`,render);
+    getProductList("all");
 };
 
 /* ==========================================================================
@@ -152,11 +164,11 @@ function showMobileSearch() {
    Paging & Infinite Scroll
    ========================================================================== */
 // Paging & Infinite Scroll
-let nextPg;
 let pageLoading=false; // to prevent renderScroll from running multiple times when scroll event triggered
+
 const infiniteScroll = function () {
     // set event to fire when scrolling reaches end of container
-    if (window.innerHeight = container.getBoundingClientRect().bottom) {
+    if (window.innerHeight > container.getBoundingClientRect().bottom) {
         // Function to check if there is a next page and produce URL to API
         let APIpage = `${APIproducts}${category}?paging=`;
         nextPg = `${APIpage}${haveNext}`;
@@ -168,6 +180,7 @@ const infiniteScroll = function () {
         };
     };
 }
+
 window.addEventListener('scroll', infiniteScroll);
 
 // Infinite scroll function to add products from the next page 
@@ -207,7 +220,8 @@ function renderScroll(list) {
         productPrice.textContent = 'TWD.' + productData[i].price;
         product.appendChild(productPrice);
     }
-    pageLoading = false; /// to prevent renderScroll from running multiple times when scroll event triggered
+    haveNext += 1; // increase paging for next scroll
+    pageLoading = false; // to prevent renderScroll from running multiple times when scroll event triggered
 };
 /* ==========================================================================
    Marketing Campaigns
