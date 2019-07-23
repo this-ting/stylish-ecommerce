@@ -3,7 +3,7 @@
    ========================================================================== */
 .product-container {
     /* for sticky header */
-    padding-top: calc(36px + 1.4em + 1.2em + 22px); 
+    padding-top: calc(36px + 1.4em + 1.2em + 25px); 
 }
 
 

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>STYLish Cart</title>
+        <link rel="stylesheet" href="../css/normalize.css">
+        <link rel="stylesheet" href="../css/index.css">
+        <link rel="stylesheet" href="../css/cart.css">
+    </head>
+
+    <body >
+        <div class="root">
+        
+            <div class="header">
+                <div class="top-header" id="top-header">
+                    <a href="index.html"><img class="logo" src="https://api.appworks-school.tw/imgs/logo.png" /></a>
+                    <img class="search-icon" src="../images/search.png" onclick="showMobileSearch()"/>
+                </div> <!-- end of top-header div -->
+                <div class="navbar"> 
+                    <a href="index.html?tag=women" class="menu-line female" onclick="callAPI(`${APIproducts}${category = 'women'}`,render)">女裝 </a> 
+                    <a href="index.html?tag=men" class="menu-line male" onclick="callAPI(`${APIproducts}${category = 'men'}`,render)">男裝 </a> 
+                    <a href="index.html?tag=accessories" class ="acc" onclick="callAPI(`${APIproducts}${category = 'accessories'}`,render)">配件</a>
+                </div> <!-- end of navbar div -->
+
+                <div class="dp-navright">
+                    <form onsubmit="searchProduct(`${APIsearch}${searchInput.value}`,searchRender);return false;"> 
+                        <input class="nav-search" id="nav-search" type="text"> 
+                        <input type="submit" style="display:none;" />
+                    </form>
+                    <div class="cart-icon">
+                        <img src="../images/cart.png" />
+                        <div class="cart-icon-qty"></div>
+                    </div>
+                    <img class="user-icon" src="../images/member.png" />
+                </div>
+            </div> <!-- end of header div -->
+
+
+
+
+
+
+            <main>
+                <div class="black-bar"></div>
+                <div class="cart-container">
+                    <!-- <div>
+                        <img>
+                        數量
+                        經典西裝
+                        12345678
+                        顏色：
+                        尺寸：
+                        單價
+                        小計
+
+
+                    </div> -->
+                    
+                    <div class="shipping">
+                        <div class="cart-products">
+                            配送國家 
+                            <select name="location">
+                                <option value="台灣或離島">台灣或離島</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            付款方式
+                            <select name="location">
+                                <option value="信用可付款">信用可付款</option>
+                            </select>
+                        </div>
+                    </div><!-- end of shipping div-->
+
+
+                    <div class="reminder">
+                            <div>※ 提醒您：</div>
+                            <div>● 請填寫正確收件人資訊，避免包裹配送不達</div>
+                            <div>● 請填寫正確收件人姓名 ( 與證件相符 )，避免無法領取</div>
+                    </div> <!-- end of reminder div-->
+            
+
+                    <div class="form"> <form>
+                        收件資料 <hr>
+
+                        收件人姓名<br>
+                        <input type="text" name="name"><br>
+                        Email<br>
+                        <input type="text" name="email"><br>
+                        手機號碼<br>
+                        <input type="text" name="cell"><br>
+                        配送時間指數<br>
+                        <input type="radio">08:00 - 12:00<br>
+                        <input type="radio">14:00 - 18:00<br>
+                        <input type="radio">不指定<br>
+
+                        付款資料 <hr>
+                        信用卡號碼<br>
+                        <input type="text" name="cc" placeholder="&#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183;" ><br>
+                        有效期限<br>
+                        <input type="text" name="expiry" placeholder="MM/YY" ><br>
+                        安全碼<br>
+                        <input type="text" name="ccv" placeholder="ccv" ><br>
+                    </form> </div> <!-- end of form div-->
+
+                    <hr>
+                    <div class="costs">
+                        <div class="costs">
+                            總金額 NT. 12345 <br>
+                            運費 NT. 60 <br>
+                            <hr>
+                            應付金額 NT. 12345
+                        </div>
+                        <input type="submit" value="確認付款">
+                    </div> <!-- end of costs div-->
+
+                </div> <!-- end of cart-container div-->
+            </main> <!-- end of cart main -->
+
+
+
+            <div class="feature-mobile">
+                <a href="#"  class="menu-line">
+                    <div class="mobile-cart">
+                        <img src="../images/cart-mobile.png" />
+                        <div class="cart-mobile-qty"></div>
+                    </div>
+                    購物車</a>
+                <a href="#">
+                    <img src="../images/member-mobile.png" />
+                    會員</a>
+            </div> <!-- end of feature-bottom div -->
+
+            <div class="footer-container">
+                <div class="footer">
+                    <div class="column-menu">
+                        <a class="footer-line" href="#">關於STYLish</a> 
+                        <a class="footer-line" href="#">服務條款</a> 
+                        <a class="footer-line" href="#">隱私政策</a> 
+                        <a class="footer-line" href="#">關於我們</a> 
+                        <a href="#">FAQ</a> 
+                    </div>
+                    <div class="column-social">
+                        <img src="../images/line.png" />
+                        <img src="../images/facebook.png" />
+                        <img src="../images/twitter.png" />
+                    </div>
+                </div> <!-- end of footer div -->
+                <div class="column-footer">&copy;2018. All rights reserved.</div>
+            </div> <!-- end of footer-container div -->
+            
+        </div> <!-- end of root div -->
+        <script src="../script/lib.js"></script>
+        <script src="../script/cart.js"></script>
+    </body>
+</html>
