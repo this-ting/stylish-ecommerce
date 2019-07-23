@@ -29,7 +29,8 @@ function renderProduct(list) {
         const colors = document.querySelector(".colors")
         const colorbox = document.createElement('div') 
         colorbox.setAttribute('class', 'colorbox')
-        colorbox.setAttribute('hex', `${productData.colors[i].code}`) // creates easy tag to grab color
+        colorbox.setAttribute('hex', `${productData.colors[i].code}`) // creates easy tag to grab color code
+        colorbox.setAttribute('color', `${productData.colors[i].name}`) // creates easy tag to grab color name
         colorbox.style.backgroundColor = `#`+productData.colors[i].code
         colors.appendChild(colorbox)
     }
@@ -235,6 +236,7 @@ function cart(list) {
         const productData = list.data; 
         const currentList = JSON.parse(localStorage.getItem("cart")).order.list;
         const selectColor = document.querySelector(".selectColor").getAttribute("hex")
+        const colorName = document.querySelector(".selectColor").getAttribute("color")
         const selectSize = document.querySelector(".selectSize").innerHTML 
         const number = parseInt(document.querySelector(".qty-no").innerText)
         
@@ -246,7 +248,7 @@ function cart(list) {
                 name: `${productData.title}`,
                 price: `${productData.price}`,
                 color: {
-                    name: "blue",
+                    name: `${colorName}`,
                     code: `${selectColor}`
                 },
                 size: `${selectSize}`,
@@ -265,7 +267,7 @@ function cart(list) {
                         name: `${productData.title}`,
                         price: `${productData.price}`,
                         color: {
-                            name: "blue",
+                            name: `${colorName}`,
                             code: `${selectColor}`
                         },
                         size: `${selectSize}`,
@@ -279,7 +281,7 @@ function cart(list) {
                         name: `${productData.title}`,
                         price: `${productData.price}`,
                         color: {
-                            name: "blue",
+                            name: `${colorName}`,
                             code: `${selectColor}`
                         },
                         size: `${selectSize}`,
