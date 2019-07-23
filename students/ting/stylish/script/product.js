@@ -233,15 +233,15 @@ function cart(list) {
         if (currentList.length === 0 || currentList ===  undefined){
             let currentList = [
                 {
-                id: `${productData.id}`,
+                id: productData.id,
                 name: `${productData.title}`,
-                price: `${productData.price}`,
+                price: productData.price,
                 color: {
                     name: `${colorName}`,
                     code: `${selectColor}`
                 },
                 size: `${selectSize}`,
-                qty: `${number}`, 
+                qty: number, 
                 main_image: `${productData.main_image}`
                 }
             ];
@@ -258,15 +258,15 @@ function cart(list) {
             };
             // once done checking for duplicates, will log new
             let newItem =  {
-                id: `${productData.id}`,
+                id: productData.id,
                 name: `${productData.title}`,
-                price: `${productData.price}`,
+                price: productData.price,
                 color: {
                     name: `${colorName}`,
                     code: `${selectColor}`
                 },
                 size: `${selectSize}`,
-                qty: `${number}`, 
+                qty: number, 
                 main_image: `${productData.main_image}`
                 };
             // array push to add item to array 
