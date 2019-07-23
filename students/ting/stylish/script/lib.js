@@ -34,7 +34,7 @@ function callAPI(src, callback) {
 3. If has, update cart icon quantity
 */
 
-   // Set up cart local storage layout
+// Set up cart local storage layout
 let cartDetails = {
     "prime": "", 
     "order": {
@@ -54,15 +54,6 @@ let cartDetails = {
     }
 };
 
-// Check local storage for 'cart'
-if (localStorage.getItem("cart") === null ) {
-    localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
-    setCartQty(); // call setCartQty function
-} else {
-    localStorage.getItem("cart");
-    setCartQty(); // call setCartQty function
-};
-
 //Set up cart quantity update function
 function setCartQty() {
     if (localStorage.cart === "undefined" || localStorage.cart.list === undefined) {
@@ -75,3 +66,11 @@ function setCartQty() {
     };
 };
 
+// Check local storage for 'cart'
+if (localStorage.getItem("cart") === null ) {
+    localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
+    setCartQty(); // call setCartQty function
+} else {
+    localStorage.getItem("cart");
+    setCartQty(); // call setCartQty function
+};
