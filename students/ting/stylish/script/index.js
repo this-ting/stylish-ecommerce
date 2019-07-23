@@ -84,6 +84,7 @@ if ( window.location.search === '?tag=women') {
 const searchInput = document.getElementById('nav-search');
 
 function searchProduct(src, callback) {
+    const xhr = new XMLHttpRequest();
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
             console.log('Search Success!');
