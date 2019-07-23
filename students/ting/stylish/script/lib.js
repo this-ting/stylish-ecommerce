@@ -56,14 +56,9 @@ let cartDetails = {
 
 //Set up cart quantity update function
 function setCartQty() {
-    if (localStorage.cart === "undefined" || localStorage.cart.list === undefined) {
-        document.querySelector(".cart-mobile-qty").innerHTML = 0;
-        document.querySelector(".cart-icon-qty").innerHTML = 0;
-    } else {
-        let cartQty = JSON.parse(localStorage.getItem("cart")).order.list;
-        document.querySelector(".cart-mobile-qty").innerHTML = cartQty.length;
-        document.querySelector(".cart-icon-qty").innerHTML = cartQty.length;
-    };
+    let cartQty = JSON.parse(localStorage.getItem("cart")).order.list;
+    document.querySelector(".cart-mobile-qty").innerHTML = cartQty.length;
+    document.querySelector(".cart-icon-qty").innerHTML = cartQty.length;
 };
 
 // Check local storage for 'cart'
