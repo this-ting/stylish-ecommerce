@@ -75,7 +75,7 @@ function searchProduct(src, callback) {
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
             console.log('Search Success!');
-            const search = JSON.parse(xhr.responseText);
+            let search = JSON.parse(xhr.responseText);
             callback(search);
         } else {
             console.log('The request has failed');
@@ -174,7 +174,7 @@ window.addEventListener('scroll', infiniteScroll);
 function renderScroll(list) {
 
     const products = document.querySelector(".products");
-    const productData = list.data;
+    let productData = list.data;
     for (let i = 0; i < productData.length; i++) {
         // Individual product containter
         const product = document.createElement('a');
@@ -216,7 +216,7 @@ const marketingContainer = document.getElementById('marketing-container');
 
 function renderMarketing(list) {
     // set up for each function to create 3 marketing banners
-    const productData = list.data;
+    let productData = list.data;
    
     for (let i = 0; i < productData.length; i++) {
         // Marketing Background Image
