@@ -9,7 +9,15 @@ let haveNext; // for product paging
 let category = 'all';
 
 // Render homepage products on load
-callAPI(`${APIproducts}all`,render);
+if ( window.location.search === '?tag=women') {
+    callAPI(`${APIproducts}women`,render)
+} else if ( window.location.search === '?tag=men') {
+    callAPI(`${APIproducts}men`,render)
+} else if ( window.location.search === "?tag=accessories") {
+    callAPI(`${APIproducts}accessories`,render)
+} else {
+    callAPI(`${APIproducts}all`,render)
+}
 
 // Set up products render function
 const container = document.getElementById('main-content')
