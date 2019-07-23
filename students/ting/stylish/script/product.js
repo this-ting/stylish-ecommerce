@@ -257,21 +257,43 @@ function cart(list) {
             return currentList
 
         } else {
-            let newItem =  {
-                id: `${productData.id}`,
-                name: `${productData.title}`,
-                price: `${productData.price}`,
-                color: {
-                    name: "blue",
-                    code: `${selectColor}`
-                },
-                size: `${selectSize}`,
-                qty: `${number}`, 
-                main_image: `${productData.main_image}`
-                };
-            // array push to add item to array
-            currentList.push(newItem)
-            return currentList
+            // add if same color size, should overwrite 
+            for(let i = 0; i < currentList.length ; i++) {
+                if (selectSize === currentList[i].size && selectColor === currentList[i].color.code ) {
+                    let newItem =  {
+                        id: `${productData.id}`,
+                        name: `${productData.title}`,
+                        price: `${productData.price}`,
+                        color: {
+                            name: "blue",
+                            code: `${selectColor}`
+                        },
+                        size: `${selectSize}`,
+                        qty: `${number}`, 
+                        main_image: `${productData.main_image}`
+                        };
+                    return newItem
+                } else {
+                    let newItem =  {
+                        id: `${productData.id}`,
+                        name: `${productData.title}`,
+                        price: `${productData.price}`,
+                        color: {
+                            name: "blue",
+                            code: `${selectColor}`
+                        },
+                        size: `${selectSize}`,
+                        qty: `${number}`, 
+                        main_image: `${productData.main_image}`
+                        };
+                    // array push to add item to array 
+                    currentList.push(newItem)
+                    return currentList
+                }
+
+            }
+            
+        
         } 
     }
 
