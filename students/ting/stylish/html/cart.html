@@ -116,6 +116,10 @@
                                 手機號碼<br>
                                 <input type="text" name="cell"><br>
                             </div><!-- end of form-cell div-->
+                            <div class="form-address">
+                                    收件地址<br>
+                                    <input type="text" name="adress"><br>
+                                </div><!-- end of form-adress div-->
                         </div><!-- end of form-cx div-->
 
                         <div class="form-time">
@@ -138,10 +142,24 @@
 
                     <hr>
                     <div class="total">
-                        總金額 TWD. 12345 <br>
-                        運費 TWD. 60 <br>
-                        <hr>
-                        應付金額 TWD. 12345
+                        <div class="total-row"> 
+                            <div class="total-hd">總金額</div> 
+                            <div>TWD. 12345</div> 
+                        </div>
+                        <div class="total-row">
+                            <div class="total-hd">運費</div> 
+                            <div>TWD. 60</div>
+                        </div>
+
+                        <div class="total-row">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        
+                        <div class="total-row">
+                            <div class="total-hd">應付金額</div> 
+                            <div>TWD. 12345</div>
+                        </div>
                     </div> <!-- end of total div-->
                     <input class="submit-buy" type="submit" value="確認付款">
 
