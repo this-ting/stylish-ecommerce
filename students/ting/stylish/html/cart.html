@@ -68,28 +68,22 @@
                                 </select>
                             </div>
                         </div><!-- end of cart-product div-->
-                        
-                       
-                            
-                       
-                        
 
-
-
-                    </div> <!-- end of cart-products div-->
+                    </div> <!-- end of cart div-->
                    
                     
                     <div class="shipping">
-                        <div class=>
-                            配送國家 
+                        <div class="shipping-location">
+                            配送國家
                             <select name="location">
                                 <option value="台灣或離島">台灣或離島</option>
                             </select>
                         </div>
+                    
                         
-                        <div>
+                        <div class="shipping-payment">
                             付款方式
-                            <select name="location">
+                            <select name="payment">
                                 <option value="信用可付款">信用可付款</option>
                             </select>
                         </div>
@@ -103,40 +97,52 @@
                     </div> <!-- end of reminder div-->
             
 
-                    <div class="form"> <form>
-                        收件資料 <hr>
+                    <div class="form"> 
+                        <div class="cart-title">收件資料 <hr></div>
+                        <form>
+                        <div class="form-cx">
+                            <div class="form-name">
+                                收件人姓名<br>
+                                <input type="text" name="name"><br>
+                            </div><!-- end of form-name div-->
+                            
+                            <div class="form-email">
+                                Email<br>
+                                <input type="text" name="email"><br>
+                            </div><!-- end of form-email div-->
 
-                        收件人姓名<br>
-                        <input type="text" name="name"><br>
-                        Email<br>
-                        <input type="text" name="email"><br>
-                        手機號碼<br>
-                        <input type="text" name="cell"><br>
-                        <div class="time">
-                            配送時間指數
-                            <input type="radio">08:00 - 12:00
-                            <input type="radio">14:00 - 18:00
-                            <input type="radio">不指定
-                        </div>
+                            <div class="form-cell">
+                                手機號碼<br>
+                                <input type="text" name="cell"><br>
+                            </div><!-- end of form-cell div-->
+                        </div><!-- end of form-cx div-->
 
-                        付款資料 <hr>
-                        信用卡號碼<br>
-                        <input type="text" name="cc" placeholder="&#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183;" ><br>
-                        有效期限<br>
-                        <input type="text" name="expiry" placeholder="MM/YY" ><br>
-                        安全碼<br>
-                        <input type="text" name="ccv" placeholder="ccv" ><br>
+                        <div class="form-time">
+                            <div class="cart-title">配送時間指數</div>
+                            <div class="time"><input type="radio">08:00 - 12:00</div>
+                            <div class="time"><input type="radio">14:00 - 18:00</div>
+                            <div class="time"><input type="radio">不指定</div>
+                        </div><!-- end of form-time div-->
+
+                        <div class="form-payment">
+                            <div class="cart-title">付款資料 <hr> </div>
+                            信用卡號碼<br>
+                            <input type="text" name="cc" placeholder="&#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183;" ><br>
+                            有效期限<br>
+                            <input type="text" name="expiry" placeholder="MM/YY" ><br>
+                            安全碼<br>
+                            <input type="text" name="ccv" placeholder="ccv" ><br>
+                        </div><!-- end of form-payment div-->
                     </form> </div> <!-- end of form div-->
 
                     <hr>
-
-                        <div class="total">
-                            總金額 NT. 12345 <br>
-                            運費 NT. 60 <br>
-                            <hr>
-                            應付金額 NT. 12345
-                        </div> <!-- end of total div-->
-                        <input class="submit-buy" type="submit" value="確認付款">
+                    <div class="total">
+                        總金額 TWD. 12345 <br>
+                        運費 TWD. 60 <br>
+                        <hr>
+                        應付金額 TWD. 12345
+                    </div> <!-- end of total div-->
+                    <input class="submit-buy" type="submit" value="確認付款">
 
 
                 </div> <!-- end of cart-container div-->

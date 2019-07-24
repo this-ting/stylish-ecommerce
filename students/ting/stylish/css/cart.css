@@ -5,10 +5,12 @@
 .cart-container {
     /* for sticky header */
     padding-top: calc(36px + 1.4em + 1.2em + 25px); 
-    margin: 0 1em;
+    margin: 1em;
     font-family: "Noto Sans TC", "微軟正黑體", "新細明體", arial, sans-serif;
     color: #3f3a3a;
     box-sizing: border-box;
+    /* text-align: right; */
+    
 
     
 
@@ -23,14 +25,12 @@
 .cart{
     border: 1px solid #979797;
     padding:0.5em;
-    margin: 1em 0;
-
 }
 
-/* 購物車 title */
+/* cart titles */
 .cart-title {
     font-size: 1.1em;
-    font-weight: 540;
+    font-weight: 550;
     letter-spacing: 2px;
 }
 
@@ -40,6 +40,7 @@
     align-items: flex-start;
     flex-wrap: wrap;
     justify-content: space-around;
+    
 
 }
 
@@ -113,15 +114,13 @@
    Form
    ========================================================================== */
 
-
-
-
 .shipping {
     background-color: #e8e8e8;
     padding: 1em;
     display: flex;
     justify-content: space-evenly; 
     text-align: center;
+    margin: 1em 0;
 
 }
 
@@ -151,23 +150,29 @@
     width: 96%;
 }
 
+.form-time {
+    padding: 0.5em 0;
+}
+
+.time input {
+    width: auto;
+}
 
 
 
-
-
-
+/* total price calculation */
 .total {
-    width: 50%;
     text-align: right;
     padding: 1em 0;
 
-
-
-
-
 }
 
+.total hr {
+    width: 50%;
+    margin-right:0;
+}
+
+/* submit button */
 .submit-buy {
     background-color: black;
     color: white;
