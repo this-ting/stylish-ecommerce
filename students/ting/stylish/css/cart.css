@@ -68,25 +68,6 @@
     height: 45px;
 }
 
-/* product unit price */
-.cart-price::before {
-    content: "單價: ";
-    display: block;
-}
-.cart-price {
-    display: block;
-}
-
-/* product subtotal */
-.cart-subtotal::before {
-    content: "小計: ";
-    display: block;
-}
-.cart-subtotal {
-    display: block;
-}
-
-
 /* dropdown menu for qty */
 .cart-qty::before {
     display: block;
@@ -98,11 +79,35 @@
 }
 
 .cart-qty select{
-    padding: 4px;
+    padding: 3px;
     border-radius: 4px;
     border: 1px solid #979797;
     background-color: #f3f3f3;
+    text-align: center;
 }
+
+/* product unit price */
+.cart-price::before {
+    content: "單價: ";
+    display: block;
+    text-align: center;
+}
+.cart-price {
+    display: block;
+}
+
+/* product subtotal */
+.cart-subtotal::before {
+    content: "小計: ";
+    display: block;
+    text-align: center;
+}
+.cart-subtotal {
+    display: block;
+}
+
+
+
 
 
 
