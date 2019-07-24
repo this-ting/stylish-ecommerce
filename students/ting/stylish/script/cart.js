@@ -6,11 +6,14 @@ function renderCart() {
     const cart = JSON.parse(localStorage.cart).order.list;
     console.log('cart rendering');
 
+    // Render cart qty for title
+    const mobileTitle = document.querySelector(".cart-title");
+    const desktopTitle = document.querySelector(".cart-title-desktop-1");
+
+    mobileTitle.innerText = `購物車(${cart.length})`;
+    desktopTitle.innerText = `購物車(${cart.length})`;
+
     // Render all product information from cart
-    const mobileTitle = document.querySelector(".cart-title").innerHTML;
-    const desktopTitle = document.querySelector(".cart-title-desktop-1").innerHTML;
-    
-    // for loop to go through cart list items, to render product
     for (let i = 0; i < cart.length; i++) {
         const cartContainer = document.querySelector(".cart");
         
@@ -33,10 +36,10 @@ function renderCart() {
         // detail
         const detail = document.createElement('div');
         detail.setAttribute("class", "cart-details");
-        detail.innerHTML = `${cart[i].name}
-                            ${cart[i].id}
-                            顏色：${cart[i].color.name} 
-                            尺寸：${cart[i].size}`
+        detail.innerText =  cart[i].name + '\r\n' +  
+                            cart[i].id + '\r\n' + '\r\n' + 
+                            '顏色：'+ cart[i].color.name  + '\r\n' +  
+                            '尺寸：'+ cart[i].size
         variant.appendChild(detail);
 
         // remove icon
@@ -60,13 +63,13 @@ function renderCart() {
         // price
         const price = document.createElement('div');
         price.setAttribute("class", "cart-price");
-        price.innerHTML = `TWD. ${cart[i].price}`
+        price.innerText = `TWD. ${cart[i].price}`
         product.appendChild(price);
 
         // subtotal
         const subtotal = document.createElement('div');
         subtotal.setAttribute("class", "cart-subtotal");
-        subtotal.innerHTML = `TWD. ${cart[i].price*cart[i].qty}`
+        subtotal.innerText = `TWD. ${cart[i].price*cart[i].qty}`
         product.appendChild(subtotal);
 
 
