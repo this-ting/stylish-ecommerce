@@ -33,6 +33,10 @@
     letter-spacing: 2px;
 }
 
+.cart-title-desktop {
+    display: none
+}
+
 /* each individual product's container */
 .cart-product {
     display: flex;
@@ -232,7 +236,33 @@
     /* padding-top: 0; take out padding for sticky header */
     }
 
-    /* Cart => change order*/
+    /* Cart title */
+    .cart-title {
+        display: none
+    }
+    .cart-title-desktop {
+        display: flex;
+        font-size: 1.1em;
+        font-weight: 550;
+        letter-spacing: 2px;
+    }
+
+    .cart-title-desktop div{
+        text-align: center;
+    }
+
+    .cart-title-desktop-1 {
+        flex-grow: 2.5;
+    }
+
+    .cart-title-desktop-2,
+    .cart-title-desktop-3,
+    .cart-title-desktop-4,
+    .cart-title-desktop-5 {
+        flex-grow: 1;
+    }
+
+    /* Cart Product => change order*/
     .cart-product {
         align-items: center
     }
