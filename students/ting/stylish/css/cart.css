@@ -123,10 +123,11 @@
 .shipping {
     background-color: #e8e8e8;
     padding: 1em;
-    display: flex;
+    display: block;
     /* justify-content: space-evenly;  */
     text-align: left;
     margin: 1em 0;
+
 
 }
 
@@ -170,14 +171,12 @@
 /* total price calculation */
 .total {
     text-align: right;
+}
+.total-table {
+    text-align: right;
     padding: 1em 0;
     line-height: 250%;
-    display:table;
-    max-width: 250px;
-    width: 60%;
-    margin-left: 40%;
-
-
+    display: inline-block;
 }
 
 /* make prices font larger */
@@ -198,18 +197,13 @@
 
 .total-row div{
     display: table-cell;
+    padding-left: 1em;
 }
 
 .total-hd {
     text-align: left;
 }
 
-
-
-.total hr {
-    /* width: 50%; */
-    /* margin-right:0; */
-}
 
 /* submit button */
 .submit-buy {
@@ -220,7 +214,8 @@
     width: 100%;
     padding: 0.5em 0;
     letter-spacing: 4px;
-
+    display: block;
+    margin-left: auto;
 
 }
 
@@ -236,13 +231,24 @@
    ========================================================================== */
 @media only screen and (min-width: 701px) {
     .cart-container {
-        display: flex;
-        flex-wrap: wrap;
-        max-width: 1000px;
 
         /* padding-top: 0; take out padding for sticky header */
     }
 
+
+
+
+
+
+
+   /* submit button */
+.submit-buy {
+    max-width: 218px;
+
+}
+
+
+    
 }
 
 
@@ -250,8 +256,7 @@
     
 @media only screen and (min-width: 1001px) {
     .cart-container {
-        padding-top: 0; /* take out padding for sticky header */
-        
+        padding-top: 0; /* take out padding for sticky header */ 
     }
 
     .black-bar {
