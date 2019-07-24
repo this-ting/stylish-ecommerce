@@ -146,8 +146,6 @@
 .form {
     line-height: 200%;
     padding: 0.5em 0;
-   
-
 }
 
 .form input {
@@ -157,13 +155,10 @@
     width: 96%;
 }
 
-.form-time {
-    padding: 0.5em 0;
-    padding-bottom: 1em;
-}
-
+/* shipping time */
 .time input {
     width: auto;
+
 }
 
 
@@ -235,17 +230,44 @@
         /* padding-top: 0; take out padding for sticky header */
     }
 
+    /* set form input as single row */
+    .row {
+        margin:0.5em 0;
+    }
 
+    .row div {
+        display: inline-block; 
+        width: 200px;
+    }
 
+    .form input {
+        width: 200px;
+        display: inline-block;
+    }
 
+    /* shipping time change to one row */
+    .form-time,
+    .time {
+        display: inline-block;
+    }
 
+    .form-time {
+        width: 200px;
+    }
+
+    .time {
+        padding-right: 2em;
+    }
+
+    .time input{
+        width: auto;
+    }
 
 
    /* submit button */
-.submit-buy {
-    max-width: 218px;
-
-}
+    .submit-buy {
+        max-width: 218px;
+    }
 
 
     

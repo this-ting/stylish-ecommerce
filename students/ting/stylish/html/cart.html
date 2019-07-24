@@ -102,41 +102,54 @@
                         <div class="cart-title">收件資料 <hr></div>
                         <form>
                         <div class="form-cx">
-                            <div class="form-name">
-                                收件人姓名<br>
-                                <input type="text" name="name"><br>
-                            </div><!-- end of form-name div-->
-                            
-                            <div class="form-email">
-                                Email<br>
-                                <input type="text" name="email"><br>
-                            </div><!-- end of form-email div-->
 
-                            <div class="form-cell">
-                                手機號碼<br>
-                                <input type="text" name="cell"><br>
-                            </div><!-- end of form-cell div-->
-                            <div class="form-address">
-                                    收件地址<br>
-                                    <input type="text" name="adress"><br>
-                                </div><!-- end of form-adress div-->
+                            <div class="row">
+                                <div class="form-name"> 收件人姓名</div>
+                                <input type="text" name="name">
+                            </div><!-- end of row div-->
+                            
+                            <div class="row">
+                                <div class="form-email">Email</div>
+                                <input type="text" name="email">
+                            </div><!-- end of row div-->
+
+                            <div class="row">
+                                <div class="form-cell">手機號碼</div>
+                                <input type="text" name="cell">
+                            </div><!-- end of row div-->
+
+                            <div class="row">
+                                <div class="form-address">收件地址</div>
+                                <input type="text" name="adress">
+                            </div><!-- end of row div-->
+
+                            <div>
+                                <div class="form-time">配送時間指數</div>
+                                <div class="time"><input type="radio">08:00 - 12:00</div>
+                                <div class="time"><input type="radio">14:00 - 18:00</div>
+                                <div class="time"><input type="radio">不指定</div>
+                            </div><!-- end of form-time div-->
                         </div><!-- end of form-cx div-->
 
-                        <div class="form-time">
-                            <div class="cart-title">配送時間指數</div>
-                            <div class="time"><input type="radio">08:00 - 12:00</div>
-                            <div class="time"><input type="radio">14:00 - 18:00</div>
-                            <div class="time"><input type="radio">不指定</div>
-                        </div><!-- end of form-time div-->
+                        
 
                         <div class="form-payment">
                             <div class="cart-title">付款資料 <hr> </div>
-                            信用卡號碼<br>
-                            <input type="text" name="cc" placeholder="&#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183;" ><br>
-                            有效期限<br>
-                            <input type="text" name="expiry" placeholder="MM/YY" ><br>
-                            安全碼<br>
-                            <input type="text" name="ccv" placeholder="ccv" ><br>
+                            <div class="row">
+                                <div>信用卡號碼</div>
+                                <input type="text" name="cc" placeholder="&#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183; &#183;&#183;&#183;&#183;" >
+                            </div><!-- end of row div-->
+
+                            <div class="row">
+                                <div>有效期限</div>
+                                <input type="text" name="expiry" placeholder="MM/YY" >
+                            </div><!-- end of row div-->
+
+                            <div class="row">
+                                <div>安全碼</div>
+                                <input type="text" name="ccv" placeholder="ccv" >
+                            </div><!-- end of row div-->
+
                         </div><!-- end of form-payment div-->
                     </form> </div> <!-- end of form div-->
 
