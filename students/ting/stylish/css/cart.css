@@ -107,9 +107,35 @@
     display: block;
 }
 
+/* ==========================================================================
+   Shipping Selector & Reminder
+   ========================================================================== */
+/* shipping location selectors */
+.shipping {
+    background-color: #e8e8e8;
+    padding: 1em;
+    display: flex;
+    text-align: left;
+    margin: 1em 0;
 
+}
 
+.shipping div {
+    max-width: 130px;
+    display: inline-block;
+    margin: 0 auto;
+    justify-content: flex-start;
+}
 
+.shipping select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #979797;
+}
+
+.reminder {
+    padding: 0.5em 0;
+}
 
 
 
@@ -119,30 +145,6 @@
 /* ==========================================================================
    Form
    ========================================================================== */
-
-.shipping {
-    background-color: #e8e8e8;
-    padding: 1em;
-    display: block;
-    /* justify-content: space-evenly;  */
-    text-align: left;
-    margin: 1em 0;
-
-
-}
-
-
-.shipping select {
-    padding: 5px;
-    border-radius: 4px;
-    border: 1px solid #979797;
-
-}
-
-.reminder {
-    padding: 0.5em 0;
-}
-
 .form {
     line-height: 200%;
     padding: 0.5em 0;
@@ -227,7 +229,68 @@
 @media only screen and (min-width: 701px) {
     .cart-container {
 
-        /* padding-top: 0; take out padding for sticky header */
+    /* padding-top: 0; take out padding for sticky header */
+    }
+
+    /* Cart => change order*/
+    .cart-product {
+        align-items: center
+    }
+    .cart-img{
+        width: 100px;
+        order: 1;
+    }
+
+    .cart-details {
+        order: 2;
+    }
+
+    .cart-qty {
+        order:3;
+    }
+    
+    .cart-price {
+        order:4;
+    }
+
+    .cart-subtotal {
+        order: 5;
+    }
+
+    .cart-remove {
+        order:6;
+    }
+
+    /* Cart remove ::before content */
+    .cart-qty::before {
+        content: "";
+    }
+    .cart-price::before {
+        content: "";
+    }
+    .cart-subtotal::before {
+        content: "";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* setting shipping selector as one line */
+    .shipping div {
+        max-width: 200px;
+        display: inline-block;
+        margin: 0 auto;
     }
 
     /* set form input as single row */
