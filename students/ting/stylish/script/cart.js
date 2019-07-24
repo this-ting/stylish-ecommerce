@@ -10,21 +10,6 @@ function renderCart() {
     const mobileTitle = document.querySelector(".cart-title").innerHTML;
     const desktopTitle = document.querySelector(".cart-title-desktop-1").innerHTML;
     
-
-    // const product = document.createElement(".cart-product");
-    // const img = document.querySelector(".cart-img").src;
-    // const details = document.querySelector(".cart-details").innerHTML;
-    // const qty = document.querySelector(".cart-qty select");
-    // const price = document.querySelector(".cart-price").innerHTML;
-    // const subtotal = document.querySelector(".cart-subtotal").innerHTML;
-    
-    
-    const details = document.createElement('div');
-    const qty = document.createElement('select');
-    const price = document.querySelector(".cart-price").innerHTML;
-    const subtotal = document.querySelector(".cart-subtotal").innerHTML;
-
-
     // for loop to go through cart list items, to render product
     for (let i = 0; i < cart.length; i++) {
         const cartContainer = document.querySelector(".cart");
@@ -54,12 +39,35 @@ function renderCart() {
                             尺寸：${cart[i].size}`
         variant.appendChild(detail);
 
+        // remove icon
+        const remove = document.createElement('img');
+        remove.setAttribute("class", "cart-remove");
+        remove.src = "../images/cart-remove.png"
+        product.appendChild(remove);
+
         // qty
+        const cartQty = document.createElement('div');
+        cartQty.setAttribute("class", "cart-qty");
+        product.appendChild(cartQty);
+
+        const qtySelect = document.createElement('select');
+        cartQty.setAttribute("class", "qty");
+        cartQty.appendChild(qtySelect);
+
+        // NEED TO MAKE FOR LOOK FOR MAX QTY OPTION !!!!!
+        const qtyOption = document.createElement('option');
 
         // price
-
+        const price = document.createElement('div');
+        price.setAttribute("class", "cart-price");
+        price.innerHTML = `TWD. ${cart[i].price}`
+        product.appendChild(price);
 
         // subtotal
+        const subtotal = document.createElement('div');
+        subtotal.setAttribute("class", "cart-subtotal");
+        subtotal.innerHTML = `TWD. ${cart[i].price*cart[i].qty}`
+        product.appendChild(subtotal);
 
 
 
