@@ -9,10 +9,8 @@
     font-family: "Noto Sans TC", "微軟正黑體", "新細明體", arial, sans-serif;
     color: #3f3a3a;
     box-sizing: border-box;
-    /* text-align: right; */
     max-width: 980px;
     width: 90%;
-    
 }
 
 /* ==========================================================================
@@ -23,7 +21,6 @@
 .cart{
     border: 1px solid #979797;
     padding:0.5em;
-    
 }
 
 /* cart titles */
@@ -44,8 +41,6 @@
     flex-wrap: wrap;
     justify-content: space-around;
     padding-bottom: 1em;
-    
-
 }
 
 .cart-product div {
@@ -74,7 +69,6 @@
     height: 45px;
 }
 
-
 /* dropdown menu for qty */
 .cart-qty::before {
     display: block;
@@ -99,6 +93,7 @@
     display: block;
     text-align: center;
 }
+
 .cart-price {
     display: block;
 }
@@ -123,7 +118,6 @@
     display: flex;
     text-align: left;
     margin: 1em 0;
-
 }
 
 .shipping div {
@@ -143,11 +137,6 @@
     padding: 0.5em 0;
 }
 
-
-
-
-
-
 /* ==========================================================================
    Form
    ========================================================================== */
@@ -166,10 +155,7 @@
 /* shipping time */
 .time input {
     width: auto;
-
 }
-
-
 
 /* total price calculation */
 .total {
@@ -207,7 +193,6 @@
     text-align: left;
 }
 
-
 /* submit button */
 .submit-buy {
     background-color: black;
@@ -219,15 +204,7 @@
     letter-spacing: 4px;
     display: block;
     margin-left: auto;
-
 }
-
-
-
-
-
-
-
 
 /* ==========================================================================
    Media Queries
@@ -237,15 +214,9 @@
     .cart-variant {
         width: 85%;
     }
-
 }
 
 @media only screen and (min-width: 701px) {
-    .cart-container {
-
-    /* padding-top: 0; take out padding for sticky header */
-    }
-
     /* Cart title */
     .cart-title {
         display: none
@@ -316,20 +287,6 @@
         content: "";
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /* setting shipping selector as one line */
     .shipping div {
         max-width: 200px;
@@ -370,19 +327,15 @@
         width: auto;
     }
 
-
    /* submit button */
     .submit-buy {
         max-width: 218px;
     }
 
-
     
 }
 
 
-
-    
 @media only screen and (min-width: 1001px) {
     .cart-container {
         padding-top: 0; /* take out padding for sticky header */ 
