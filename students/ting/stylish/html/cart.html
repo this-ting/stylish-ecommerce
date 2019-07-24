@@ -45,21 +45,42 @@
             <main>
                 <div class="black-bar"></div>
                 <div class="cart-container">
-                    <!-- <div>
-                        <img>
-                        數量
-                        經典西裝
-                        12345678
-                        顏色：
-                        尺寸：
-                        單價
-                        小計
+                    <div class="cart">
+                        <div class="cart-title">購物車 (3)</div>
+                        <hr>
+                        <div class="cart-product">
+                            <img class="cart-img"src="https://api.appworks-school.tw/assets/201807242211/main.jpg">
+                            <div class="cart-details">
+                                純色輕薄百搭襯衫<br>
+                                201807242211<br><br>
+                                顏色：白色<br>
+                                尺寸：M
+                            </div> <!-- end of cart-details div-->
+                            <img class="cart-remove" src="../images/cart-remove.png">
+                            <div class="cart-price">TWD. 299</div>
+                            <div class="cart-subtotal">TWD. 299</div>
+                            <div class="cart-qty">
+                                <select name="qty">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                        </div><!-- end of cart-product div-->
+                        
+                       
+                            
+                       
+                        
 
 
-                    </div> -->
+
+                    </div> <!-- end of cart-products div-->
+                   
                     
                     <div class="shipping">
-                        <div class="cart-products">
+                        <div class=>
                             配送國家 
                             <select name="location">
                                 <option value="台灣或離島">台灣或離島</option>
@@ -91,10 +112,12 @@
                         <input type="text" name="email"><br>
                         手機號碼<br>
                         <input type="text" name="cell"><br>
-                        配送時間指數<br>
-                        <input type="radio">08:00 - 12:00<br>
-                        <input type="radio">14:00 - 18:00<br>
-                        <input type="radio">不指定<br>
+                        <div class="time">
+                            配送時間指數
+                            <input type="radio">08:00 - 12:00
+                            <input type="radio">14:00 - 18:00
+                            <input type="radio">不指定
+                        </div>
 
                         付款資料 <hr>
                         信用卡號碼<br>
@@ -106,15 +129,15 @@
                     </form> </div> <!-- end of form div-->
 
                     <hr>
-                    <div class="costs">
-                        <div class="costs">
+
+                        <div class="total">
                             總金額 NT. 12345 <br>
                             運費 NT. 60 <br>
                             <hr>
                             應付金額 NT. 12345
-                        </div>
-                        <input type="submit" value="確認付款">
-                    </div> <!-- end of costs div-->
+                        </div> <!-- end of total div-->
+                        <input class="submit-buy" type="submit" value="確認付款">
+
 
                 </div> <!-- end of cart-container div-->
             </main> <!-- end of cart main -->
