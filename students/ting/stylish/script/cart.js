@@ -8,7 +8,7 @@
 
 */
 
-// set up function to 
+// set up function to remove product from 'cart' local storage
 function removeProduct(e) {
     e.target.parentElement.remove();
     let index = e.target.getAttribute("index");
@@ -32,22 +32,21 @@ function removeProduct(e) {
             "time": "", 
             },
             "list": currentList
-        }
-    }
+        };
+    };
 
     localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
     setCartQty(); // updates cart qty icon #
     resetIndex(); // resets remove icon index
-
 }
 
 // set up function to reset index of remove-icon
 function resetIndex() {
     const bin = document.querySelectorAll(".cart-remove")
     for (let i = 0; i <bin.length; i++) {
-        bin[i].setAttribute("index", i)
-    }
-}
+        bin[i].setAttribute("index", i);
+    };
+};
 
 
 function renderCart() {
@@ -95,7 +94,7 @@ function renderCart() {
         removeIcon.setAttribute("class", "cart-remove");
         removeIcon.src = "../images/cart-remove.png";
         removeIcon.setAttribute("index", i);
-        removeIcon.addEventListener('click', removeProduct) 
+        removeIcon.addEventListener('click', removeProduct);
         product.appendChild(removeIcon);
 
         // qty
