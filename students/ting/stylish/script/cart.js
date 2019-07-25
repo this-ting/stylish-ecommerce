@@ -49,13 +49,15 @@ function renderCart() {
         variant.appendChild(detail);
 
         // remove icon
-        const remove = document.createElement('img');
-        remove.setAttribute("class", "cart-remove");
-        remove.src = "../images/cart-remove.png";
-        remove.addEventListener('click', function() {
-            console.log(`remove me!! ${cart[i].qty}`);
+        const removeIcon = document.createElement('img');
+        removeIcon.setAttribute("class", "cart-remove");
+        removeIcon.src = "../images/cart-remove.png";
+        removeIcon.addEventListener('click', function() {
+            console.log('item removed');
+            removeIcon.parentElement.remove();
+
         })
-        product.appendChild(remove);
+        product.appendChild(removeIcon);
 
 
         // qty
@@ -120,3 +122,8 @@ function renderCart() {
 };
 
 renderCart();
+
+// function removeItem() {
+//     console.log('item removed')
+
+// }
