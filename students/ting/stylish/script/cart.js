@@ -30,7 +30,7 @@ function renderCart() {
         // image
         const img = document.createElement('img');
         img.setAttribute("class", "cart-img");
-        img.src = cart[i].main_image
+        img.src = cart[i].main_image;
         variant.appendChild(img);
 
         // detail
@@ -39,13 +39,13 @@ function renderCart() {
         detail.innerText =  cart[i].name + '\r\n' +  
                             cart[i].id + '\r\n' + '\r\n' + 
                             '顏色：'+ cart[i].color.name  + '\r\n' +  
-                            '尺寸：'+ cart[i].size
+                            '尺寸：'+ cart[i].size;
         variant.appendChild(detail);
 
         // remove icon
         const remove = document.createElement('img');
         remove.setAttribute("class", "cart-remove");
-        remove.src = "../images/cart-remove.png"
+        remove.src = "../images/cart-remove.png";
         product.appendChild(remove);
 
         // qty
@@ -54,26 +54,30 @@ function renderCart() {
         product.appendChild(cartQty);
 
         const qtySelect = document.createElement('select');
-        cartQty.setAttribute("class", "qty");
+        qtySelect.setAttribute("name", "qty");
         cartQty.appendChild(qtySelect);
 
-        // NEED TO MAKE FOR LOOK FOR MAX QTY OPTION !!!!!
-        const qtyOption = document.createElement('option');
+        let stockMax = cart[i].stock
+        for (let a = 1; a <= stockMax; a++) {
+            let qtyOption = document.createElement('option');
+            qtyOption.innerText = a
+            qtyOption.setAttribute("value", a)
+            qtySelect.appendChild(qtyOption)
+        }
+
+
 
         // price
         const price = document.createElement('div');
         price.setAttribute("class", "cart-price");
-        price.innerText = `TWD. ${cart[i].price}`
+        price.innerText = `TWD. ${cart[i].price}`;
         product.appendChild(price);
 
         // subtotal
         const subtotal = document.createElement('div');
         subtotal.setAttribute("class", "cart-subtotal");
-        subtotal.innerText = `TWD. ${cart[i].price*cart[i].qty}`
+        subtotal.innerText = `TWD. ${cart[i].price*cart[i].qty}`;
         product.appendChild(subtotal);
-
-
-
 
     }
 
