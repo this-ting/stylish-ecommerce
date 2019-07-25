@@ -90,7 +90,7 @@ function renderProduct(list) {
 
 3. Plus Click Event Handler => 
     if size && color selected =>
-    can add number until stock max number (checkStock())
+    can add number until stock max number (getStock())
 4. Minus Click Event Handler => 
     can't go lower than 1
 */
@@ -229,8 +229,23 @@ function cart(list) {
         const number = parseInt(document.querySelector(".qty-no").innerText);
         const id = document.querySelector(".id").innerHTML;
         
+        // Set up function to get stock number
+        const stockData = list.data.variants; 
+        function getStock() {
+            for (let c = 0; c < stockData.length; c++) {
+                let selectColor = document.querySelector(".selectColor").getAttribute("hex");
+                let selectSize = document.querySelector(".selectSize").innerHTML;
+                if (selectColor === stockData[c].color_code && selectSize === stockData[c].size) {
+                    return stockData[c].stock;
+                };
+            };
+        };
+
+
+
         // if no exisiting products in cart => create new array
         if (currentList.length === 0 || currentList ===  undefined){
+            let stock = getStock();
             let currentList = [
                 {
                 id: productData.id,
@@ -242,7 +257,8 @@ function cart(list) {
                 },
                 size: `${selectSize}`,
                 qty: number, 
-                main_image: `${productData.main_image}`
+                main_image: `${productData.main_image}`,
+                stock: stock
                 }
             ];
             return currentList;
@@ -257,6 +273,7 @@ function cart(list) {
                 };
             };
             // once done checking for duplicates, will log new
+            let stock = getStock();
             let newItem =  {
                 id: productData.id,
                 name: `${productData.title}`,
@@ -267,7 +284,8 @@ function cart(list) {
                 },
                 size: `${selectSize}`,
                 qty: number, 
-                main_image: `${productData.main_image}`
+                main_image: `${productData.main_image}`,
+                stock: stock
                 };
             // array push to add item to array 
             currentList.push(newItem);
