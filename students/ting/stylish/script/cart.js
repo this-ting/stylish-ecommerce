@@ -5,6 +5,12 @@
 1. renderCart() =>
     loop through 'cart' in local storage to render HTML &
     cartCalculate() => calculate total of all 'cart' products
+2. removeProduct() => event handler for remove icon
+    use index number from bin to delete out 'cart' list array in local storage 
+3. resetIndex() => 
+    resets cart title qty, total and product subtotal & bin index
+4. updateQty() => event handler for qty selector
+    change new selected qty & update to 'cart' list array in local storage
 */
 
 /* ==========================================================================
@@ -172,11 +178,11 @@ function renderCart() {
 
     // set up function to calculate subtotal 
     function cartCalculate() {
-        let subtotal = 0
+        let subtotal = 0;
         for (let i = 0; i < cart.length; i++) {
-            subtotal += cart[i].price*cart[i].qty
+            subtotal += cart[i].price*cart[i].qty;
         };
-        return subtotal
+        return subtotal;
     };
 
     let calculateSubtotal = cartCalculate()
@@ -205,7 +211,7 @@ function renderCart() {
         // get new selected qty
         for (let i = 0; i < qty.length; i++) {
             if (qty[i].selected === true) {
-                newQty = qty[i].innerHTML
+                newQty = qty[i].innerHTML;
             }; 
         };
 
@@ -235,9 +241,7 @@ function renderCart() {
         // push to local storage 'cart'
         localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
         resetIndex(index); // resets index, qty count & total 
-
-
-    }
+    };
 
 renderCart();
 
