@@ -5,10 +5,11 @@
 1. renderCart() =>
     loop through 'cart' in local storage to render HTML &
     cartCalculate() => calculate total of all 'cart' products
-
 */
 
-// set up function to remove product from 'cart' local storage
+/* ==========================================================================
+   Remove Product from 'cart' local storage
+   ========================================================================== */
 function removeProduct(e) {
     e.target.parentElement.remove();
     let index = e.target.getAttribute("index");
@@ -41,36 +42,45 @@ function removeProduct(e) {
 }
 
 // set up function to reset index of remove-icon
-function resetIndex() {
+function resetIndex(index) {
+    // update remove icon index
     const bin = document.querySelectorAll(".cart-remove")
 
-    const mobileTitle = document.querySelector(".cart-title");
-    const desktopTitle = document.querySelector(".cart-title-desktop-1");
-    // update remove icon index
     for (let i = 0; i < bin.length; i++) {
         bin[i].setAttribute("index", i);
     };
 
     // update cart title qty
+    const mobileTitle = document.querySelector(".cart-title");
+    const desktopTitle = document.querySelector(".cart-title-desktop-1");
+
     mobileTitle.innerText = `購物車(${bin.length})`;
     desktopTitle.innerText = `購物車(${bin.length})`;
 
-    // update subtotal price
+    // update product subtotal price
     let items = JSON.parse(localStorage.cart).order.list;
-    let subtotal = 0;
+    let newQty = parseInt(items[index].qty);
+    let price = items[index].price;
+    let productSubtotal = newQty * price;
+    let subtotal = document.querySelectorAll(".cart-subtotal")
+    subtotal[index].innerText = `TWD. ${productSubtotal}`;
+
+    // update total subtotal price
+    let totalSubtotal = 0;
     for (let i = 0; i <items.length; i++) {
-        subtotal += items[i].qty * items[i].price; 
+        totalSubtotal += items[i].qty * items[i].price; 
     }
 
     const cartSubtotal = document.querySelector(".total-subtotal");
-    cartSubtotal.innerText = subtotal;
+    cartSubtotal.innerText = totalSubtotal;
 
     const cartTotal = document.querySelector(".total-total");
-    cartTotal.innerText = `${subtotal + 60}`;
+    cartTotal.innerText = `${totalSubtotal + 60}`;
 };
 
-// set up function to render items from 'cart' local storage
-
+/* ==========================================================================
+   Cart => function to render items from 'cart' local storage
+   ========================================================================== */
 function renderCart() {
     const cart = JSON.parse(localStorage.cart).order.list;
     console.log('cart rendering');
@@ -127,6 +137,8 @@ function renderCart() {
         const qtySelect = document.createElement('select');
         qtySelect.setAttribute("name", "qty");
         qtySelect.setAttribute("class", "qty");
+        qtySelect.setAttribute("index", i);
+        qtySelect.addEventListener('change', updateQty);
         cartQty.appendChild(qtySelect);
 
         // set up drop downlist with max stock
@@ -179,6 +191,53 @@ function renderCart() {
     
     
 };
+
+/* ==========================================================================
+   Update Quantity
+   ========================================================================== */
+
+    function updateQty(e) {
+        const currentList = JSON.parse(localStorage.getItem("cart")).order.list;
+        let qty = e.target.childNodes;
+        let index = e.target.getAttribute("index");
+        let newQty;
+        
+        // get new selected qty
+        for (let i = 0; i < qty.length; i++) {
+            if (qty[i].selected === true) {
+                newQty = qty[i].innerHTML
+            }; 
+        };
+
+        // let newQty equal to currentList qty
+        for (let a = 0; a < currentList.length ; a++) {
+            currentList[a].qty = newQty;
+        }
+
+        let cartDetails = {
+            "prime": "", 
+            "order": {
+                "shipping": "delivery",
+                "payment": "credit_card",
+                "subtotal": "", 
+                "freight": "", 
+                "total": "",
+                "recipient": {
+                "name": "", 
+                "phone": "", 
+                "email": "",
+                "address": "", 
+                "time": "", 
+                },
+                "list": currentList
+            }
+        };
+        // push to local storage 'cart'
+        localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
+        resetIndex(index); // resets index, qty count & total 
+
+
+    }
 
 renderCart();
 
