@@ -8,6 +8,48 @@
 
 */
 
+// set up function to 
+function removeProduct(e) {
+    e.target.parentElement.remove();
+    let index = e.target.getAttribute("index");
+
+    const currentList = JSON.parse(localStorage.getItem("cart")).order.list;
+    currentList.splice(index, 1);
+    
+    let cartDetails = {
+        "prime": "", 
+        "order": {
+            "shipping": "delivery",
+            "payment": "credit_card",
+            "subtotal": "", 
+            "freight": "", 
+            "total": "",
+            "recipient": {
+            "name": "", 
+            "phone": "", 
+            "email": "",
+            "address": "", 
+            "time": "", 
+            },
+            "list": currentList
+        }
+    }
+
+    localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
+    setCartQty(); // updates cart qty icon #
+    resetIndex(); // resets remove icon index
+
+}
+
+// set up function to reset index of remove-icon
+function resetIndex() {
+    const bin = document.querySelectorAll(".cart-remove")
+    for (let i = 0; i <bin.length; i++) {
+        bin[i].setAttribute("index", i)
+    }
+}
+
+
 function renderCart() {
     const cart = JSON.parse(localStorage.cart).order.list;
     console.log('cart rendering');
@@ -52,13 +94,9 @@ function renderCart() {
         const removeIcon = document.createElement('img');
         removeIcon.setAttribute("class", "cart-remove");
         removeIcon.src = "../images/cart-remove.png";
-        removeIcon.addEventListener('click', function() {
-            console.log('item removed');
-            removeIcon.parentElement.remove();
-
-        })
+        removeIcon.setAttribute("index", i);
+        removeIcon.addEventListener('click', removeProduct) 
         product.appendChild(removeIcon);
-
 
         // qty
         const cartQty = document.createElement('div');
@@ -123,7 +161,3 @@ function renderCart() {
 
 renderCart();
 
-// function removeItem() {
-//     console.log('item removed')
-
-// }
