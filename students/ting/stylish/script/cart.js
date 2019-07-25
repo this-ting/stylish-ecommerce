@@ -32,22 +32,44 @@ function removeProduct(e) {
             "time": "", 
             },
             "list": currentList
-        };
+        }
     };
 
     localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
     setCartQty(); // updates cart qty icon #
-    resetIndex(); // resets remove icon index
+    resetIndex(); // resets index, qty count & total 
 }
 
 // set up function to reset index of remove-icon
 function resetIndex() {
     const bin = document.querySelectorAll(".cart-remove")
-    for (let i = 0; i <bin.length; i++) {
+
+    const mobileTitle = document.querySelector(".cart-title");
+    const desktopTitle = document.querySelector(".cart-title-desktop-1");
+    // update remove icon index
+    for (let i = 0; i < bin.length; i++) {
         bin[i].setAttribute("index", i);
     };
+
+    // update cart title qty
+    mobileTitle.innerText = `購物車(${bin.length})`;
+    desktopTitle.innerText = `購物車(${bin.length})`;
+
+    // update subtotal price
+    let items = JSON.parse(localStorage.cart).order.list;
+    let subtotal = 0;
+    for (let i = 0; i <items.length; i++) {
+        subtotal += items[i].qty * items[i].price; 
+    }
+
+    const cartSubtotal = document.querySelector(".total-subtotal");
+    cartSubtotal.innerText = subtotal;
+
+    const cartTotal = document.querySelector(".total-total");
+    cartTotal.innerText = `${subtotal + 60}`;
 };
 
+// set up function to render items from 'cart' local storage
 
 function renderCart() {
     const cart = JSON.parse(localStorage.cart).order.list;
