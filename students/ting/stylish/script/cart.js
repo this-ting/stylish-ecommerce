@@ -52,7 +52,11 @@ function renderCart() {
         const remove = document.createElement('img');
         remove.setAttribute("class", "cart-remove");
         remove.src = "../images/cart-remove.png";
+        remove.addEventListener('click', function() {
+            console.log(`remove me!! ${cart[i].qty}`);
+        })
         product.appendChild(remove);
+
 
         // qty
         const cartQty = document.createElement('div');
@@ -61,15 +65,22 @@ function renderCart() {
 
         const qtySelect = document.createElement('select');
         qtySelect.setAttribute("name", "qty");
+        qtySelect.setAttribute("class", "qty");
         cartQty.appendChild(qtySelect);
 
-        let stockMax = cart[i].stock
-        for (let a = 1; a <= stockMax; a++) {
+        // set up drop downlist with max stock
+        let maxStock = cart[i].stock;
+        for (let a = 1; a <= maxStock; a++) {
             let qtyOption = document.createElement('option');
             qtyOption.innerText = a;
             qtyOption.setAttribute("value", a);
             qtySelect.appendChild(qtyOption);
-        }
+
+            // set up selected qty as the selector default
+            if (parseInt(qtyOption.innerText) == cart[i].qty) {
+                qtyOption.selected = "selected";
+            };
+        };
 
         // price
         const price = document.createElement('div');
