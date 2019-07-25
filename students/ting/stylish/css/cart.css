@@ -193,6 +193,22 @@
     text-align: left;
 }
 
+/* add currency unit to total calculation */
+.total-subtotal::before {
+    content: "TWD.";
+    padding-right: 1em;
+}
+
+.total-shipping::before {
+    content: "TWD.";
+    padding-right: 1em;
+}
+
+.total-total::before {
+    content: "TWD.";
+    padding-right: 1em;
+}
+
 /* submit button */
 .submit-buy {
     background-color: black;

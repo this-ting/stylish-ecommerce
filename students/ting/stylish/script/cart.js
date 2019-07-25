@@ -1,6 +1,12 @@
 /* ==========================================================================
    Cart
    ========================================================================== */
+/*
+1. renderCart() =>
+    loop through 'cart' in local storage to render HTML &
+    cartCalculate() => calculate total of all 'cart' products
+
+*/
 
 function renderCart() {
     const cart = JSON.parse(localStorage.cart).order.list;
@@ -77,8 +83,29 @@ function renderCart() {
         subtotal.innerText = `TWD. ${cart[i].price*cart[i].qty}`;
         product.appendChild(subtotal);
 
+
     };
 
+    // set up function to calculate subtotal 
+    function cartCalculate() {
+        let subtotal = 0
+        for (let i = 0; i < cart.length; i++) {
+            subtotal += cart[i].price*cart[i].qty
+        };
+        return subtotal
+    };
+
+    let calculateSubtotal = cartCalculate()
+    const cartSubtotal = document.querySelector(".total-subtotal");
+    cartSubtotal.innerText = calculateSubtotal;
+
+    const cartShipping = document.querySelector(".total-shipping");
+    cartShipping.innerText = 60;
+
+    const cartTotal = document.querySelector(".total-total");
+    cartTotal.innerText = `${calculateSubtotal + 60}`;
+    
+    
 };
 
 renderCart();
