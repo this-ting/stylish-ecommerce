@@ -60,12 +60,10 @@ function renderCart() {
         let stockMax = cart[i].stock
         for (let a = 1; a <= stockMax; a++) {
             let qtyOption = document.createElement('option');
-            qtyOption.innerText = a
-            qtyOption.setAttribute("value", a)
-            qtySelect.appendChild(qtyOption)
+            qtyOption.innerText = a;
+            qtyOption.setAttribute("value", a);
+            qtySelect.appendChild(qtyOption);
         }
-
-
 
         // price
         const price = document.createElement('div');
@@ -79,17 +77,8 @@ function renderCart() {
         subtotal.innerText = `TWD. ${cart[i].price*cart[i].qty}`;
         product.appendChild(subtotal);
 
-    }
+    };
 
-
-
-
-
-
-
-
-
-
-}
+};
 
 renderCart();
