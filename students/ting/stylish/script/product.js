@@ -259,17 +259,14 @@ function cart(list) {
                 stock: stock
                 }
             ];
-            console.log('this is the first product');
             return currentList;
         } else {
             // check for duplicates, will overwrite if do
-            console.log(currentList, selectSize, selectColor, id);
             for(let i = 0; i < currentList.length ; i++) {
                 if (selectSize === currentList[i].size && 
                     selectColor === currentList[i].color.code &&
                     id == currentList[i].id ) {
                     currentList[i].qty = number;
-                    console.log('this is a repeat');
                     return currentList;
                 };
             };
@@ -290,7 +287,6 @@ function cart(list) {
                 };
             // array push to add item to array 
             currentList.push(newItem);
-            console.log('this is not a repeat');
             return currentList;
         }; 
     };
