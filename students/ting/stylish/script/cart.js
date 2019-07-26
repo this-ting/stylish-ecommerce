@@ -252,6 +252,16 @@ function renderCart() {
 /* ==========================================================================
    TapPay 
    ========================================================================== */
+/* 
+1. Set up Tap Pay =>
+    TPDirect.setupSDK &&
+    TPDirect.card.setup (For more info, read TapPay Documentation)
+2. Set up event listener for cart submit button =>
+    get prime from Tap Pay &&
+    filled out info is saved to local storage &&
+    ensure all inputs are filled out to submit form
+*/
+
 // Set up of TapPay SDK
 TPDirect.setupSDK(12348, 'app_pa1pQcKoY22IlnSXq5m5WP5jFKzoRG58VEXpT7wU62ud7mMbDOGzCYIlzzLF', 'sandbox');
 
@@ -271,7 +281,7 @@ let fields = {
         element: document.getElementById('card-ccv'),
         placeholder: 'ccv'
     }
-}
+};
 
 TPDirect.card.setup({
     fields: fields,
@@ -338,7 +348,6 @@ cartSubmit.addEventListener('click', function(e) {
                     // console.log('get prime success, prime: ' + result.card.prime);
                 });
 
-
     // throw in customer data into local storage
     const currentList = JSON.parse(localStorage.getItem("cart")).order.list;
     const subtotal = document.querySelector(".total-subtotal").innerText;
@@ -396,7 +405,6 @@ cartSubmit.addEventListener('click', function(e) {
         console.log(cartDetails)
         localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
     };
-
 
 });
 
