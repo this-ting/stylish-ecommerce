@@ -51,9 +51,11 @@ function removeProduct(e) {
 function resetIndex(index) {
     // update remove icon index
     const bin = document.querySelectorAll(".cart-remove")
+    const qty = document.querySelectorAll(".qty");
 
     for (let i = 0; i < bin.length; i++) {
         bin[i].setAttribute("index", i);
+        qty[i].setAttribute("index", i);
     };
 
     // update cart title qty
@@ -62,17 +64,22 @@ function resetIndex(index) {
 
     mobileTitle.innerText = `購物車(${bin.length})`;
     desktopTitle.innerText = `購物車(${bin.length})`;
-
+     
     // update product subtotal price
     let items = JSON.parse(localStorage.cart).order.list;
-    let newQty = parseInt(items[index].qty);
-    let price = items[index].price;
-    let productSubtotal = newQty * price;
-    let subtotal = document.querySelectorAll(".cart-subtotal")
-    subtotal[index].innerText = `TWD. ${productSubtotal}`;
-
-    // update total subtotal price
     let totalSubtotal = 0;
+
+    // index is only defined/present when change selector
+    if (index !== undefined) {
+        let newQty = parseInt(items[index].qty);
+        let price = items[index].price;
+        let productSubtotal = newQty * price;
+        let subtotal = document.querySelectorAll(".cart-subtotal")
+
+        subtotal[index].innerText = `TWD. ${productSubtotal}`;
+    } 
+
+    // update total subtotal price    
     for (let i = 0; i <items.length; i++) {
         totalSubtotal += items[i].qty * items[i].price; 
     }
@@ -208,18 +215,16 @@ function renderCart() {
         let index = e.target.getAttribute("index");
         let newQty;
         
-        // get new selected qty
+        // get new selected qty through loop in selector options
         for (let i = 0; i < qty.length; i++) {
             if (qty[i].selected === true) {
                 newQty = qty[i].innerHTML;
             }; 
         };
 
-        // let newQty equal to currentList qty
-        for (let a = 0; a < currentList.length ; a++) {
-            currentList[a].qty = newQty;
-        }
-
+        // let newQty equal to currentList qty, marked by index to know where in local storage array
+        currentList[index].qty = newQty;
+        
         let cartDetails = {
             "prime": "", 
             "order": {
