@@ -89,60 +89,61 @@
 
                     <div class="form"> 
                         <div class="cart-title-form">收件資料 <hr></div>
-                        <form>
+                        
                         <div class="form-cx">
+                            <form>
+                                <div class="row">
+                                    <div class="form-name"> 收件人姓名</div>
+                                    <input type="text" name="name">
+                                </div><!-- end of row div-->
+                                
+                                <div class="row">
+                                    <div class="form-email">Email</div>
+                                    <input type="text" name="email">
+                                </div><!-- end of row div-->
 
-                            <div class="row">
-                                <div class="form-name"> 收件人姓名</div>
-                                <input type="text" name="name">
-                            </div><!-- end of row div-->
-                            
-                            <div class="row">
-                                <div class="form-email">Email</div>
-                                <input type="text" name="email">
-                            </div><!-- end of row div-->
+                                <div class="row">
+                                    <div class="form-cell">手機號碼</div>
+                                    <input type="text" name="cell">
+                                </div><!-- end of row div-->
 
-                            <div class="row">
-                                <div class="form-cell">手機號碼</div>
-                                <input type="text" name="cell">
-                            </div><!-- end of row div-->
+                                <div class="row">
+                                    <div class="form-address">收件地址</div>
+                                    <input type="text" name="adress">
+                                </div><!-- end of row div-->
 
-                            <div class="row">
-                                <div class="form-address">收件地址</div>
-                                <input type="text" name="adress">
-                            </div><!-- end of row div-->
-
-                            <div>
-                                <div class="form-time">配送時間指數</div>
-                                <div class="time"><input type="radio">08:00 - 12:00</div>
-                                <div class="time"><input type="radio">14:00 - 18:00</div>
-                                <div class="time"><input type="radio">不指定</div>
-                            </div><!-- end of form-time div-->
+                                <div>
+                                    <div class="form-time">配送時間指數</div>
+                                    <div class="time"><input type="radio">08:00 - 12:00</div>
+                                    <div class="time"><input type="radio">14:00 - 18:00</div>
+                                    <div class="time"><input type="radio">不指定</div>
+                                </div><!-- end of form-time div-->
+                            </form>
                         </div><!-- end of form-cx div-->
 
                         
 
                         <div class="form-payment">
-                            <div class="cart-title-form">付款資料 <hr> </div>
+                           
+                                <div class="cart-title-form">付款資料 <hr> </div>
 
-                            <div class="row">
-                                <div>信用卡號碼</div>
-                                <div class="tpfield" id="card-number"></div> 
-                            </div><!-- end of row div-->
+                                <div class="row">
+                                    <div>信用卡號碼</div>
+                                    <div class="tpfield" id="card-number"></div> 
+                                </div><!-- end of row div-->
 
-                            <div class="row">
-                                <div>有效期限</div>
-                                <div class="tpfield" id="card-expiration-date"></div>
-                            </div><!-- end of row div-->
+                                <div class="row">
+                                    <div>有效期限</div>
+                                    <div class="tpfield" id="card-expiration-date"></div>
+                                </div><!-- end of row div-->
 
-                            <div class="row">
-                                <div>安全碼</div>
-                                <div class="tpfield" id="card-ccv"></div>
-                            </div><!-- end of row div-->
-                            
-
+                                <div class="row">
+                                    <div>安全碼</div>
+                                    <div class="tpfield" id="card-ccv"></div>
+                                </div><!-- end of row div-->
+                        
                         </div><!-- end of form-payment div-->
-                    </form> </div> <!-- end of form div-->
+                    </div> <!-- end of form div-->
 
                     <hr>
                     <div class="total">
@@ -166,11 +167,11 @@
                                 <div class="total-total"></div>
                             </div>
                         </div> <!-- end of total-table div-->
-                        <input class="submit-buy" type="submit" value="確認付款">
+                        
+                        <button class="submit-buy" value="確認付款">確認付款</button>
+                      
                     </div> <!-- end of total div-->
                     
-
-
                 </div> <!-- end of cart-container div-->
             </main> <!-- end of cart main -->
 
