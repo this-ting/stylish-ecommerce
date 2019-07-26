@@ -96,7 +96,6 @@ function resetIndex(index) {
    ========================================================================== */
 function renderCart() {
     const cart = JSON.parse(localStorage.cart).order.list;
-    console.log('cart rendering');
 
     // Render cart qty for title
     const mobileTitle = document.querySelector(".cart-title");
@@ -247,6 +246,92 @@ function renderCart() {
         localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
         resetIndex(index); // resets index, qty count & total 
     };
+
+/* ==========================================================================
+   TapPay 
+   ========================================================================== */
+// Set up of TapPay SDK
+TPDirect.setupSDK(12348, 'app_pa1pQcKoY22IlnSXq5m5WP5jFKzoRG58VEXpT7wU62ud7mMbDOGzCYIlzzLF', 'sandbox');
+
+// Display ccv field
+let fields = {
+    number: {
+        // css selector
+        element: document.getElementById('card-number'),
+        placeholder: '**** **** **** ****'
+    },
+    expirationDate: {
+        // DOM object
+        element: document.getElementById('card-expiration-date'),
+        placeholder: 'MM / YY'
+    },
+    ccv: {
+        element: document.getElementById('card-ccv'),
+        placeholder: 'ccv'
+    }
+}
+
+TPDirect.card.setup({
+    fields: fields,
+    styles: {
+        // Style all elements
+        'input': {
+            'color': 'gray',
+        },
+        // Styling ccv field
+        'input.ccv': {
+            'font-size': '1em'
+        },
+        // Styling expiration-date field
+        'input.expiration-date': {
+            'font-size': '1em'
+        },
+        // Styling card-number field
+        'input.card-number': {
+            'font-size': '1em'
+        },
+        // style focus state
+        ':focus': {
+            'color': 'black'
+        },
+        // style valid state
+        '.valid': {
+            'color': 'green'
+        },
+        // style invalid state
+        '.invalid': {
+            'color': 'red'
+        },
+        // Media queries
+        // Note that these apply to the iframe, not the root window.
+        '@media screen and (max-width: 400px)': {
+            'input': {
+                'color': 'orange'
+            }
+        }
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 renderCart();
 
