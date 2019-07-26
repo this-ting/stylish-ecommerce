@@ -314,80 +314,46 @@ TPDirect.card.setup({
     }
 });
 
-// TPDirect.card.onUpdate(function (update) {
-//     // update.canGetPrime === true
-//     // TPDirect.card.getPrime();
-    
-//     if (update.canGetPrime) {
-//         // Enable submit Button to get prime.
-//         // submitButton.removeAttribute('disabled')
-//         console.log('a')
-        
-//     } else {
-//         // Disable submit Button to get prime.
-//         // submitButton.setAttribute('disabled', true)
-//         console.log('b')
-//     }
-
-//     // cardTypes = ['mastercard', 'visa', 'jcb', 'amex', 'unionpay','unknown']
-//     if (update.cardType === 'visa') {
-//         // Handle card type visa.
-//     }
-
-//     // number fields is error
-//     if (update.status.number === 2) {
-//         // setNumberFormGroupToError()
-//     } else if (update.status.number === 0) {
-//         // setNumberFormGroupToSuccess()
-//     } else {
-//         // setNumberFormGroupToNormal()
-//     }
-
-//     if (update.status.expiry === 2) {
-//         // setNumberFormGroupToError()
-//     } else if (update.status.expiry === 0) {
-//         // setNumberFormGroupToSuccess()
-//     } else {
-//         // setNumberFormGroupToNormal()
-//     }
-
-//     if (update.status.ccv === 2) {
-//         // setNumberFormGroupToError()
-//     } else if (update.status.ccv === 0) {
-//         // setNumberFormGroupToSuccess()
-//     } else {
-//         // setNumberFormGroupToNormal()
-//     }
-// });
-
-
 // Set up event handler for cart submit
 const cartSubmit = document.querySelector(".submit-buy");
 
 cartSubmit.addEventListener('click', function(e) {
-    event.preventDefault(e)
-    // Get TapPay Fields  status
-    const tappayStatus = TPDirect.card.getTappayFieldsStatus()
+    event.preventDefault(e);
+    let prime = getTPrime();
     
+
+
+
+
+
+
+
+
+
+});
+
+// Set up function to get TayPay Prime
+function getTPrime() {
+    // Get TapPay Fields  status
+    const tappayStatus = TPDirect.card.getTappayFieldsStatus();
+        
     // Check can getPrime
     if (tappayStatus.canGetPrime === false) {
-        alert('can not get prime')
-        return
-    }
+        console.log('CAN NOT get prime');
+        return;
+    };
 
     // Get prime
     TPDirect.card.getPrime((result) => {
         if (result.status !== 0) {
-            alert('get prime error ' + result.msg)
-            return
+            console.log('get prime error ' + result.msg);
+            return;
         }
-        alert('get prime success, prime: ' + result.card.prime)
+        console.log('get prime success, prime: ' + result.card.prime);
+        return result.card.prime;
+    });
 
-        // send prime to your server, to pay with Pay by Prime API .
-        // Pay By Prime Docs: https://docs.tappaysdk.com/tutorial/zh/back.html#pay-by-prime-api
-    })
-});
-
+};
 
 
 
