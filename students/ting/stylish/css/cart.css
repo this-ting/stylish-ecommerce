@@ -140,7 +140,12 @@
 /* ==========================================================================
    Form
    ========================================================================== */
-.form {
+.cart-title-form {
+    font-size: 1.1em;
+    font-weight: 550;
+    letter-spacing: 2px;
+}
+   .form {
     line-height: 200%;
     padding: 0.5em 0;
 }
@@ -154,17 +159,20 @@
 
 .tpfield {
     height: 30px;
-    width: 96%; 
     border-radius: 4px;
     border: 1px solid #979797;
-    margin: 5px 0;
     padding: 5px;
     box-sizing: border-box;
+
 }
 
 /* shipping time */
 .time input {
     width: auto;
+}
+
+.form-payment {
+    padding-top: 1em;
 }
 
 /* total price calculation */
@@ -323,6 +331,7 @@
     /* set form input as single row */
     .row {
         margin:0.5em 0;
+        display: flex;
     }
 
     .row div {
@@ -334,6 +343,12 @@
         width: 200px;
         display: inline-block;
     }
+
+    .tpfield input {
+        display: inline-block;
+    }
+
+
 
     /* shipping time change to one row */
     .form-time,
@@ -352,6 +367,8 @@
     .time input{
         width: auto;
     }
+
+
 
    /* submit button */
     .submit-buy {
