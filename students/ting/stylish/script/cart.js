@@ -45,7 +45,7 @@ function removeProduct(e) {
     localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
     setCartQty(); // updates cart qty icon #
     resetIndex(); // resets index, qty count & total 
-}
+};
 
 // set up function to reset index of remove-icon
 function resetIndex(index) {
@@ -76,7 +76,7 @@ function resetIndex(index) {
         let productSubtotal = newQty * price;
         let subtotal = document.querySelectorAll(".cart-subtotal")
 
-        subtotal[index].innerText = `TWD. ${productSubtotal}`;
+        subtotal[index].innerText = productSubtotal;
     } 
 
     // update total subtotal price    
@@ -170,13 +170,13 @@ function renderCart() {
         // price
         const price = document.createElement('div');
         price.setAttribute("class", "cart-price");
-        price.innerText = `TWD. ${cart[i].price}`;
+        price.innerText = cart[i].price;
         product.appendChild(price);
 
         // subtotal
         const subtotal = document.createElement('div');
         subtotal.setAttribute("class", "cart-subtotal");
-        subtotal.innerText = `TWD. ${cart[i].price*cart[i].qty}`;
+        subtotal.innerText = cart[i].price*cart[i].qty;
         product.appendChild(subtotal);
 
 
@@ -319,42 +319,86 @@ const cartSubmit = document.querySelector(".submit-buy");
 
 cartSubmit.addEventListener('click', function(e) {
     event.preventDefault(e);
-    let prime = getTPrime();
-    
 
-
-
-
-
-
-
-
-
-});
-
-// Set up function to get TayPay Prime
-function getTPrime() {
-    // Get TapPay Fields  status
+    // Get TapPay Fields  status => if cannot get, will exit function
     const tappayStatus = TPDirect.card.getTappayFieldsStatus();
         
-    // Check can getPrime
+    // Check can getPrime => if error, will exit function
     if (tappayStatus.canGetPrime === false) {
-        console.log('CAN NOT get prime');
+        alert('請重新確認支付方式，謝謝！');
         return;
     };
 
     // Get prime
-    TPDirect.card.getPrime((result) => {
-        if (result.status !== 0) {
-            console.log('get prime error ' + result.msg);
-            return;
-        }
-        console.log('get prime success, prime: ' + result.card.prime);
-        return result.card.prime;
-    });
+    let prime = TPDirect.card.getPrime((result) => {
+                    if (result.status !== 0) {
+                        alert('get prime error ' + result.msg);
+                        return;
+                    }
+                    // console.log('get prime success, prime: ' + result.card.prime);
+                });
 
-};
 
+    // throw in customer data into local storage
+    const currentList = JSON.parse(localStorage.getItem("cart")).order.list;
+    const subtotal = document.querySelector(".total-subtotal").innerText;
+    const freight = document.querySelector(".total-shipping").innerText;
+    const total = document.querySelector(".total-total").innerText;
+    const name = document.querySelector("input#name").value;
+    const phone = document.querySelector("input#cell").value; 
+    const email = document.querySelector("input#email").value; 
+    const address = document.querySelector("input#address").value;
+    const time = getTime();
+
+    function getTime() {
+        for (let i = 0; i < document.querySelectorAll("input").length; i++ ) {
+            if (document.querySelectorAll("input")[i].checked === true) {
+                return document.querySelectorAll("input")[i].value;
+            };
+        };
+    };
+
+    // Prompts user to fill out all the information to submit form
+    if (name === '') {
+        alert('請輸入您的大名哦！');
+        return;
+    } else if (email === '') {
+        alert('請輸入 email 哦！');
+        return;
+    } else if (phone === '') {
+        alert('請輸入電話號碼哦！');
+        return;
+    } else if (address === '') {
+        alert('請輸入地址哦！');
+        return;
+    } else if (time === undefined) {
+        alert('請選擇配送時間哦！');
+        return;
+    }else {
+        let cartDetails = {
+            "prime": prime, 
+            "order": {
+                "shipping": "delivery",
+                "payment": "credit_card",
+                "subtotal": subtotal, 
+                "freight": freight, 
+                "total": total,
+                "recipient": {
+                "name": name,
+                "phone": phone,
+                "email": email, 
+                "address": address,
+                "time": time, 
+                },
+                "list": currentList
+            }
+        };
+        console.log(cartDetails)
+        localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
+    };
+
+
+});
 
 
 
