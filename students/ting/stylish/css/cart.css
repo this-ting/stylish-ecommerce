@@ -55,6 +55,7 @@
 /* main image */
 .cart-img {
     width: 100px;
+    height: auto;
 }
 
 /* product details */
