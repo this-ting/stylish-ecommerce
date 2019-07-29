@@ -19,6 +19,28 @@
     font-size: 5em;
     font-weight: bold;
     text-align: center;
+    background-color: lightgrey;
+    height: 30vh;
+    width: 100%;
+    padding-top: 10%;
+    box-sizing: border-box;
+
+}
+
+.user-content {
+    display: flex;
+    padding: 2em 0;
+}
+
+.user-img {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.user-info {
+    text-align: left;
+    flex-grow: 1;
+
 }
 
 
