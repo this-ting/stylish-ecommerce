@@ -40,9 +40,6 @@
                 userInfo.innerText = `Name: ${response.name} \r\n Email: ${response.email}`
                 userContent.appendChild(userInfo);
 
-                // remove login button
-                const loginButton = document.querySelector(".fb_iframe_widget");
-                loginButton.remove();
             }
         );
 
