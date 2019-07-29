@@ -1,0 +1,53 @@
+/* ==========================================================================
+   Thank You Page
+   ========================================================================== */
+   /* container for entire cart main page */
+.thankyou-container {
+    /* for sticky header */
+    padding-top: calc(36px + 1.4em + 1.2em + 25px); 
+    margin: 1em auto;
+    font-family: "Noto Sans TC", "微軟正黑體", "新細明體", arial, sans-serif;
+    color: #3f3a3a;
+    box-sizing: border-box;
+    max-width: 980px;
+    width: 100%;
+    position: relative;
+}
+
+.thankyou-container img {
+    opacity: 0.6;
+    /* width: 100%; */
+    text-align: center;
+    display: block; 
+    height: 55vh;
+    width: 100vh;
+
+
+}
+
+
+.thankyou-container h1{
+    position: absolute;
+    color: aliceblue;
+
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+   
+
+@media only screen and (min-width: 1001px) {
+    .thankyou-container {
+        padding-top: 0; /* take out padding for sticky header */ 
+    }
+
+    .black-bar {
+        display: block;
+        background-color: #313538;
+        width: 100%;
+        height: 20px;
+    }
+
+}
+
