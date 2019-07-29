@@ -292,10 +292,11 @@ function checkoutCart(src, order, callback) {
             };
             xhr.send(order);
 };
-
+console.log(order)
 // Clears local storage & redirects to Thank You page
 function redirectThankyou(list) {
     const orderNo = list.data.number;
+    
 
     // clear local storage
     localStorage.clear();

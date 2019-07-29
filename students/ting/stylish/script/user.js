@@ -2,6 +2,36 @@
    Facebook login
    ========================================================================== */
 
+function showLogout() {
+  const userContent = document.querySelector(".user-content")
+  userContent.remove();
+};
+
+function showLogin() {
+  const userBanner = document.querySelector(".user-banner")
+  userBanner.innerText = `HELLO ${response.first_name.toUpperCase()}!`
+
+  const userContainer = document.querySelector(".user-container")
+  const userContent = document.createElement("div");
+  userContent.setAttribute('class', 'user-content');
+  userContainer.appendChild(userContent)
+
+  // user img
+  const userImg = document.createElement("div");
+  userImg.setAttribute('class', 'user-img');
+  userContent.appendChild(userImg);
+
+  const userImage = document.createElement("img");
+  userImage.src = response.picture.data.url;
+  userImg.appendChild(userImage);
+
+  // user info
+  const userInfo = document.createElement("div");
+  userInfo.setAttribute('class', 'user-info');
+  userInfo.innerText = `Name: ${response.name} \r\n Email: ${response.email}`
+  userContent.appendChild(userInfo);
+};
+
  // This is called with the results from from FB.getLoginStatus().
  function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -19,41 +49,14 @@
             '/me',
             'GET',
             {"fields":"id, name, email, picture.type(large),first_name"},
-            function(response) {
-                const userBanner = document.querySelector(".user-banner")
-                userBanner.innerText = `HELLO ${response.first_name.toUpperCase()}!`
-
-                const userContainer = document.querySelector(".user-container")
-                const userContent = document.createElement("div");
-                userContent.setAttribute('class', 'user-content');
-                userContainer.appendChild(userContent)
-
-                // user img
-                const userImg = document.createElement("div");
-                userImg.setAttribute('class', 'user-img');
-                userContent.appendChild(userImg);
-
-                const userImage = document.createElement("img");
-                userImage.src = response.picture.data.url;
-                userImg.appendChild(userImage);
-                
-                // user info
-                const userInfo = document.createElement("div");
-                userInfo.setAttribute('class', 'user-info');
-                userInfo.innerText = `Name: ${response.name} \r\n Email: ${response.email}`
-                userContent.appendChild(userInfo);
-
-            }
+            showLogin()
         );
 
     } else {
       // The person is not logged into your app or we are unable to tell.
       document.querySelector('.user-banner').innerText = 'HELLO THERE!';
       document.getElementById('status').innerText = 'Would you like to login?';
-
-
-
-      
+      showLogout();
     };
   };
 
