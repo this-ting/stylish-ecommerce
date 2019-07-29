@@ -326,6 +326,7 @@ function cart(list) {
             let cartDetails = updatedCart();
             localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
             setCartQty();
+            alert('成功加入購物車!');
         }; 
     });
 
