@@ -53,6 +53,7 @@
 
     } else {
       // The person is not logged into your app or we are unable to tell.
+      document.querySelector('.user-banner').innerText = 'HELLO THERE!';
       document.getElementById('status').innerText = 'Would you like to login?';
 
 
