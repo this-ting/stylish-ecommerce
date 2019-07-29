@@ -18,17 +18,14 @@
         FB.api(
             '/me',
             'GET',
-            {"fields":"id,name,email, picture,first_name"},
+            {"fields":"id, name, email, picture.type(large),first_name"},
             function(response) {
-                console.log(response.name);
-                console.log(response.email);
-                console.log(response.picture.data.url)
-
                 const userBanner = document.querySelector(".user-banner")
-                userBanner.innerText = `Hello ${response.first_name}!`
+                userBanner.innerText = `HELLO ${response.first_name.toUpperCase()}!`
 
                 const userContent = document.querySelector(".user-content")
                 
+                // user img
                 const userImg = document.createElement("div");
                 userImg.setAttribute('class', 'user-img');
                 userContent.appendChild(userImg);
@@ -37,11 +34,15 @@
                 userImage.src = response.picture.data.url;
                 userImg.appendChild(userImage);
                 
-                
+                // user info
                 const userInfo = document.createElement("div");
                 userInfo.setAttribute('class', 'user-info');
-                userInfo.innerText = `Name: ${response.name} \r\n Email:${response.email}`
+                userInfo.innerText = `Name: ${response.name} \r\n Email: ${response.email}`
                 userContent.appendChild(userInfo);
+
+                // remove login button
+                const loginButton = document.querySelector(".fb_iframe_widget");
+                loginButton.remove();
             }
         );
 
