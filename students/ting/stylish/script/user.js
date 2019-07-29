@@ -46,11 +46,6 @@
             }
         );
 
-
-
-
-
-
     } else {
       // The person is not logged into your app or we are unable to tell.
       document.querySelector('.user-banner').innerText = 'HELLO THERE!';
@@ -71,6 +66,7 @@
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
+      window.location.replace(`../html/user.html`)
     });
   };
 
