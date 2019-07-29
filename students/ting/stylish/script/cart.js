@@ -330,6 +330,9 @@ const cartSubmit = document.querySelector(".submit-buy");
 cartSubmit.addEventListener('click', function(e) {
     event.preventDefault(e);
 
+    // Set up loading status
+    loading();
+    
     // Get TapPay Fields  status => if cannot get, will exit function
     const tappayStatus = TPDirect.card.getTappayFieldsStatus();
         
@@ -426,7 +429,7 @@ cartSubmit.addEventListener('click', function(e) {
 function checkoutCart(src, order, callback) {
     const xhr = new XMLHttpRequest();
             xhr.open('POST', src);
-            xhr.setRequestHeader('Content-type','application/json');
+            xhr.setRequestHeader('Content-type','application/json');              
             xhr.onload = function () {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     // This will run when the request is successful
@@ -458,8 +461,16 @@ function redirectThankyou(list) {
 }
 
 
+// Set up loading icon page
+function loading() {
+    const root = document.querySelector('.root');
+    root.style.opacity = 0.4;
 
-
+    const loadIcon = document.createElement('img');
+    loadIcon.setAttribute('class', 'loadicon');
+    loadIcon.src = '../images/loading.gif';
+    root.appendChild(loadIcon);
+}
 
 
 
