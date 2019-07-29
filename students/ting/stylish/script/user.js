@@ -23,9 +23,10 @@
                 const userBanner = document.querySelector(".user-banner")
                 userBanner.innerText = `HELLO ${response.first_name.toUpperCase()}!`
 
+                const userContainer = document.querySelector(".user-container")
                 const userContent = document.createElement("div");
                 userContent.setAttribute('class', 'user-content');
-                userBanner.appendChild(userContent)
+                userContainer.appendChild(userContent)
 
                 // user img
                 const userImg = document.createElement("div");
