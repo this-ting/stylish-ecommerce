@@ -339,15 +339,6 @@ cartSubmit.addEventListener('click', function(e) {
         return;
     };
 
-    // Get prime
-    let prime = TPDirect.card.getPrime((result) => {
-                    if (result.status !== 0) {
-                        alert('get prime error ' + result.msg);
-                        return;
-                    }
-                    // console.log('get prime success, prime: ' + result.card.prime);
-                });
-
     // throw in customer data into local storage
     const currentList = JSON.parse(localStorage.getItem("cart")).order.list;
     const subtotal = document.querySelector(".total-subtotal").innerText;
@@ -384,29 +375,76 @@ cartSubmit.addEventListener('click', function(e) {
         alert('請選擇配送時間哦！');
         return;
     }else {
-        let cartDetails = {
-            "prime": prime, 
-            "order": {
-                "shipping": "delivery",
-                "payment": "credit_card",
-                "subtotal": subtotal, 
-                "freight": freight, 
-                "total": total,
-                "recipient": {
-                "name": name,
-                "phone": phone,
-                "email": email, 
-                "address": address,
-                "time": time, 
-                },
-                "list": currentList
+        // Get prime
+        let prime;
+        TPDirect.card.getPrime((result) => {
+            if (result.status !== 0) {
+                alert('get prime error ' + result.msg);
+                return;
             }
-        };
-        console.log(cartDetails)
-        localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
+            prime = result.card.prime;
+            
+            let cartDetails = {
+                "prime": prime, 
+                "order": {
+                    "shipping": "delivery",
+                    "payment": "credit_card",
+                    "subtotal": subtotal, 
+                    "freight": freight, 
+                    "total": total,
+                    "recipient": {
+                    "name": name,
+                    "phone": phone,
+                    "email": email, 
+                    "address": address,
+                    "time": time, 
+                    },
+                    "list": currentList
+                }
+            };
+            console.log(cartDetails, prime)
+            localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
+
+        });
+       
+
+
+
+
+
     };
 
+
+
+
+
+
+
 });
+
+
+// Set up POST for cart checkout
+function checkoutCart(src, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            // This will run when the request is successful
+            console.log('API success!');
+            const list = JSON.parse(xhr.responseText);
+            callback(list);
+        } else {
+            // This will run when it's not
+            console.log('The request failed!');
+        };
+    }
+    xhr.open('POST', src);
+    xhr.send();
+};
+
+
+
+
+
 
 
 
