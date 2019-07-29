@@ -13,7 +13,19 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
-      console.log(response)
+
+      //  Get user name, email, photo after login
+        FB.api(
+            '/me',
+            'GET',
+            {"fields":"id,name,email, picture"},
+            function(response) {
+                console.log(response.name);
+                console.log(response.email);
+                console.log(response.picture.data.url)
+            }
+        );
+
 
 
 
@@ -23,8 +35,8 @@
       // The person is not logged into your app or we are unable to tell.
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this app.';
-    }
-  }
+    };
+  };
 
 
 
@@ -36,7 +48,7 @@
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
     });
-  }
+  };
 
   window.fbAsyncInit = function() {
     FB.init({
@@ -65,6 +77,8 @@
 
   };
 
+
+
   // Load the SDK asynchronously
   (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -82,9 +96,12 @@
         console.log('Successful login for: ' + response.name);
         document.getElementById('status').innerHTML =
             'Thanks for logging in, ' + response.name + '!';
-        
-            console.log(response)
     });
   };
+
+
+
+
+
 
 
