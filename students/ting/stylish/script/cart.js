@@ -349,6 +349,8 @@ cartSubmit.addEventListener('click', function(e) {
     const email = document.querySelector("input#email").value; 
     const address = document.querySelector("input#address").value;
     const time = getTime();
+    let cartDetails;
+    let prime;
 
     function getTime() {
         for (let i = 0; i < document.querySelectorAll("input").length; i++ ) {
@@ -376,7 +378,6 @@ cartSubmit.addEventListener('click', function(e) {
         return;
     }else {
         // Get prime
-        let prime;
         TPDirect.card.getPrime((result) => {
             if (result.status !== 0) {
                 alert('get prime error ' + result.msg);
@@ -384,7 +385,7 @@ cartSubmit.addEventListener('click', function(e) {
             }
             prime = result.card.prime;
             
-            let cartDetails = {
+            cartDetails = {
                 "prime": prime, 
                 "order": {
                     "shipping": "delivery",
@@ -402,44 +403,59 @@ cartSubmit.addEventListener('click', function(e) {
                     "list": currentList
                 }
             };
-            console.log(cartDetails, prime)
+            
             localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
 
+            // 
+            const APIcart = 'https://api.appworks-school.tw/api/1.0/order/checkout'
+            let orderInfo = JSON.stringify(cartDetails);
+            checkoutCart(APIcart, orderInfo, redirectThankyou);
+            
+
+
+
+
         });
-       
-
-
-
-
-
     };
-
-
-
-
-
-
+    
 
 });
 
 
 // Set up POST for cart checkout
-function checkoutCart(src, callback) {
+function checkoutCart(src, order, callback) {
     const xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-        if (xhr.status >= 200 && xhr.status < 300) {
-            // This will run when the request is successful
-            console.log('API success!');
-            const list = JSON.parse(xhr.responseText);
-            callback(list);
-        } else {
-            // This will run when it's not
-            console.log('The request failed!');
-        };
-    }
-    xhr.open('POST', src);
-    xhr.send();
+            xhr.open('POST', src);
+            xhr.setRequestHeader('Content-type','application/json');
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    // This will run when the request is successful
+                    console.log('API POST success!');
+                    const list = JSON.parse(xhr.responseText);
+                    console.log(list)
+                    callback(list);
+                } else {
+                    // This will run when it's not
+                    console.log('The request failed!');
+                };
+            };
+            xhr.send(order);
+
+
+
 };
+
+
+function redirectThankyou(list) {
+    const orderNo = list.data.number;
+    console.log(orderNo);
+
+    // clear local storage
+    localStorage.clear();
+
+    // redirect to thank you page
+    window.location.replace(`../html/thankyou.html?order=${orderNo}`);
+}
 
 
 
