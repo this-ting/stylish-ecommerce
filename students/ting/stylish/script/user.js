@@ -25,7 +25,7 @@
                 console.log(response.picture.data.url)
 
                 const userBanner = document.querySelector(".user-banner")
-                userBanner.innerText = `Hello ${response.name}!`
+                userBanner.innerText = `Hello ${response.first_name}!`
 
                 const userContent = document.querySelector(".user-content")
                 
