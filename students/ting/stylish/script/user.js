@@ -152,7 +152,6 @@ function manualLogin(response) {
   } else {
     alert('User cancelled login or did not fully authorize.');
   }
-}, {scope: 'email',
-  return_scopes: true});
+};
 
 
