@@ -23,6 +23,21 @@
                 console.log(response.name);
                 console.log(response.email);
                 console.log(response.picture.data.url)
+
+                const userBanner = document.querySelector(".user-banner")
+                userBanner.innerText = `Hello ${response.name}!`
+
+                const userContent = document.querySelector(".user-content")
+                
+                const userImg = document.createElement("div");
+                userImg.setAttribute('class', 'user-img');
+                userImg.src = response.picture.data.url;
+                userContent.appendChild(userImg);
+                
+                const userInfo = document.createElement("div");
+                userInfo.setAttribute('class', 'user-info');
+                userInfo.innerText = `Name: ${response.name} \r\n Email:${response.email}`
+                userContent.appendChild(userInfo);
             }
         );
 
