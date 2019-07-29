@@ -23,6 +23,7 @@
     width: 100%;
     padding-top: 10%;
     box-sizing: border-box;
+    margin-bottom: 0.3em;
 
 }
 
@@ -38,13 +39,13 @@
 }
 
 #status {
-    display: block;
-    margin: 0 auto;
+    display: inline-block;
+    margin: 1em auto;
 }
 
 .fb-login-button{
-    display: block;
-    margin: 0 auto;
+    display: inline-block;
+    margin: 2em auto;
 }
 
 .user-img {
