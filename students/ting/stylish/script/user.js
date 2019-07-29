@@ -31,8 +31,12 @@
                 
                 const userImg = document.createElement("div");
                 userImg.setAttribute('class', 'user-img');
-                userImg.src = response.picture.data.url;
                 userContent.appendChild(userImg);
+
+                const userImage = document.createElement("img");
+                userImage.src = response.picture.data.url;
+                userImg.appendChild(userImage);
+                
                 
                 const userInfo = document.createElement("div");
                 userInfo.setAttribute('class', 'user-info');
