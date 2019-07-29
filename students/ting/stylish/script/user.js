@@ -23,7 +23,7 @@
                 const userBanner = document.querySelector(".user-banner")
                 userBanner.innerText = `HELLO ${response.first_name.toUpperCase()}!`
 
-                const userContent = document.querySelector(".user-content")
+                const userContent = document.querySelector(".user-content");
                 
                 // user img
                 const userImg = document.createElement("div");
@@ -53,8 +53,11 @@
 
     } else {
       // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+      document.getElementById('status').innerHTML = 'Would you like to login?';
+
+
+
+      
     };
   };
 

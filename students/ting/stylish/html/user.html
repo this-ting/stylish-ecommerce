@@ -11,6 +11,9 @@
     </head>
 
     <body >
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=450421272462212&autoLogAppEvents=1"></script>
+        
         <div class="root">
             <div class="header">
                 <div class="top-header" id="top-header">
@@ -48,17 +51,18 @@
 
                 <div class="user-banner">HELLO THERE!</div>
                 <div class="user-content">
+
                     <!-- <div class="user-img"><img src="../images/member.png"></div>
                     <div class="user-info">
                         Name: Ting <br>
                         Email: hello @gmail.com<br>
                     </div> -->
-                    
+                    <div id="status"></div>
+                    <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="true" data-use-continue-as="true"></div>
                 </div>
     
-                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-                </fb:login-button>
-                <div id="status"></div>
+
+                
 
 
 
