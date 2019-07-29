@@ -18,7 +18,7 @@
         FB.api(
             '/me',
             'GET',
-            {"fields":"id,name,email, picture"},
+            {"fields":"id,name,email, picture,first_name"},
             function(response) {
                 console.log(response.name);
                 console.log(response.email);
