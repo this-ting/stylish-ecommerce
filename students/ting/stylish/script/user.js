@@ -7,7 +7,7 @@ function showLogout() {
   userContent.remove();
 };
 
-function showLogin() {
+function showLogin(response) {
   const userBanner = document.querySelector(".user-banner")
   userBanner.innerText = `HELLO ${response.first_name.toUpperCase()}!`
 
@@ -49,7 +49,7 @@ function showLogin() {
             '/me',
             'GET',
             {"fields":"id, name, email, picture.type(large),first_name"},
-            showLogin()
+            showLogin(response)
         );
 
     } else {
@@ -124,7 +124,35 @@ function showLogin() {
 
 
 
+  FB.login(function(response) {
+    if (response.authResponse) {
+     console.log('Welcome!  Fetching your information.... ');
+     FB.api(
+      '/me',
+      'GET',
+      {"fields":"id, name, email, picture.type(large),first_name"},
+      showLogin(response)
 
+    );
+    } else {
+     alert('User cancelled login or did not fully authorize.');
+    }
+}, {scope: 'email',
+    return_scopes: true});
 
+function manualLogin(response) {
+  if (response.authResponse) {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api(
+    '/me',
+    'GET',
+    {"fields":"id, name, email, picture.type(large),first_name"},
+    showLogin(response)
+    );
+  } else {
+    alert('User cancelled login or did not fully authorize.');
+  }
+}, {scope: 'email',
+  return_scopes: true});
 
 
