@@ -226,12 +226,12 @@
     margin-left: auto;
 }
 
+/* Loading Icon gif positioning */
 .loadicon {
     position: fixed;
     top: 45%;
     right: 45%;
 }
-
 
 /* ==========================================================================
    Media Queries

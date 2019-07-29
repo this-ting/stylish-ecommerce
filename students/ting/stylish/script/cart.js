@@ -257,10 +257,53 @@ function renderCart() {
     TPDirect.setupSDK &&
     TPDirect.card.setup (For more info, read TapPay Documentation)
 2. Set up event listener for cart submit button =>
-    get prime from Tap Pay &&
-    filled out info is saved to local storage &&
-    ensure all inputs are filled out to submit form
+    loading() => set up loading page overlay &
+    ensure all inputs are filled & get prime &
+    organize info into cartDetails to send POST request &&
+    checkoutCart() => post request & redirect to thank you page
 */
+
+// Set up loading icon overlay page
+function loading() {
+    const root = document.querySelector('.root');
+    root.style.opacity = 0.4;
+
+    const loadIcon = document.createElement('img');
+    loadIcon.setAttribute('class', 'loadicon');
+    loadIcon.src = '../images/loading.gif';
+    root.appendChild(loadIcon);
+};
+
+// Set up POST for cart checkout
+function checkoutCart(src, order, callback) {
+    const xhr = new XMLHttpRequest();
+            xhr.open('POST', src);
+            xhr.setRequestHeader('Content-type','application/json');              
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    // This will run when the request is successful
+                    console.log('API POST success!');
+                    const list = JSON.parse(xhr.responseText);
+                    callback(list);
+                } else {
+                    // This will run when it's not
+                    console.log('The request failed!');
+                };
+            };
+            xhr.send(order);
+};
+
+// Clears local storage & redirects to Thank You page
+function redirectThankyou(list) {
+    const orderNo = list.data.number;
+
+    // clear local storage
+    localStorage.clear();
+
+    // redirect to thank you page
+    window.location.replace(`../html/thankyou.html?order=${orderNo}`);
+};
+
 
 // Set up of TapPay SDK
 TPDirect.setupSDK(12348, 'app_pa1pQcKoY22IlnSXq5m5WP5jFKzoRG58VEXpT7wU62ud7mMbDOGzCYIlzzLF', 'sandbox');
@@ -330,9 +373,9 @@ const cartSubmit = document.querySelector(".submit-buy");
 cartSubmit.addEventListener('click', function(e) {
     event.preventDefault(e);
 
-    // Set up loading status
+    // Set up loading overlay page
     loading();
-    
+
     // Get TapPay Fields  status => if cannot get, will exit function
     const tappayStatus = TPDirect.card.getTappayFieldsStatus();
         
@@ -407,70 +450,17 @@ cartSubmit.addEventListener('click', function(e) {
                 }
             };
             
-            localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
-
-            // 
-            const APIcart = 'https://api.appworks-school.tw/api/1.0/order/checkout'
+            // AJAX POST to send cart info & redirect to thank you page
+            const APIcart = 'https://api.appworks-school.tw/api/1.0/order/checkout';
             let orderInfo = JSON.stringify(cartDetails);
             checkoutCart(APIcart, orderInfo, redirectThankyou);
-            
-
-
-
-
         });
     };
-    
-
 });
 
 
-// Set up POST for cart checkout
-function checkoutCart(src, order, callback) {
-    const xhr = new XMLHttpRequest();
-            xhr.open('POST', src);
-            xhr.setRequestHeader('Content-type','application/json');              
-            xhr.onload = function () {
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    // This will run when the request is successful
-                    console.log('API POST success!');
-                    const list = JSON.parse(xhr.responseText);
-                    console.log(list)
-                    callback(list);
-                } else {
-                    // This will run when it's not
-                    console.log('The request failed!');
-                };
-            };
-            xhr.send(order);
 
 
-
-};
-
-
-function redirectThankyou(list) {
-    const orderNo = list.data.number;
-    console.log(orderNo);
-
-    // clear local storage
-    localStorage.clear();
-
-    // redirect to thank you page
-    window.location.replace(`../html/thankyou.html?order=${orderNo}`);
-}
-
-
-// Set up loading icon page
-function loading() {
-    const root = document.querySelector('.root');
-    root.style.opacity = 0.4;
-
-    const loadIcon = document.createElement('img');
-    loadIcon.setAttribute('class', 'loadicon');
-    loadIcon.src = '../images/loading.gif';
-    root.appendChild(loadIcon);
-}
 
 
 
