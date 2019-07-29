@@ -28,10 +28,12 @@
 
 .user-content {
     display: flex;
-    padding: 2em 0;
     width: 80%;
     border: 1px solid black;
     margin: 2em auto;
+    flex-wrap: wrap;
+    padding: 1em;
+    align-items: center;
 }
 
 .user-img {
@@ -39,9 +41,6 @@
     flex-grow: 1;
 }
 
-/* .user-img img{
-    width: 100%;
-} */
 
 .user-info {
     text-align: left;
