@@ -63,23 +63,13 @@ function askEmail() {
             if (response.email !== undefined) {
               const userInfo = document.createElement("div");
               userInfo.setAttribute('class', 'user-info');
-              userInfo.innerText = `Name: ${response.name} \r\n Email: ${response.email}`
+              userInfo.innerText = `Name: ${response.name} \r\n Email: ${response.email}`;
               userContent.appendChild(userInfo);
             } else {
               const userInfo = document.createElement("div");
               userInfo.setAttribute('class', 'user-info');
-              userInfo.innerText = `Name: ${response.name}`
+              userInfo.innerText = `Name: ${response.name} \r\n Email: N/A \r\n Note: To show email, you may click accept permission on the next login prompt.`;
               userContent.appendChild(userInfo);
-
-              const userEmail = document.createElement("div");
-              userEmail.setAttribute('class', 'user-email');
-              userEmail.innerText = `Email: Click to Add`;
-              userEmail.style.color = 'blue';
-              userEmail.appendChild(userInfo);
-
-              // const email = document.querySelector(".user-email");
-              // email.addEventListener('click', askEmail());
-
             }
               
 
