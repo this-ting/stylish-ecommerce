@@ -301,6 +301,7 @@ function redirectThankyou(list) {
 
     // redirect to thank you page
     window.location.replace(`../html/thankyou.html?order=${orderNo}`);
+    console.log(list)
 };
 
 /* ==========================================================================
