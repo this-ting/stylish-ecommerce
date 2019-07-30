@@ -22,25 +22,14 @@
       if (response.status === 'connected') {
         console.log(response.authResponse.accessToken);
         return response.authResponse.accessToken;
+
       } else {
         console.log('not logged in');
-        return;
-      }
-
+        checkoutCart(APIcart, orderInfo, redirectThankyou); // POST Request
+      };
     });
   };
-  
- window.fbAsyncInit = function () {
-    FB.init({
-      appId: '450421272462212',
-      cookie: true,  // enable cookies to allow the server to access 
-      // the session
-      xfbml: true,  // parse social plugins on this page
-      version: 'v3.3' // The Graph API version to use for the call
-    });
 
-    checkLoginState();
-  };
 
 /* ==========================================================================
    Remove Product from 'cart' local storage
@@ -285,7 +274,7 @@ function renderCart() {
 function checkoutCart(src, order, callback) {
     const xhr = new XMLHttpRequest();
             xhr.open('POST', src);
-            xhr.setRequestHeader('Content-type','application/json');              
+            xhr.setRequestHeader('Content-type','application/json');             
             xhr.onload = function () {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     // This will run when the request is successful
@@ -488,7 +477,41 @@ cartSubmit.addEventListener('click', function(e) {
             // AJAX POST to send cart info & redirect to thank you page
             const APIcart = 'https://api.appworks-school.tw/api/1.0/order/checkout';
             let orderInfo = JSON.stringify(cartDetails);
-            checkoutCart(APIcart, orderInfo, redirectThankyou);
+            
+            window.fbAsyncInit = function () {
+                FB.init({
+                  appId: '450421272462212',
+                  cookie: true,  // enable cookies to allow the server to access 
+                  // the session
+                  xfbml: true,  // parse social plugins on this page
+                  version: 'v3.3' // The Graph API version to use for the call
+                });
+            
+                checkLoginState();
+              };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
         });
     };
 });
