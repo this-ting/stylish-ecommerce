@@ -45,7 +45,7 @@
 
     fbToken = checkLoginState();
     this.console.log(fbToken)
-    
+
     };
 
 
@@ -289,11 +289,31 @@ function renderCart() {
 /* ==========================================================================
    POST Request
    ========================================================================== */
-// Set up POST for cart checkout
+// Set up POST for cart checkout (no Facebook Token)
 function checkoutCart(src, order, callback) {
     const xhr = new XMLHttpRequest();
             xhr.open('POST', src);
             xhr.setRequestHeader('Content-type','application/json');             
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    // This will run when the request is successful
+                    console.log('API POST success!');
+                    const list = JSON.parse(xhr.responseText);
+                    callback(list);
+                } else {
+                    // This will run when it's not
+                    console.log('The request failed!');
+                };
+            };
+            xhr.send(order);
+};
+
+// Set up POST for cart checkout (WITH Facebook Token)
+function checkoutCartToken(src, order, token, callback) {
+    const xhr = new XMLHttpRequest();
+            xhr.open('POST', src);
+            xhr.setRequestHeader('Content-type','application/json');
+            xhr.setRequestHeader('Authorization',`Bearer ${token}`);             
             xhr.onload = function () {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     // This will run when the request is successful
