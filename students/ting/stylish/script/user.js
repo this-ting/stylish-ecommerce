@@ -28,11 +28,6 @@
           'GET',
           {"fields":"id, name, email, picture.type(large),first_name"},
           function(response) {
-            console.log(response.first_name)
-            console.log(response.picture.data.url)
-            console.log(response.name)
-            console.log(response.email)
-
             const userBanner = document.querySelector(".user-banner")
             userBanner.innerText = `HELLO ${response.first_name.toUpperCase()}!`
 
