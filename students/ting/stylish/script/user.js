@@ -2,6 +2,15 @@
    Facebook login
    ========================================================================== */
 
+function askEmail() {
+  FB.login(
+    {
+      scope: 'email',
+      auth_type: 'rerequest'
+    }
+  )
+}
+
  // This is called with the results from from FB.getLoginStatus().
  function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -66,15 +75,7 @@
               userEmail.setAttribute('class', 'user-info');
               userEmail.innerText = 'Email: Click to Add';
               userEmail.style.color = 'blue';
-              userEmail.addEventListener('click', FB.login(
-                function(response) {
-                  console.log(response);
-                },
-                {
-                  scope: 'email',
-                  auth_type: 'rerequest'
-                }
-              ));
+              userEmail.addEventListener('click', askEmail());
               userEmail.appendChild(userInfo);
 
             }
