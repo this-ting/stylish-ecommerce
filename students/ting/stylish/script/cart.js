@@ -481,7 +481,7 @@ cartSubmit.addEventListener('click', function(e) {
             let orderInfo = JSON.stringify(cartDetails);
             let token = localStorage.access_token;
 
-            if (localStorage.token !== undefined) {
+            if (token !== undefined) {
                 console.log('have token checkout');
                 checkoutCartToken(APIcart, orderInfo, token, redirectThankyou); // With FB token POST Request
             } else {
