@@ -60,7 +60,13 @@ function showLogin(response) {
       // The person is not logged into your app or we are unable to tell.
       document.querySelector('.user-banner').innerText = 'HELLO THERE!';
       document.getElementById('status').innerText = 'Would you like to login?';
-      showLogout();
+      
+      // if have user content => remove
+      if (document.querySelector(".user-content") !== null) {
+        showLogout();
+      };
+      
+      
     };
   };
 
