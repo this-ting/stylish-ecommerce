@@ -82,8 +82,11 @@ function statusChangeCallback(response) {
     if (userContent !== null) {
       userContent.remove();
     };
+
+    // Remove fbToken from local storage when log out
+    localStorage.removeItem("fbToken");
   };
-}; // end of function statusChangeCallback(response)
+}; 
 
 /* ==========================================================================
  Initialize Facebook JavaScript SDK
