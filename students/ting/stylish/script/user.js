@@ -73,7 +73,7 @@ function askEmail() {
 
               const userEmail = document.createElement("div");
               userEmail.setAttribute('class', 'user-email');
-              userEmail.innerText = 'Email: Click to Add';
+              userEmail.innerText = `Email: Click to Add`;
               userEmail.style.color = 'blue';
               userEmail.appendChild(userInfo);
 
