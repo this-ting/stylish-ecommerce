@@ -78,7 +78,7 @@ function askEmail() {
               userEmail.appendChild(userInfo);
 
               const email = document.querySelector(".user-email");
-              email.addEventListener('click', askEmail());
+              // email.addEventListener('click', askEmail());
 
             }
               
