@@ -72,11 +72,13 @@ function askEmail() {
               userContent.appendChild(userInfo);
 
               const userEmail = document.createElement("div");
-              userEmail.setAttribute('class', 'user-info');
+              userEmail.setAttribute('class', 'user-email');
               userEmail.innerText = 'Email: Click to Add';
               userEmail.style.color = 'blue';
-              userEmail.addEventListener('click', askEmail());
               userEmail.appendChild(userInfo);
+
+              const email = document.querySelector(".user-email");
+              email.addEventListener('click', askEmail());
 
             }
               
