@@ -96,6 +96,7 @@ function statusChangeCallback(response) {
 
     // Remove fbToken from local storage when log out
     localStorage.removeItem("fbToken");
+    localStorage.removeItem("access_token");
   };
 }; 
 
@@ -170,5 +171,7 @@ function getServerToken(src, info, callback) {
 // Callback function for POST requeest for server access token
 function serverLoginInfo(list) {
   console.log(list)
+  let serverToken = list.data.access_token;
+  localStorage.setItem("access_token", serverToken);
 };
 
