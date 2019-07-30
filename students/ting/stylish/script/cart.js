@@ -250,7 +250,7 @@ function renderCart() {
     renderCart();
 
 /* ==========================================================================
-   POST Request
+   POST Request to get order number
    ========================================================================== */
 // Set up POST for cart checkout (no Facebook Token)
 function checkoutCart(src, order, callback) {
@@ -300,8 +300,7 @@ function redirectThankyou(list) {
     localStorage.removeItem("cart");
 
     // redirect to thank you page
-    // window.location.replace(`../html/thankyou.html?order=${orderNo}`);
-    console.log(list)
+    window.location.replace(`../html/thankyou.html?order=${orderNo}`);
 };
 
 /* ==========================================================================
@@ -480,11 +479,11 @@ cartSubmit.addEventListener('click', function(e) {
             // AJAX POST to send cart info & redirect to thank you page && check for FB token
             const APIcart = 'https://api.appworks-school.tw/api/1.0/order/checkout';
             let orderInfo = JSON.stringify(cartDetails);
-            let fbToken = localStorage.fbToken;
+            let token = localStorage.access_token;
 
-            if (localStorage.fbToken !== undefined) {
+            if (localStorage.token !== undefined) {
                 console.log('have token checkout');
-                checkoutCartToken(APIcart, orderInfo, fbToken, redirectThankyou); // With FB token POST Request
+                checkoutCartToken(APIcart, orderInfo, token, redirectThankyou); // With FB token POST Request
             } else {
                 console.log('no token checkout');
                 checkoutCart(APIcart, orderInfo, redirectThankyou); // No token POST Request

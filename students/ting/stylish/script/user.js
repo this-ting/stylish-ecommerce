@@ -30,6 +30,17 @@ function statusChangeCallback(response) {
     // Set Facebook token to local storage
     localStorage.setItem("fbToken", response.authResponse.accessToken);
 
+    // POST request Organize user info into an object
+    let user = {
+      "provider":"facebook",
+      "access_token": localStorage.fbToken
+    };
+    let userInfo = JSON.stringify(user);
+    const APIlogin = 'https://api.appworks-school.tw/api/1.0//user/signin';
+
+    getServerToken(APIlogin, userInfo, serverLoginInfo); // Login POST Request
+
+
     // Check if user content is already loaded, if not => load
     const userContent = document.querySelector(".user-content")
     if (userContent === null) {
@@ -133,3 +144,31 @@ function testAPI() {
       'Thanks for logging in, ' + response.name + '!';
   });
 };
+
+/* ==========================================================================
+   POST Request to get server access token
+   ========================================================================== */
+// Set up POST for user server access token
+function getServerToken(src, info, callback) {
+  const xhr = new XMLHttpRequest();
+          xhr.open('POST', src);
+          xhr.setRequestHeader('Content-type','application/json');           
+          xhr.onload = function () {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                  // This will run when the request is successful
+                  console.log('API POST success!');
+                  const list = JSON.parse(xhr.responseText);
+                  callback(list);
+              } else {
+                  // This will run when it's not
+                  console.log('The request failed!');
+              };
+          };
+          xhr.send(info);
+};
+
+// Callback function for POST requeest for server access token
+function serverLoginInfo(list) {
+  console.log(list)
+};
+
