@@ -28,6 +28,7 @@ function statusChangeCallback(response) {
     testAPI();
     
     // Set Facebook token to local storage
+    console.log(response.authResponse.accessToken);
     localStorage.setItem("fbToken", response.authResponse.accessToken);
 
     // Check if user content is already loaded, if not => load
