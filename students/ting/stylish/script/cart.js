@@ -12,43 +12,6 @@
 4. updateQty() => event handler for qty selector
     change new selected qty & update to 'cart' list array in local storage
 */
-
-/* ==========================================================================
- Initialize Facebook JavaScript SDK
- ========================================================================== */
- function checkLoginState() {
-    FB.getLoginStatus(function (response) {
-      console.log(response);
-      console.log(response.authResponse.accessToken)
-
-      if (response.status === 'connected') {
-        console.log(response.authResponse.accessToken);
-        return response.authResponse.accessToken;
-
-      } else {
-        console.log('not logged in');
-        return;
-      };
-    });
-  };
-
-    // Get Facebook access token
-    let fbToken;
-    window.fbAsyncInit = function () {
-    FB.init({
-        appId: '450421272462212',
-        cookie: true,  // enable cookies to allow the server to access 
-        // the session
-        xfbml: true,  // parse social plugins on this page
-        version: 'v3.3' // The Graph API version to use for the call
-    });
-
-    fbToken = checkLoginState();
-    this.console.log(fbToken)
-
-    };
-
-
   
 /* ==========================================================================
    Remove Product from 'cart' local storage
