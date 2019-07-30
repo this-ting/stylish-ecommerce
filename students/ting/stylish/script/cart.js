@@ -25,12 +25,27 @@
 
       } else {
         console.log('not logged in');
-        checkoutCart(APIcart, orderInfo, redirectThankyou); // POST Request
+        return;
       };
     });
   };
 
+  let fbToken;
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId: '450421272462212',
+      cookie: true,  // enable cookies to allow the server to access 
+      // the session
+      xfbml: true,  // parse social plugins on this page
+      version: 'v3.3' // The Graph API version to use for the call
+    });
 
+    fbToken = checkLoginState();
+    this.console.log(fbToken);
+  };
+  console.log(fbToken);
+
+  
 /* ==========================================================================
    Remove Product from 'cart' local storage
    ========================================================================== */
@@ -478,18 +493,7 @@ cartSubmit.addEventListener('click', function(e) {
             const APIcart = 'https://api.appworks-school.tw/api/1.0/order/checkout';
             let orderInfo = JSON.stringify(cartDetails);
             
-            window.fbAsyncInit = function () {
-                FB.init({
-                  appId: '450421272462212',
-                  cookie: true,  // enable cookies to allow the server to access 
-                  // the session
-                  xfbml: true,  // parse social plugins on this page
-                  version: 'v3.3' // The Graph API version to use for the call
-                });
-            
-                checkLoginState();
-              };
-
+            checkoutCart(APIcart, orderInfo, redirectThankyou); // POST Request
 
 
 
