@@ -510,14 +510,11 @@ cartSubmit.addEventListener('click', function(e) {
                 }
             };
             
-            
-
-
             // AJAX POST to send cart info & redirect to thank you page
             const APIcart = 'https://api.appworks-school.tw/api/1.0/order/checkout';
             let orderInfo = JSON.stringify(cartDetails);
-            
-            checkoutCart(APIcart, orderInfo, redirectThankyou); // POST Request
+
+            checkoutCart(APIcart, orderInfo, redirectThankyou); // No token POST Request
 
 
 
