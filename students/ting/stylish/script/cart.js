@@ -297,7 +297,7 @@ function redirectThankyou(list) {
     
 
     // clear local storage
-    localStorage.clear();
+    localStorage.removeItem("cart");
 
     // redirect to thank you page
     // window.location.replace(`../html/thankyou.html?order=${orderNo}`);
