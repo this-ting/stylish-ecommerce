@@ -77,7 +77,7 @@ function askEmail() {
               userEmail.style.color = 'blue';
               userEmail.appendChild(userInfo);
 
-              const email = document.querySelector(".user-email");
+              // const email = document.querySelector(".user-email");
               // email.addEventListener('click', askEmail());
 
             }
