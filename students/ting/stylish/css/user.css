@@ -44,8 +44,7 @@
 }
 
 
-.user-info, 
-.user-email {
+.user-info {
     text-align: left;
     flex-grow: 1;
     line-height: 2;
