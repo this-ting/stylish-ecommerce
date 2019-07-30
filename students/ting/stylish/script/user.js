@@ -26,6 +26,9 @@ function statusChangeCallback(response) {
   if (response.status === 'connected') {
     // Logged into your app and Facebook.
     testAPI();
+    
+    // Set Facebook token to local storage
+    localStorage.setItem("fbToken", response.authResponse.accessToken);
 
     // Check if user content is already loaded, if not => load
     const userContent = document.querySelector(".user-content")
