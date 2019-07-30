@@ -85,7 +85,6 @@ function statusChangeCallback(response) {
 }; // end of function statusChangeCallback(response)
 
 
-
 window.fbAsyncInit = function () {
   FB.init({
     appId: '450421272462212',

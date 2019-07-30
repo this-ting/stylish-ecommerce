@@ -72,8 +72,6 @@ if (localStorage.getItem("cart") === null ) {
 /* ==========================================================================
  Initialize Facebook JavaScript SDK
  ========================================================================== */
-
-  
   // Load the SDK asynchronously
   (function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
