@@ -46,10 +46,24 @@
             userImg.appendChild(userImage);
 
             // user info
-            const userInfo = document.createElement("div");
-            userInfo.setAttribute('class', 'user-info');
-            userInfo.innerText = `Name: ${response.name} \r\n Email: ${response.email}`
-            userContent.appendChild(userInfo);
+            // const userInfo = document.createElement("div");
+            // userInfo.setAttribute('class', 'user-info');
+            // userInfo.innerText = `Name: ${response.name} \r\n Email: ${response.email}`
+            // userContent.appendChild(userInfo);
+
+            if (response.email !== undefined) {
+              const userInfo = document.createElement("div");
+              userInfo.setAttribute('class', 'user-info');
+              userInfo.innerText = `Name: ${response.name} \r\n Email: ${response.email}`
+              userContent.appendChild(userInfo);
+            } else {
+              const userInfo = document.createElement("div");
+              userInfo.setAttribute('class', 'user-info');
+              userInfo.innerText = `Name: ${response.name} \r\n Email: Add Email`
+              userContent.appendChild(userInfo);
+            }
+              
+
           }
         );
       }
