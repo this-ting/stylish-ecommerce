@@ -4,7 +4,8 @@
 /* 
 1. Initialize Facebook JavaScript SDK
 2. Once initialized, will run checkLoginState() =>
-  will render screen according to login status
+   if login => render user info & signin POST request
+   if logout => render login screen & remove tokens from local storage
 */
 
 // Set up function to check status of login status
