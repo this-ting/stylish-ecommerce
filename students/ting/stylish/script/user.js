@@ -104,7 +104,7 @@
     //
     // These three cases are handled in the callback function.
 
-    // checkLoginState();
+    checkLoginState();
   };
 
   // Load the SDK asynchronously
@@ -130,5 +130,5 @@
 /* ==========================================================================
    Run Check FB Login on Load
    ========================================================================== */
-checkLoginState();
+// checkLoginState();
 
