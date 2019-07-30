@@ -30,20 +30,8 @@
     });
   };
 
-  let fbToken;
-  window.fbAsyncInit = function () {
-    FB.init({
-      appId: '450421272462212',
-      cookie: true,  // enable cookies to allow the server to access 
-      // the session
-      xfbml: true,  // parse social plugins on this page
-      version: 'v3.3' // The Graph API version to use for the call
-    });
 
-    fbToken = checkLoginState();
-    this.console.log(fbToken);
-  };
-  console.log(fbToken);
+
 
   
 /* ==========================================================================
@@ -459,9 +447,6 @@ cartSubmit.addEventListener('click', function(e) {
         alert('請選擇配送時間哦！');
         return;
     }else {
-        // Get Facebook access token
-
-
         // Get prime
         TPDirect.card.getPrime((result) => {
             if (result.status !== 0) {
@@ -489,6 +474,21 @@ cartSubmit.addEventListener('click', function(e) {
                 }
             };
             
+            // Get Facebook access token
+            let fbToken;
+            window.fbAsyncInit = function () {
+            FB.init({
+                appId: '450421272462212',
+                cookie: true,  // enable cookies to allow the server to access 
+                // the session
+                xfbml: true,  // parse social plugins on this page
+                version: 'v3.3' // The Graph API version to use for the call
+            });
+        
+            fbToken = checkLoginState();
+            };
+
+
             // AJAX POST to send cart info & redirect to thank you page
             const APIcart = 'https://api.appworks-school.tw/api/1.0/order/checkout';
             let orderInfo = JSON.stringify(cartDetails);
