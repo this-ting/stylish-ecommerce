@@ -477,8 +477,14 @@ cartSubmit.addEventListener('click', function(e) {
             const APIcart = 'https://api.appworks-school.tw/api/1.0/order/checkout';
             let orderInfo = JSON.stringify(cartDetails);
 
-            checkoutCart(APIcart, orderInfo, redirectThankyou); // No token POST Request
+           
 
+            if (localStorage.fbToken !== undefined) {
+                console.log('have token checkout');
+            } else {
+                console.log('no token checkout');
+                checkoutCart(APIcart, orderInfo, redirectThankyou); // No token POST Request
+            }
 
 
 
