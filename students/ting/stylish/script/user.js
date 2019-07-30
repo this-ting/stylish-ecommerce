@@ -1,15 +1,4 @@
 /* ==========================================================================
-   Login & Logout Screen Render Functions
-   ========================================================================== */
-
-function showLogout() {
-  const userContent = document.querySelector(".user-content")
-  userContent.remove();
-};
-
-
-
-/* ==========================================================================
    Facebook login
    ========================================================================== */
 
@@ -31,41 +20,44 @@ function showLogout() {
       // Logged into your app and Facebook.
       testAPI();
 
-      //  Get user name, email, photo after login
+      // Check if user content is already loaded, if not => load
+      const userContent = document.querySelector(".user-content")
+      if (userContent === null) {
         FB.api(
-            '/me',
-            'GET',
-            {"fields":"id, name, email, picture.type(large),first_name"},
-            function(response) {
-              console.log(response.first_name)
-              console.log(response.picture.data.url)
-              console.log(response.name)
-              console.log(response.email)
+          '/me',
+          'GET',
+          {"fields":"id, name, email, picture.type(large),first_name"},
+          function(response) {
+            console.log(response.first_name)
+            console.log(response.picture.data.url)
+            console.log(response.name)
+            console.log(response.email)
 
-              const userBanner = document.querySelector(".user-banner")
-              userBanner.innerText = `HELLO ${response.first_name}!`
+            const userBanner = document.querySelector(".user-banner")
+            userBanner.innerText = `HELLO ${response.first_name}!`
 
-              const userContainer = document.querySelector(".user-container")
-              const userContent = document.createElement("div");
-              userContent.setAttribute('class', 'user-content');
-              userContainer.appendChild(userContent)
+            const userContainer = document.querySelector(".user-container")
+            const userContent = document.createElement("div");
+            userContent.setAttribute('class', 'user-content');
+            userContainer.appendChild(userContent)
 
-              // user img
-              const userImg = document.createElement("div");
-              userImg.setAttribute('class', 'user-img');
-              userContent.appendChild(userImg);
+            // user img
+            const userImg = document.createElement("div");
+            userImg.setAttribute('class', 'user-img');
+            userContent.appendChild(userImg);
 
-              const userImage = document.createElement("img");
-              userImage.src = response.picture.data.url;
-              userImg.appendChild(userImage);
+            const userImage = document.createElement("img");
+            userImage.src = response.picture.data.url;
+            userImg.appendChild(userImage);
 
-              // user info
-              const userInfo = document.createElement("div");
-              userInfo.setAttribute('class', 'user-info');
-              userInfo.innerText = `Name: ${response.name} \r\n Email: ${response.email}`
-              userContent.appendChild(userInfo);
-            }
+            // user info
+            const userInfo = document.createElement("div");
+            userInfo.setAttribute('class', 'user-info');
+            userInfo.innerText = `Name: ${response.name} \r\n Email: ${response.email}`
+            userContent.appendChild(userInfo);
+          }
         );
+      }
 
     } else {
       // The person is not logged into your app or we are unable to tell.
@@ -73,8 +65,9 @@ function showLogout() {
       document.getElementById('status').innerText = 'Would you like to login?';
       
       // if have user content => remove
-      if (document.querySelector(".user-content") !== null) {
-        showLogout();
+      const userContent = document.querySelector(".user-content")
+      if (userContent !== null) {
+        userContent.remove();
       };
       
       
@@ -116,9 +109,7 @@ function showLogout() {
     //
     // These three cases are handled in the callback function.
 
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
+    checkLoginState();
   };
 
   // Load the SDK asynchronously
@@ -144,7 +135,5 @@ function showLogout() {
 /* ==========================================================================
    Run Check FB Login on Load
    ========================================================================== */
-FB.getLoginStatus(function(response) {
-  statusChangeCallback(response);
-});
+checkLoginState();
 
