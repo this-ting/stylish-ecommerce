@@ -9,7 +9,6 @@ function showLogout() {
 
 function showLogin(response) {
   console.log(response.first_name)
-  console.log(response.first_name.toUpperCase())
   console.log(response.picture.data.url)
   console.log(response.name)
   console.log(response.email)
