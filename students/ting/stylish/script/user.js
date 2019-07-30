@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Facebook login
+   Login & Logout Screen Render Functions
    ========================================================================== */
 
 function showLogout() {
@@ -31,6 +31,10 @@ function showLogin(response) {
   userInfo.innerText = `Name: ${response.name} \r\n Email: ${response.email}`
   userContent.appendChild(userInfo);
 };
+
+/* ==========================================================================
+   Facebook login
+   ========================================================================== */
 
  // This is called with the results from from FB.getLoginStatus().
  function statusChangeCallback(response) {
@@ -69,10 +73,12 @@ function showLogin(response) {
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
-      window.location.replace(`../html/user.html`)
     });
   };
 
+  /* ==========================================================================
+   Initialized Facebook JavaScript SDK
+   ========================================================================== */
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '450421272462212',
@@ -97,10 +103,7 @@ function showLogin(response) {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
     });
-
   };
-
-
 
   // Load the SDK asynchronously
   (function(d, s, id) {
@@ -122,36 +125,12 @@ function showLogin(response) {
     });
   };
 
+/* ==========================================================================
+   Manual Facebook Login Button
+   ========================================================================== */
+// // Set up manual login button
 
+ 
 
-  FB.login(function(response) {
-    if (response.authResponse) {
-     console.log('Welcome!  Fetching your information.... ');
-     FB.api(
-      '/me',
-      'GET',
-      {"fields":"id, name, email, picture.type(large),first_name"},
-      showLogin(response)
-
-    );
-    } else {
-     alert('User cancelled login or did not fully authorize.');
-    }
-}, {scope: 'email',
-    return_scopes: true});
-
-function manualLogin(response) {
-  if (response.authResponse) {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api(
-    '/me',
-    'GET',
-    {"fields":"id, name, email, picture.type(large),first_name"},
-    showLogin(response)
-    );
-  } else {
-    alert('User cancelled login or did not fully authorize.');
-  }
-};
 
 
