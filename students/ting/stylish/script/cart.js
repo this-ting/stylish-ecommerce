@@ -314,7 +314,9 @@ function redirectThankyou(list) {
     loading() => set up loading page overlay &
     ensure all inputs are filled & get prime &
     organize info into cartDetails to send POST request &&
-    checkoutCart() => post request & redirect to thank you page
+    checkoutCart() => 
+    check if have fbToken in local storage &
+    post request & redirect to thank you page
 */
 
 // Set up loading icon overlay page
@@ -473,38 +475,18 @@ cartSubmit.addEventListener('click', function(e) {
                 }
             };
             
-            // AJAX POST to send cart info & redirect to thank you page
+            // AJAX POST to send cart info & redirect to thank you page && check for FB token
             const APIcart = 'https://api.appworks-school.tw/api/1.0/order/checkout';
             let orderInfo = JSON.stringify(cartDetails);
-
-           
+            let fbToken = localStorage.fbToken;
 
             if (localStorage.fbToken !== undefined) {
                 console.log('have token checkout');
+                checkoutCartToken(src, order, fbToken, callback); // With FB token POST Request
             } else {
                 console.log('no token checkout');
                 checkoutCart(APIcart, orderInfo, redirectThankyou); // No token POST Request
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            };
             
         });
     };

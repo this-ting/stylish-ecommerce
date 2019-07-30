@@ -28,7 +28,6 @@ function statusChangeCallback(response) {
     testAPI();
     
     // Set Facebook token to local storage
-    console.log(response.authResponse.accessToken);
     localStorage.setItem("fbToken", response.authResponse.accessToken);
 
     // Check if user content is already loaded, if not => load
@@ -69,8 +68,6 @@ function statusChangeCallback(response) {
                                   Note: To show email, you may click accept permission on the next login prompt.`;
             userContent.appendChild(userInfo);
           };
-
-
         }
       );
     };
@@ -124,8 +121,7 @@ window.fbAsyncInit = function () {
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-// Here we run a very simple test of the Graph API after login is
-// successful.  See statusChangeCallback() for when this call is made.
+// Set up function to test getting info from API
 function testAPI() {
   console.log('Welcome!  Fetching your information.... ');
   FB.api('/me', function (response) {
