@@ -159,11 +159,3 @@ function askEmail() {
             'Thanks for logging in, ' + response.name + '!';
     });
   };
-
-/* ==========================================================================
-   Run Check FB Login on Load
-   ========================================================================== */
-// checkLoginState();
-const fbButton = document.querySelector(".fb-login-button");
-fbButton.addEventListener('click', checkLoginState());
-
