@@ -36,7 +36,7 @@ function statusChangeCallback(response) {
       "access_token": localStorage.fbToken
     };
     let userInfo = JSON.stringify(user);
-    const APIlogin = 'https://api.appworks-school.tw/api/1.0//user/signin';
+    const APIlogin = 'https://api.appworks-school.tw/api/1.0/user/signin';
 
     getServerToken(APIlogin, userInfo, serverLoginInfo); // Login POST Request
 
