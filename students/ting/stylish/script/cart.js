@@ -19,6 +19,8 @@
  function checkLoginState() {
     FB.getLoginStatus(function (response) {
       console.log(response);
+      console.log(response.authResponse.accessToken)
+      
       if (response.status === 'connected') {
         console.log(response.authResponse.accessToken);
         return response.authResponse.accessToken;
