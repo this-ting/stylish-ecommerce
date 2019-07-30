@@ -17,15 +17,11 @@ function checkLoginState() {
 
 // Set up function to render user.html accoring to login status from function checkLoginState()
 function statusChangeCallback(response) {
-  console.log('statusChangeCallback');
-  console.log(response);
+  // console.log('statusChangeCallback');
+  // console.log(response);
 
-  // The response object is returned with a status field that lets the
-  // app know the current login status of the person.
-  // Full docs on the response object can be found in the documentation
-  // for FB.getLoginStatus().
+  // if Facebook login is sucessful
   if (response.status === 'connected') {
-    // Logged into your app and Facebook.
     testAPI();
     
     // Set Facebook token to local storage
@@ -40,7 +36,6 @@ function statusChangeCallback(response) {
     const APIlogin = 'https://api.appworks-school.tw/api/1.0/user/signin';
 
     getServerToken(APIlogin, userInfo, serverLoginInfo); // Login POST Request
-
 
     // Check if user content is already loaded, if not => load
     const userContent = document.querySelector(".user-content")
@@ -112,19 +107,7 @@ window.fbAsyncInit = function () {
     xfbml: true,  // parse social plugins on this page
     version: 'v3.3' // The Graph API version to use for the call
   });
-
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
-
+  // callback function after initialization
   checkLoginState();
 };
 
@@ -139,9 +122,9 @@ window.fbAsyncInit = function () {
 
 // Set up function to test getting info from API
 function testAPI() {
-  console.log('Welcome!  Fetching your information.... ');
+  // console.log('Welcome!  Fetching your information.... ');
   FB.api('/me', function (response) {
-    console.log('Successful login for: ' + response.name);
+    // console.log('Successful login for: ' + response.name);
     document.getElementById('status').innerHTML =
       'Thanks for logging in, ' + response.name + '!';
   });
@@ -150,6 +133,10 @@ function testAPI() {
 /* ==========================================================================
    POST Request to get server access token
    ========================================================================== */
+/*
+1. Provide Facebook access token in exchange for Stylish's servers access token
+*/
+
 // Set up POST for user server access token
 function getServerToken(src, info, callback) {
   const xhr = new XMLHttpRequest();
@@ -158,7 +145,7 @@ function getServerToken(src, info, callback) {
           xhr.onload = function () {
               if (xhr.status >= 200 && xhr.status < 300) {
                   // This will run when the request is successful
-                  console.log('API POST success!');
+                  console.log('API POST for server token success!');
                   const list = JSON.parse(xhr.responseText);
                   callback(list);
               } else {
@@ -171,8 +158,6 @@ function getServerToken(src, info, callback) {
 
 // Callback function for POST requeest for server access token
 function serverLoginInfo(list) {
-  console.log(list)
   let serverToken = list.data.access_token;
   localStorage.setItem("access_token", serverToken);
 };
-

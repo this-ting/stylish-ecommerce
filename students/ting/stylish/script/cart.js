@@ -260,7 +260,7 @@ function checkoutCart(src, order, callback) {
             xhr.onload = function () {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     // This will run when the request is successful
-                    console.log('API POST success!');
+                    console.log('API POST for checkout success!');
                     const list = JSON.parse(xhr.responseText);
                     callback(list);
                 } else {
@@ -280,7 +280,7 @@ function checkoutCartToken(src, order, token, callback) {
             xhr.onload = function () {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     // This will run when the request is successful
-                    console.log('API POST success!');
+                    console.log('API POST for checkout with TOKEN success!');
                     const list = JSON.parse(xhr.responseText);
                     callback(list);
                 } else {
@@ -481,11 +481,10 @@ cartSubmit.addEventListener('click', function(e) {
             let orderInfo = JSON.stringify(cartDetails);
             let token = localStorage.access_token;
 
+            // Check if have token or not, before POST request for checkout
             if (token !== undefined) {
-                console.log('have token checkout');
                 checkoutCartToken(APIcart, orderInfo, token, redirectThankyou); // With FB token POST Request
             } else {
-                console.log('no token checkout');
                 checkoutCart(APIcart, orderInfo, redirectThankyou); // No token POST Request
             };
             

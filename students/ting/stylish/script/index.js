@@ -112,9 +112,6 @@ function searchRender(search) {
         container.appendChild(noProduct);
 
     } else if (search.data.length === 0) {
-        // Show "No product available" message
-        console.log('Sorry! No such product');
-
         // Make Existing Products disappear
         container.removeChild(container.firstElementChild);
         
