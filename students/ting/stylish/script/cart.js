@@ -19,6 +19,14 @@
  function checkLoginState() {
     FB.getLoginStatus(function (response) {
       console.log(response);
+      if (response.status === 'connected') {
+        console.log(response.authResponse.accessToken);
+        return response.authResponse.accessToken;
+      } else {
+        console.log('not logged in');
+        return;
+      }
+
     });
   };
   
@@ -30,19 +38,7 @@
       xfbml: true,  // parse social plugins on this page
       version: 'v3.3' // The Graph API version to use for the call
     });
-  
-    // Now that we've initialized the JavaScript SDK, we call 
-    // FB.getLoginStatus().  This function gets the state of the
-    // person visiting this page and can return one of three states to
-    // the callback you provide.  They can be:
-    //
-    // 1. Logged into your app ('connected')
-    // 2. Logged into Facebook, but not your app ('not_authorized')
-    // 3. Not logged into Facebook and can't tell if they are logged into
-    //    your app or not.
-    //
-    // These three cases are handled in the callback function.
-  
+
     checkLoginState();
   };
 
@@ -457,6 +453,9 @@ cartSubmit.addEventListener('click', function(e) {
         alert('請選擇配送時間哦！');
         return;
     }else {
+        // Get Facebook access token
+
+
         // Get prime
         TPDirect.card.getPrime((result) => {
             if (result.status !== 0) {
