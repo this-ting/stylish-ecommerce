@@ -8,8 +8,14 @@ function showLogout() {
 };
 
 function showLogin(response) {
+  console.log(response.first_name)
+  console.log(response.first_name.toUpperCase())
+  console.log(response.picture.data.url)
+  console.log(response.name)
+  console.log(response.email)
+
   const userBanner = document.querySelector(".user-banner")
-  userBanner.innerText = `HELLO ${response.first_name.toUpperCase()}!`
+  userBanner.innerText = `HELLO ${response.first_name}!`
 
   const userContainer = document.querySelector(".user-container")
   const userContent = document.createElement("div");
@@ -40,6 +46,12 @@ function showLogin(response) {
  function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
+
+    // Object (for not logged in)
+    // authResponse: undefined
+    // status: "unknown"
+    // __proto__: Object
+
     // The response object is returned with a status field that lets the
     // app know the current login status of the person.
     // Full docs on the response object can be found in the documentation
