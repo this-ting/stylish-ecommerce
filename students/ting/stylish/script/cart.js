@@ -300,7 +300,7 @@ function redirectThankyou(list) {
     localStorage.removeItem("cart");
 
     // redirect to thank you page
-    window.location.replace(`../html/thankyou.html?order=${orderNo}`);
+    // window.location.replace(`../html/thankyou.html?order=${orderNo}`);
     console.log(list)
 };
 
