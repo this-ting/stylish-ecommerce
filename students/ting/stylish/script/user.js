@@ -34,7 +34,7 @@
             console.log(response.email)
 
             const userBanner = document.querySelector(".user-banner")
-            userBanner.innerText = `HELLO ${response.first_name}!`
+            userBanner.innerText = `HELLO ${response.first_name.toUpperCase()}!`
 
             const userContainer = document.querySelector(".user-container")
             const userContent = document.createElement("div");
