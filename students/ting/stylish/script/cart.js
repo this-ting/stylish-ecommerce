@@ -323,6 +323,7 @@ function redirectThankyou(list) {
 function loading() {
     const root = document.querySelector('.root');
     root.style.opacity = 0.4;
+    root.style.zIndex = "2";
 
     const loadIcon = document.createElement('img');
     loadIcon.setAttribute('class', 'loadicon');
