@@ -7,35 +7,7 @@ function showLogout() {
   userContent.remove();
 };
 
-function showLogin(response) {
-  console.log(response.first_name)
-  console.log(response.picture.data.url)
-  console.log(response.name)
-  console.log(response.email)
 
-  const userBanner = document.querySelector(".user-banner")
-  userBanner.innerText = `HELLO ${response.first_name}!`
-
-  const userContainer = document.querySelector(".user-container")
-  const userContent = document.createElement("div");
-  userContent.setAttribute('class', 'user-content');
-  userContainer.appendChild(userContent)
-
-  // user img
-  const userImg = document.createElement("div");
-  userImg.setAttribute('class', 'user-img');
-  userContent.appendChild(userImg);
-
-  const userImage = document.createElement("img");
-  userImage.src = response.picture.data.url;
-  userImg.appendChild(userImage);
-
-  // user info
-  const userInfo = document.createElement("div");
-  userInfo.setAttribute('class', 'user-info');
-  userInfo.innerText = `Name: ${response.name} \r\n Email: ${response.email}`
-  userContent.appendChild(userInfo);
-};
 
 /* ==========================================================================
    Facebook login
@@ -64,7 +36,35 @@ function showLogin(response) {
             '/me',
             'GET',
             {"fields":"id, name, email, picture.type(large),first_name"},
-            showLogin(response)
+            function(response) {
+              console.log(response.first_name)
+              console.log(response.picture.data.url)
+              console.log(response.name)
+              console.log(response.email)
+
+              const userBanner = document.querySelector(".user-banner")
+              userBanner.innerText = `HELLO ${response.first_name}!`
+
+              const userContainer = document.querySelector(".user-container")
+              const userContent = document.createElement("div");
+              userContent.setAttribute('class', 'user-content');
+              userContainer.appendChild(userContent)
+
+              // user img
+              const userImg = document.createElement("div");
+              userImg.setAttribute('class', 'user-img');
+              userContent.appendChild(userImg);
+
+              const userImage = document.createElement("img");
+              userImage.src = response.picture.data.url;
+              userImg.appendChild(userImage);
+
+              // user info
+              const userInfo = document.createElement("div");
+              userInfo.setAttribute('class', 'user-info');
+              userInfo.innerText = `Name: ${response.name} \r\n Email: ${response.email}`
+              userContent.appendChild(userInfo);
+            }
         );
 
     } else {
