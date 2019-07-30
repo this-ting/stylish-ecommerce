@@ -20,7 +20,7 @@
     FB.getLoginStatus(function (response) {
       console.log(response);
       console.log(response.authResponse.accessToken)
-      
+
       if (response.status === 'connected') {
         console.log(response.authResponse.accessToken);
         return response.authResponse.accessToken;
@@ -303,7 +303,7 @@ function redirectThankyou(list) {
     localStorage.clear();
 
     // redirect to thank you page
-    window.location.replace(`../html/thankyou.html?order=${orderNo}`);
+    // window.location.replace(`../html/thankyou.html?order=${orderNo}`);
 };
 
 /* ==========================================================================
