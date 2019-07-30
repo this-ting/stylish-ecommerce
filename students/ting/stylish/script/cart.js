@@ -279,30 +279,8 @@ function renderCart() {
     renderCart();
 
 /* ==========================================================================
-   TapPay 
+   POST Request
    ========================================================================== */
-/* 
-1. Set up Tap Pay =>
-    TPDirect.setupSDK &&
-    TPDirect.card.setup (For more info, read TapPay Documentation)
-2. Set up event listener for cart submit button =>
-    loading() => set up loading page overlay &
-    ensure all inputs are filled & get prime &
-    organize info into cartDetails to send POST request &&
-    checkoutCart() => post request & redirect to thank you page
-*/
-
-// Set up loading icon overlay page
-function loading() {
-    const root = document.querySelector('.root');
-    root.style.opacity = 0.4;
-
-    const loadIcon = document.createElement('img');
-    loadIcon.setAttribute('class', 'loadicon');
-    loadIcon.src = '../images/loading.gif';
-    root.appendChild(loadIcon);
-};
-
 // Set up POST for cart checkout
 function checkoutCart(src, order, callback) {
     const xhr = new XMLHttpRequest();
@@ -334,6 +312,30 @@ function redirectThankyou(list) {
     window.location.replace(`../html/thankyou.html?order=${orderNo}`);
 };
 
+/* ==========================================================================
+   TapPay 
+   ========================================================================== */
+/* 
+1. Set up Tap Pay =>
+    TPDirect.setupSDK &&
+    TPDirect.card.setup (For more info, read TapPay Documentation)
+2. Set up event listener for cart submit button =>
+    loading() => set up loading page overlay &
+    ensure all inputs are filled & get prime &
+    organize info into cartDetails to send POST request &&
+    checkoutCart() => post request & redirect to thank you page
+*/
+
+// Set up loading icon overlay page
+function loading() {
+    const root = document.querySelector('.root');
+    root.style.opacity = 0.4;
+
+    const loadIcon = document.createElement('img');
+    loadIcon.setAttribute('class', 'loadicon');
+    loadIcon.src = '../images/loading.gif';
+    root.appendChild(loadIcon);
+};
 
 // Set up of TapPay SDK
 TPDirect.setupSDK(12348, 'app_pa1pQcKoY22IlnSXq5m5WP5jFKzoRG58VEXpT7wU62ud7mMbDOGzCYIlzzLF', 'sandbox');
