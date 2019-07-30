@@ -482,7 +482,7 @@ cartSubmit.addEventListener('click', function(e) {
 
             if (localStorage.fbToken !== undefined) {
                 console.log('have token checkout');
-                checkoutCartToken(src, order, fbToken, callback); // With FB token POST Request
+                checkoutCartToken(APIcart, orderInfo, fbToken, redirectThankyou); // With FB token POST Request
             } else {
                 console.log('no token checkout');
                 checkoutCart(APIcart, orderInfo, redirectThankyou); // No token POST Request
