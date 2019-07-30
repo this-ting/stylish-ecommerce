@@ -59,8 +59,24 @@
             } else {
               const userInfo = document.createElement("div");
               userInfo.setAttribute('class', 'user-info');
-              userInfo.innerText = `Name: ${response.name} \r\n Email: Add Email`
+              userInfo.innerText = `Name: ${response.name}`
               userContent.appendChild(userInfo);
+
+              const userEmail = document.createElement("div");
+              userEmail.setAttribute('class', 'user-info');
+              userEmail.innerText = 'Email: Click to Add';
+              userEmail.style.color = 'blue';
+              userEmail.addEventListener('click', FB.login(
+                function(response) {
+                  console.log(response);
+                },
+                {
+                  scope: 'email',
+                  auth_type: 'rerequest'
+                }
+              ));
+              userEmail.appendChild(userInfo);
+
             }
               
 
