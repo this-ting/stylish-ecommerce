@@ -77,8 +77,6 @@ if (window.location.search === "?tag=women") {
 /* ==========================================================================
    Search Function
    ========================================================================== */
-const searchInput = document.getElementById("nav-search");
-
 function searchProduct(src, callback) {
   const xhr = new XMLHttpRequest();
   xhr.onload = function() {
@@ -96,7 +94,7 @@ function searchProduct(src, callback) {
 
 // Function will check if there is such product then render appropriate output
 function searchRender(search) {
-  if (search.error == "Wrong Request") {
+  if (search.error === "Wrong Request") {
     // Make Existing Products disappear
     container.removeChild(container.firstElementChild);
 
@@ -251,7 +249,7 @@ function showSlides() {
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
-  for (i = 0; i < dots.length; i++) {
+  for (let i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
 
@@ -273,7 +271,7 @@ function oneShow(n) {
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
-  for (i = 0; i < dots.length; i++) {
+  for (let i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
   slides[n].style.display = "block";
