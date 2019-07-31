@@ -10,7 +10,8 @@
     "globals": {
       "callAPI": "readonly",
       "APIproducts": "readonly",
-      "API": "readonly"
+      "API": "readonly",
+      "FB": "readonly"
     },
     "rules": {
       "prettier/prettier": ["error"],

@@ -158,6 +158,6 @@ function getServerToken(src, info, callback) {
 
 // Callback function for POST requeest for server access token
 function serverLoginInfo(list) {
-  let serverToken = list.data.access_token;
+  const serverToken = list.data.access_token;
   localStorage.setItem("access_token", serverToken);
 };
