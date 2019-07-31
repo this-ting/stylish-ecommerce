@@ -2,8 +2,8 @@
    Thank You
    ========================================================================== */
 // Get order number from location.search query string
-const orderNo = location.search
-  .substring(location.search.indexOf("?") + 1)
+const orderNo = window.location.search
+  .substring(window.location.search.indexOf("?") + 1)
   .split("&")[0]
   .split("=")[1];
 

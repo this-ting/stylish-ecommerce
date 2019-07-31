@@ -36,7 +36,7 @@ function render(list) {
     for (let a = 0; a < colorBox.length; a++) {
       const productColor = document.createElement("div");
       productColor.setAttribute("class", "color");
-      productColor.style.backgroundColor = `#` + colorBox[a].code;
+      productColor.style.backgroundColor = `#${colorBox[a].code}`;
       product.appendChild(productColor);
     }
     // Product Name
@@ -48,7 +48,7 @@ function render(list) {
     // Product Price
     const productPrice = document.createElement("div");
     productPrice.setAttribute("class", "price");
-    productPrice.textContent = "TWD." + productData[i].price;
+    productPrice.textContent = `TWD.${productData[i].price}`;
     product.appendChild(productPrice);
   }
 }
@@ -159,13 +159,11 @@ const infiniteScroll = function() {
   // set event to fire when scrolling reaches end of container
   if (window.innerHeight > container.getBoundingClientRect().bottom) {
     // Function to check if there is a next page and produce URL to API
-    let APIpage = `${APIproducts}${category}?paging=`;
+    const APIpage = `${APIproducts}${category}?paging=`;
     nextPg = `${APIpage}${haveNext}`;
     if (haveNext !== undefined && pageLoading === false) {
       pageLoading = true;
       callAPI(nextPg, renderScroll);
-    } else {
-      return;
     }
   }
 };
@@ -175,7 +173,7 @@ window.addEventListener("scroll", infiniteScroll);
 // Infinite scroll function to add products from the next page
 function renderScroll(list) {
   const products = document.querySelector(".products");
-  let productData = list.data;
+  const productData = list.data;
   for (let i = 0; i < productData.length; i++) {
     // Individual product containter
     const product = document.createElement("a");
@@ -193,7 +191,7 @@ function renderScroll(list) {
     for (let a = 0; a < colorBox.length; a++) {
       const productColor = document.createElement("div");
       productColor.setAttribute("class", "color");
-      productColor.style.backgroundColor = `#` + colorBox[a].code;
+      productColor.style.backgroundColor = `#${colorBox[a].code}`;
       product.appendChild(productColor);
     }
     // Product Name
@@ -205,7 +203,7 @@ function renderScroll(list) {
     // Product Price
     const productPrice = document.createElement("div");
     productPrice.setAttribute("class", "price");
-    productPrice.textContent = "TWD." + productData[i].price;
+    productPrice.textContent = `TWD.${productData[i].price}`;
     product.appendChild(productPrice);
   }
   haveNext += 1; // increase paging for next scroll
@@ -218,7 +216,7 @@ const marketingContainer = document.getElementById("marketing-container");
 
 function renderMarketing(list) {
   // set up for each function to create 3 marketing banners
-  let productData = list.data;
+  const productData = list.data;
 
   for (let i = 0; i < productData.length; i++) {
     // Marketing Background Image
