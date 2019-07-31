@@ -12,5 +12,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-strongloop": "^2.1.0"
   }
 }
