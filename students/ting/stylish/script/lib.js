@@ -5,7 +5,6 @@
 const API = `https://api.appworks-school.tw/api/1.0`;
 const APIproducts = `${API}/products/`;
 
-
 // Set up GET function for API
 function callAPI(src, callback) {
     const xhr = new XMLHttpRequest();
@@ -68,6 +67,3 @@ if (localStorage.getItem("cart") === null ) {
     localStorage.getItem("cart");
     setCartQty(); // call setCartQty function
 };
-
-
-  
