@@ -18,7 +18,7 @@
    ========================================================================== */
 function removeProduct(e) {
   e.target.parentElement.remove();
-  let index = e.target.getAttribute("index");
+  const index = e.target.getAttribute("index");
 
   const currentList = JSON.parse(localStorage.getItem("cart")).order.list;
   currentList.splice(index, 1);
@@ -66,14 +66,14 @@ function resetIndex(index) {
   desktopTitle.innerText = `購物車(${bin.length})`;
 
   // update product subtotal price
-  let items = JSON.parse(localStorage.cart).order.list;
+  const items = JSON.parse(localStorage.cart).order.list;
   let totalSubtotal = 0;
 
   // index is only defined/present when change selector
   if (index !== undefined) {
-    let newQty = parseInt(items[index].qty);
+    const newQty = parseInt(items[index].qty);
     let price = items[index].price;
-    let productSubtotal = newQty * price;
+    const productSubtotal = newQty * price;
     let subtotal = document.querySelectorAll(".cart-subtotal");
 
     subtotal[index].innerText = productSubtotal;
@@ -161,9 +161,9 @@ function renderCart() {
     cartQty.appendChild(qtySelect);
 
     // set up drop downlist with max stock
-    let maxStock = cart[i].stock;
+    const maxStock = cart[i].stock;
     for (let a = 1; a <= maxStock; a++) {
-      let qtyOption = document.createElement("option");
+      const qtyOption = document.createElement("option");
       qtyOption.innerText = a;
       qtyOption.setAttribute("value", a);
       qtySelect.appendChild(qtyOption);

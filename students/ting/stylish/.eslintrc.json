@@ -11,7 +11,8 @@
       "callAPI": "readonly",
       "APIproducts": "readonly",
       "API": "readonly",
-      "FB": "readonly"
+      "FB": "readonly",
+      "setCartQty": "readonly"
     },
     "rules": {
       "prettier/prettier": ["error"],
