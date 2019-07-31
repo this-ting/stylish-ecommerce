@@ -18,9 +18,9 @@
    ========================================================================== */
 function removeProduct(e) {
     e.target.parentElement.remove();
-    let index = e.target.getAttribute("index");
+    let index = e.target.getAttribute('index');
 
-    const currentList = JSON.parse(localStorage.getItem("cart")).order.list;
+    const currentList = JSON.parse(localStorage.getItem('cart')).order.list;
     currentList.splice(index, 1);
     
     let cartDetails = {
