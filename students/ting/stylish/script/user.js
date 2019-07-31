@@ -60,6 +60,7 @@ function statusChangeCallback(response) {
 
           const userImage = document.createElement("img");
           userImage.src = response.picture.data.url;
+          userImage.alt = "User profile picture";
           userImg.appendChild(userImage);
 
           if (response.email !== undefined) {
