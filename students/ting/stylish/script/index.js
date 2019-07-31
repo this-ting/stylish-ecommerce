@@ -29,6 +29,7 @@ function render(list) {
     // Product Main Image
     const productImg = document.createElement("img");
     productImg.src = productData[i].main_image;
+    productImg.alt = "Product clothing image";
     product.appendChild(productImg);
 
     // Product Color Types
@@ -184,6 +185,7 @@ function renderScroll(list) {
     // Product Main Image
     const productImg = document.createElement("img");
     productImg.src = productData[i].main_image;
+    productImg.alt = "Product clothing image";
     product.appendChild(productImg);
 
     // Product Color Types

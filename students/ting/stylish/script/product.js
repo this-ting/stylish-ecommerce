@@ -73,6 +73,7 @@ function renderProduct(list) {
     const img = document.createElement("img");
     img.setAttribute("class", "image");
     img.src = APIimg;
+    img.alt = "Product clothing image";
     descriptionContainer.appendChild(img);
   });
   quantityBar(list); // call quantityBar functions
