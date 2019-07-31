@@ -1,6 +1,10 @@
 /* ==========================================================================
    Header
    ========================================================================== */
+header {
+    display: flex;
+}
+
 /* Sticky header */
    .header {
     position: fixed;
@@ -9,8 +13,6 @@
     display: block;
     z-index: 2;
 }
-
-
 
 .top-header {
     display: flex;
@@ -42,12 +44,19 @@
 }
 
 /* Navigation Bar */
+nav {
+    display: flex;
+    flex-grow: 2;
+}
+
+
 .navbar {
     background-color: #313538;
     display: block;
     margin: auto;
     padding: 0.60em;
     text-align: center;
+    width: 100%;
 }
 
 .navbar a {
@@ -376,7 +385,7 @@ li.dot.active
 }
 
 .navbar {
-    width: 30%;
+    width: 40%;
     background-color: white;
     margin-left: 0;
 }
@@ -528,7 +537,7 @@ li.dot.active
 }
 
 .navbar {
-    width: 30%;
+    width: 40%;
     background-color: white;
     margin-left: 0;
 }
