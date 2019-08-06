@@ -72,50 +72,6 @@ if (localStorage.getItem("cart") === null) {
    Search Function
    ========================================================================== */
 const APIsearch = `${APIproducts}search?keyword=`;
-function searchProduct(src, callback) {
-  const xhr = new XMLHttpRequest();
-  xhr.onload = function() {
-    if (xhr.status >= 200 && xhr.status < 300) {
-      console.log("Search Success!");
-      let search = JSON.parse(xhr.responseText);
-      callback(search);
-    } else {
-      console.log("The request has failed");
-    }
-  };
-  xhr.open("GET", src, true);
-  xhr.send();
-}
-
-// Function will check if there is such product then render appropriate output
-function searchRender(search) {
-  if (search.error === "Wrong Request") {
-    // Make Existing Products disappear
-    container.removeChild(container.firstElementChild);
-
-    // No Product Message
-    const noProduct = document.createElement("div");
-    noProduct.setAttribute("class", "noProduct");
-    noProduct.textContent = "請輸入搜尋的產品哦";
-
-    container.appendChild(noProduct);
-  } else if (search.data.length === 0) {
-    // Make Existing Products disappear
-    container.removeChild(container.firstElementChild);
-
-    // No Product Message
-    const noProduct = document.createElement("div");
-    noProduct.setAttribute("class", "noProduct");
-    noProduct.textContent = "Error 404 沒有所搜尋的產品哦";
-
-    container.appendChild(noProduct);
-  } else {
-    // Make homepage's Products disappear
-    render(search);
-  }
-  // remove event listener
-  window.removeEventListener("scroll", infiniteScroll);
-}
 
 // Mobile search text input pop up
 function showMobileSearch() {
@@ -137,15 +93,17 @@ function showMobileSearch() {
   topHeader.appendChild(searchFormMobile);
   searchFormMobile.appendChild(searchInputMobile);
   searchFormMobile.appendChild(searchSubmitMobile);
+
+  // Redirect search to index.html query string
   document.querySelector("form").addEventListener("submit", e => {
     e.preventDefault();
-    searchProduct(`${APIsearch}${searchInputMobile.value}`, searchRender);
+    window.location.href = `index.html?search=${searchInputMobile.value}`
+    console.log("mobiel search submit");
   });
 }
 
-// Call Search function for desktop
-const searchInput = document.querySelector(".nav-search").value;
-document.querySelector("form").addEventListener("submit", e => {
-  e.preventDefault();
-  searchProduct(`${APIsearch}${searchInput.value}`, searchRender);
-});
+// Redirect search to index.html query string
+function searchSubmit() {
+  const searchInput = document.querySelector(".nav-search").value;
+  window.location.href = `index.html?search=${searchInput}`;
+}

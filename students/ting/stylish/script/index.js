@@ -64,15 +64,68 @@ function getProductList(category) {
 }
 
 // Render homepage products on load
+
 if (window.location.search === "?tag=women") {
   getProductList("women");
 } else if (window.location.search === "?tag=men") {
   getProductList("men");
 } else if (window.location.search === "?tag=accessories") {
   getProductList("accessories");
+} else if (window.location.search.substring(1).split("=")[0] === "search") {
+  console.log("this is a search");
+
 } else {
   getProductList("all");
 }
+
+/* ==========================================================================
+   Search Function
+   ========================================================================== */
+function searchProduct(src, callback) {
+  const xhr = new XMLHttpRequest();
+  xhr.onload = function() {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      console.log("Search Success!");
+      let search = JSON.parse(xhr.responseText);
+      callback(search);
+    } else {
+      console.log("The request has failed");
+    }
+  };
+  xhr.open("GET", src, true);
+  xhr.send();
+}
+
+// Function will check if there is such product then render appropriate output
+function searchRender(search) {
+  if (search.error === "Wrong Request") {
+    // Make Existing Products disappear
+    container.removeChild(container.firstElementChild);
+
+    // No Product Message
+    const noProduct = document.createElement("div");
+    noProduct.setAttribute("class", "noProduct");
+    noProduct.textContent = "請輸入搜尋的產品哦";
+
+    container.appendChild(noProduct);
+  } else if (search.data.length === 0) {
+    // Make Existing Products disappear
+    container.removeChild(container.firstElementChild);
+
+    // No Product Message
+    const noProduct = document.createElement("div");
+    noProduct.setAttribute("class", "noProduct");
+    noProduct.textContent = "Error 404 沒有所搜尋的產品哦";
+
+    container.appendChild(noProduct);
+  } else {
+    // Make homepage's Products disappear
+    render(search);
+  }
+  // remove event listener
+  window.removeEventListener("scroll", infiniteScroll);
+}
+
 
 /* ==========================================================================
    Paging & Infinite Scroll
