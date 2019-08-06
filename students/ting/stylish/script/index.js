@@ -72,8 +72,8 @@ if (window.location.search === "?tag=women") {
 } else if (window.location.search === "?tag=accessories") {
   getProductList("accessories");
 } else if (window.location.search.substring(1).split("=")[0] === "search") {
-  console.log("this is a search");
-
+  const input = window.location.search.substring(1).split("=")[1];
+  searchProduct(`${APIsearch}${input}`,searchRender );
 } else {
   getProductList("all");
 }
