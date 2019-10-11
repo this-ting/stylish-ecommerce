@@ -1,8 +1,18 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144902124-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-144902124-1');
+        </script>
+
         <meta charset="utf-8">
-        <meta name="description" content="">
+        <meta name="description" content="Product Page for Stylish brand Ecommerce website">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>STYLish Product</title>
         <link rel="stylesheet" href="../css/normalize.css">
@@ -12,37 +22,45 @@
 
     <body >
         <div class="root">
-        
-            <div class="header">
-                <div class="top-header" id="top-header">
-                    <a href="index.html"><img class="logo" src="https://api.appworks-school.tw/imgs/logo.png" /></a>
-                    <img class="search-icon" src="../images/search.png" onclick="showMobileSearch()"/>
-                </div> <!-- end of top-header div -->
-                <div class="navbar"> 
-                    <a href="index.html?tag=women" class="menu-line female" onclick="callAPI(`${APIproducts}${category = 'women'}`,render)">女裝 </a> 
-                    <a href="index.html?tag=men" class="menu-line male" onclick="callAPI(`${APIproducts}${category = 'men'}`,render)">男裝 </a> 
-                    <a href="index.html?tag=accessories" class ="acc" onclick="callAPI(`${APIproducts}${category = 'accessories'}`,render)">配件</a>
-                </div> <!-- end of navbar div -->
+            <header>
+                <div class="header">
+                    <div class="top-header" id="top-header">
+                        <a href="index.html"><img class="logo" src="https://api.appworks-school.tw/imgs/logo.png" alt="Stylish Logo"/></a>
+                        <img class="search-icon" src="../images/search.png" onclick="showMobileSearch()" alt="search icon"/>
+                    </div> <!-- end of top-header div -->
+                    <nav>
+                        <div class="navbar"> 
+                            <a href="index.html?tag=women" class="menu-line female" onclick="callAPI(`${APIproducts}${category = 'women'}`,render)">女裝 </a> 
+                            <a href="index.html?tag=men" class="menu-line male" onclick="callAPI(`${APIproducts}${category = 'men'}`,render)">男裝 </a> 
+                            <a href="index.html?tag=accessories" class ="acc" onclick="callAPI(`${APIproducts}${category = 'accessories'}`,render)">配件</a>
+                        </div> <!-- end of navbar div -->
 
-                <div class="dp-navright">
-                    <form onsubmit="searchProduct(`${APIsearch}${searchInput.value}`,searchRender);return false;"> 
-                        <input class="nav-search" id="nav-search" type="text"> 
-                        <input type="submit" style="display:none;" />
-                    </form>
-                    <div class="cart-icon">
-                        <a href="cart.html">
-                            <img src="../images/cart.png" />
-                            <div class="cart-icon-qty"></div>
-                        </a>
-                    </div>
-                    <img class="user-icon" src="../images/member.png" />
-                </div>
-            </div> <!-- end of header div -->
+                        <div class="dp-navright">
+                            <form onsubmit="searchSubmit();return false;"> 
+                                <input class="nav-search" id="nav-search" type="text"> 
+                                <input type="submit" style="display:none;" />
+                            </form>
+                            <div class="cart-icon">
+                                <a href="cart.html">
+                                    <img src="../images/cart.png" alt="shopping cart icon"/>
+                                    <div class="cart-icon-qty"></div>
+                                </a>
+                            </div>
+                            <div class="user-icon">
+                                <a href="user.html">
+                                    <img src="../images/member.png" alt="member icon"/>
+                                </a>
+                            </div>
+                        </div>
+                    </nav>
+                </div> <!-- end of header div -->
+            </header>
+
 
             <main>
                 <div class="black-bar"></div>
                 <div class="product-container">
-                    <img class="main-img">
+                    <img class="main-img"  alt="product image">
                     
                     <div class="details-container">
                         <div class="title"></div>
@@ -83,32 +101,34 @@
             <div class="feature-mobile">
                 <a href="cart.html"  class="menu-line">
                     <div class="mobile-cart">
-                        <img src="../images/cart-mobile.png" />
+                        <img src="../images/cart-mobile.png"  alt="cart icon for mobile"/>
                         <div class="cart-mobile-qty"></div>
                     </div>
                     購物車</a>
-                <a href="#">
-                    <img src="../images/member-mobile.png" />
+                <a href="user.html">
+                    <img src="../images/member-mobile.png" alt="member icon for mobile"/>
                     會員</a>
             </div> <!-- end of feature-bottom div -->
 
-            <div class="footer-container">
-                <div class="footer">
-                    <div class="column-menu">
-                        <a class="footer-line" href="#">關於STYLish</a> 
-                        <a class="footer-line" href="#">服務條款</a> 
-                        <a class="footer-line" href="#">隱私政策</a> 
-                        <a class="footer-line" href="#">關於我們</a> 
-                        <a href="#">FAQ</a> 
-                    </div>
-                    <div class="column-social">
-                        <img src="../images/line.png" />
-                        <img src="../images/facebook.png" />
-                        <img src="../images/twitter.png" />
-                    </div>
-                </div> <!-- end of footer div -->
-                <div class="column-footer">&copy;2018. All rights reserved.</div>
-            </div> <!-- end of footer-container div -->
+            <footer>
+                <div class="footer-container">
+                    <div class="footer">
+                        <div class="column-menu">
+                            <a class="footer-line" href="#">關於STYLish</a> 
+                            <a class="footer-line" href="#">服務條款</a> 
+                            <a class="footer-line" href="#">隱私政策</a> 
+                            <a class="footer-line" href="#">關於我們</a> 
+                            <a href="#">FAQ</a> 
+                        </div>
+                        <div class="column-social">
+                            <img src="../images/line.png" alt="Line icon"/>
+                            <img src="../images/facebook.png" alt="Facebook icon"/>
+                            <img src="../images/twitter.png" alt="Twitter icon"/>
+                        </div>
+                    </div> <!-- end of footer div -->
+                    <div class="column-footer">©2018. All rights reserved.</div>
+                </div> <!-- end of footer-container div -->
+            </footer>
             
         </div> <!-- end of root div -->
         <script src="../script/lib.js"></script>

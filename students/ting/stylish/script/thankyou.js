@@ -2,7 +2,10 @@
    Thank You
    ========================================================================== */
 // Get order number from location.search query string
-let orderNo = location.search.substring(location.search.indexOf('?') + 1).split('&')[0].split('=')[1]
+const orderNo = window.location.search
+  .substring(window.location.search.indexOf("?") + 1)
+  .split("&")[0]
+  .split("=")[1];
 
-const orderConfirm = document.querySelector('.order');
+const orderConfirm = document.querySelector(".order");
 orderConfirm.innerText = `您的訂單編號為 ${orderNo}`;

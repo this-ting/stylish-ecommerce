@@ -7,15 +7,10 @@
  */
 
 html {
-  font-family: "PingFangTC-Regular", "Noto Sans TC", sans-serif; /* 1 */
+  font-family: "Noto Sans TC", sans-serif; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
 
-}
-
-@font-face {
-  font-family: "PingFangTC-Regular";
-  src: url(PingFang-TC-Regular-2.otf) format("opentype");
 }
 
 @import url(https://fonts.google.com/specimen/Noto+Sans+TC?selection.family=Noto+Sans+TC)

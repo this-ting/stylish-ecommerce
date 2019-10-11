@@ -1,6 +1,10 @@
 /* ==========================================================================
    Header
    ========================================================================== */
+header {
+    display: flex;
+}
+
 /* Sticky header */
    .header {
     position: fixed;
@@ -9,8 +13,6 @@
     display: block;
     z-index: 2;
 }
-
-
 
 .top-header {
     display: flex;
@@ -42,12 +44,19 @@
 }
 
 /* Navigation Bar */
+nav {
+    display: flex;
+    flex-grow: 2;
+}
+
+
 .navbar {
     background-color: #313538;
     display: block;
     margin: auto;
     padding: 0.60em;
     text-align: center;
+    width: 100%;
 }
 
 .navbar a {
@@ -86,7 +95,7 @@
 .nav-search,
 .cart-icon,
 .user-icon {
-    display: none
+    display: none;
 }
 
 
@@ -106,7 +115,7 @@
 
 .main-banner {
     background-repeat: no-repeat;
-    background-size: auto;
+
     background-size: cover;
     background-position: center center;
     display: block; 
@@ -123,7 +132,7 @@
     line-height: 250%;
     margin: 0 12%;
     padding-top: 100px;
-    text-shadow: 0px 0px 5px #ffffff;
+    text-shadow: 0 0 5px #ffffff;
 }
 
 /* Fading animation */
@@ -149,7 +158,7 @@
     position: absolute;
     bottom: 1.5em;
     left: 47%;
-    z-index: 2;
+    z-index: 1;
 }
 
 .dots ul {
@@ -187,7 +196,6 @@ li.dot.active
     width: 44%;
     display: inline-block;
     line-height:150%;
-    margin: auto;
     color:#3f3a3a;
     margin: auto;
     padding: 0.7em;
@@ -377,7 +385,7 @@ li.dot.active
 }
 
 .navbar {
-    width: 30%;
+    width: 40%;
     background-color: white;
     margin-left: 0;
 }
@@ -529,7 +537,7 @@ li.dot.active
 }
 
 .navbar {
-    width: 30%;
+    width: 40%;
     background-color: white;
     margin-left: 0;
 }
@@ -606,7 +614,6 @@ li.dot.active
     display: inline-block;
     line-height:200%;
     font-size: 1.01em;
-    margin: auto;
     color:#3f3a3a;
     margin: auto;
     padding: 1em;

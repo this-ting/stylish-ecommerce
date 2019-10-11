@@ -1,0 +1,21 @@
+{
+    "extends": ["airbnb", "prettier"],
+    "plugins": ["prettier"],
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    // "writable" to allow the variable to be overwritten 
+    // "readonly" to disallow overwriting
+    "globals": {
+      "callAPI": "readonly",
+      "APIproducts": "readonly",
+      "API": "readonly",
+      "FB": "readonly",
+      "setCartQty": "readonly"
+    },
+    "rules": {
+      "prettier/prettier": ["error"],
+      "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+    }
+  }

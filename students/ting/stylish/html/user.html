@@ -12,12 +12,12 @@
         </script>
 
         <meta charset="utf-8">
-        <meta name="description" content="Thank you page for Stylish brand Ecommerce website">
+        <meta name="description" content="User profile for Stylish brand Ecommerce website">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>STYLish Thank You</title>
+        <title>STYLish User</title>
         <link rel="stylesheet" href="../css/normalize.css">
         <link rel="stylesheet" href="../css/index.css">
-        <link rel="stylesheet" href="../css/thankyou.css">
+        <link rel="stylesheet" href="../css/user.css">
     </head>
 
     <body >
@@ -36,36 +36,44 @@
                         </div> <!-- end of navbar div -->
 
                         <div class="dp-navright">
-                            <form onsubmit=onsubmit="searchSubmit();return false;"> 
+                            <form onsubmit="searchSubmit();return false;"> 
                                 <input class="nav-search" id="nav-search" type="text"> 
                                 <input type="submit" style="display:none;" />
                             </form>
                             <div class="cart-icon">
                                 <a href="cart.html">
-                                    <img src="../images/cart.png" alt="cart icon for mobile"/>
+                                    <img src="../images/cart.png" alt="shopping cart icon"/>
                                     <div class="cart-icon-qty"></div>
                                 </a>
                             </div>
                             <div class="user-icon">
-                                <a href="user.html">
-                                    <img src="../images/member.png" alt="member icon for mobile"/>
-                                </a>
+                                    <a href="user.html">
+                                        <img src="../images/member.png" alt="member icon"/>
+                                    </a>
                             </div>
                         </div>
                     </nav>
                 </div> <!-- end of header div -->
             </header>
+        
+            <div class="black-bar"></div>
+            <div class="user-container">
 
-            <main>
-                <div class="thankyou-container" >
-                    <div class="thankyou-banner">
-                        <div>THANK YOU</div>
-                    </div>
-                    <div class="order"></div>
-                    
-                    
-                </div> <!-- end of thankyou-container div-->
-            </main> <!-- end of cart main -->
+                <div class="user-banner"></div>
+                
+                <div class="login">
+                    <div id="status"></div>
+                    <div class="fb-login-button"
+                         data-width="" 
+                         data-size="large" 
+                         data-button-type="continue_with" 
+                         data-auto-logout-link="true" 
+                         data-use-continue-as="true" 
+                         scope="email" 
+                         onlogin="window.location.reload(true);" 
+                         auth_type="rerequest" ></div>
+                </div> <!-- end of login div -->
+            </div> <!-- end of user-container div -->
 
             <div class="feature-mobile">
                 <a href="cart.html"  class="menu-line">
@@ -101,6 +109,6 @@
             
         </div> <!-- end of root div -->
         <script src="../script/lib.js"></script>
-        <script src="../script/thankyou.js"></script>
+        <script src="../script/user.js"></script>
     </body>
 </html>
