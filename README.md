@@ -1,54 +1,43 @@
-# Web Front-End Class 2019 Summer
+# Stylish E-Commerce
 
-## Outline
+**Boutique Fashion E-Commerce Website**
+
+A mobile-friendly e-commerce website, featuring complete checkout system integrated with TapPay’s payment SDK and Facebook Login for membership management.
+
+## Demo
+
+Website: [https://this-ting.github.io/stylish-ecommerce/html/](https://this-ting.github.io/stylish-ecommerce/html/)
+![Home Page Screenshot](https://this-ting.github.io/stylish-ecommerce/readme-imgs/homepage.png)
+
+## Key Features
+
+1. Shopping cart and product selection function synchronous with backend stock inventory
+
+2. Infinite Scroll
+
+3. Product Search
+
+4. RWD
+
+## Built with
 
 ### Programming Language
-- HTML, CSS
-- JavaScript
+
+-   JavaScript
+-   HTML, CSS
 
 ### Layout
-- Responsive Web Design (RWD)
-- Flex and Grid Layout
-- Single Page Application (SPA)
 
-### Library and Framework
-- Bootstrap
-- JQuery
-- React (Router and Redux)
-- Facebook SDK
+-   RWD
+-   CSS Flexbox
 
-### Backend Framework and Cloud Service
-- Node.js and Express
-- Firebase
+### Libraries
 
-### Networking
-- HTTP / HTTPS
-- JSON
-- RESTful APIs
-- AJAX
+-   [TapPay Direct Pay SDK](https://docs.tappaysdk.com/tutorial/en/home.html#home) - Intergrated payment system
+-   [Facebook Login](https://developers.facebook.com/docs/facebook-login/web/)
 
-### Persistent Store
-- Web Storage
-- Cookie
+## Author
 
-### Patterns
-- Module
-- Object-Oriented Programming
-- Functional Programming
-- MVC and MVVM
+Ting Chang
 
-### Others
-- Unit Test & Debugging
-- Performance Optimization
-- Cache
-
-### Tools for Development
-- ESLint
-- Webpack
-- Git, GitHub
-- Slack
-
-### Tools for Business
-- Google Analytics
-- Google Optimize
-- Facebook Pixel
+-   GitHub: [@this-ting](https://github.com/this-ting)
