@@ -7,7 +7,9 @@ A mobile-friendly e-commerce website, featuring complete checkout system integra
 ## Demo
 
 Website: [https://this-ting.github.io/stylish-ecommerce/html/](https://this-ting.github.io/stylish-ecommerce/html/)
+<a href="https://this-ting.github.io/stylish-ecommerce/html/" target="_blank" rel="noopener noreferrer">
 <img src="./readme-imgs/homepage.png" alt="Home Page Screenshot" />
+<a>
 
 ## Key Features
 
