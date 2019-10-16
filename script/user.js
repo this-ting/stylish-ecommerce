@@ -28,11 +28,11 @@ function statusChangeCallback(response) {
     localStorage.setItem('fbToken', response.authResponse.accessToken);
 
     // POST request Organize user info into an object
-    let user = {
+    const user = {
       provider: 'facebook',
       access_token: localStorage.fbToken,
     };
-    let userInfo = JSON.stringify(user);
+    const userInfo = JSON.stringify(user);
     const APIlogin = 'https://api.appworks-school.tw/api/1.0/user/signin';
 
     getServerToken(APIlogin, userInfo, serverLoginInfo); // Login POST Request
