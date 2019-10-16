@@ -4,7 +4,7 @@
 // Variables
 const APImarketing = `${API}/marketing/campaigns`;
 const APIasset = `https://api.appworks-school.tw`;
-let category = 'all';
+const category = 'all';
 
 // Set up products render function
 const container = document.getElementById('main-content');
@@ -86,7 +86,7 @@ function searchProduct(src, callback) {
   xhr.onload = function() {
     if (xhr.status >= 200 && xhr.status < 300) {
       console.log('Search Success!');
-      let search = JSON.parse(xhr.responseText);
+      const search = JSON.parse(xhr.responseText);
       callback(search);
     } else {
       console.log('The request has failed');
