@@ -23,7 +23,7 @@ function removeProduct(e) {
   const currentList = JSON.parse(localStorage.getItem('cart')).order.list;
   currentList.splice(index, 1);
 
-  let cartDetails = {
+  const cartDetails = {
     prime: '',
     order: {
       shipping: 'delivery',
@@ -72,9 +72,9 @@ function resetIndex(index) {
   // index is only defined/present when change selector
   if (index !== undefined) {
     const newQty = parseInt(items[index].qty);
-    let price = items[index].price;
+    const price = items[index].price;
     const productSubtotal = newQty * price;
-    let subtotal = document.querySelectorAll('.cart-subtotal');
+    const subtotal = document.querySelectorAll('.cart-subtotal');
 
     subtotal[index].innerText = productSubtotal;
   }
@@ -169,7 +169,7 @@ function renderCart() {
       qtySelect.appendChild(qtyOption);
 
       // set up selected qty as the selector default
-      if (parseInt(qtyOption.innerText) == cart[i].qty) {
+      if (parseInt(qtyOption.innerText) === cart[i].qty) {
         qtyOption.selected = 'selected';
       }
     }
@@ -196,7 +196,7 @@ function renderCart() {
     return subtotal;
   }
 
-  let calculateSubtotal = cartCalculate();
+  const calculateSubtotal = cartCalculate();
   const cartSubtotal = document.querySelector('.total-subtotal');
   cartSubtotal.innerText = calculateSubtotal;
 
@@ -213,8 +213,8 @@ function renderCart() {
 
 function updateQty(e) {
   const currentList = JSON.parse(localStorage.getItem('cart')).order.list;
-  let qty = e.target.childNodes;
-  let index = e.target.getAttribute('index');
+  const qty = e.target.childNodes;
+  const index = e.target.getAttribute('index');
   let newQty;
 
   // get new selected qty through loop in selector options
@@ -227,7 +227,7 @@ function updateQty(e) {
   // let newQty equal to currentList qty, marked by index to know where in local storage array
   currentList[index].qty = newQty;
 
-  let cartDetails = {
+  const cartDetails = {
     prime: '',
     order: {
       shipping: 'delivery',
@@ -341,7 +341,7 @@ TPDirect.setupSDK(
 );
 
 // Set up CSS for TapPay input fields
-let fields = {
+const fields = {
   number: {
     // css selector
     element: document.getElementById('card-number'),
@@ -484,8 +484,8 @@ cartSubmit.addEventListener('click', function(e) {
 
       // AJAX POST to send cart info & redirect to thank you page && check for FB token
       const APIcart = 'https://api.appworks-school.tw/api/1.0/order/checkout';
-      let orderInfo = JSON.stringify(cartDetails);
-      let token = localStorage.access_token;
+      const orderInfo = JSON.stringify(cartDetails);
+      const token = localStorage.access_token;
 
       // Check if have token or not, before POST request for checkout
       if (token !== undefined) {
