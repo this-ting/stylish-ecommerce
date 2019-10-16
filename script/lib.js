@@ -11,15 +11,15 @@ function callAPI(src, callback) {
   xhr.onload = function() {
     if (xhr.status >= 200 && xhr.status < 300) {
       // This will run when the request is successful
-      console.log("API success!");
+      console.log('API success!');
       const list = JSON.parse(xhr.responseText);
       callback(list);
     } else {
       // This will run when it's not
-      console.log("The request failed!");
+      console.log('The request failed!');
     }
   };
-  xhr.open("GET", src);
+  xhr.open('GET', src);
   xhr.send();
 }
 
@@ -34,37 +34,37 @@ function callAPI(src, callback) {
 
 // Set up cart local storage layout
 const cartDetails = {
-  prime: "",
+  prime: '',
   order: {
-    shipping: "delivery",
-    payment: "credit_card",
-    subtotal: "",
-    freight: "",
-    total: "",
+    shipping: 'delivery',
+    payment: 'credit_card',
+    subtotal: '',
+    freight: '',
+    total: '',
     recipient: {
-      name: "",
-      phone: "",
-      email: "",
-      address: "",
-      time: ""
+      name: '',
+      phone: '',
+      email: '',
+      address: '',
+      time: '',
     },
-    list: []
-  }
+    list: [],
+  },
 };
 
 // Set up cart quantity update function
 function setCartQty() {
-  const cartQty = JSON.parse(localStorage.getItem("cart")).order.list;
-  document.querySelector(".cart-mobile-qty").innerHTML = cartQty.length;
-  document.querySelector(".cart-icon-qty").innerHTML = cartQty.length;
+  const cartQty = JSON.parse(localStorage.getItem('cart')).order.list;
+  document.querySelector('.cart-mobile-qty').innerHTML = cartQty.length;
+  document.querySelector('.cart-icon-qty').innerHTML = cartQty.length;
 }
 
 // Check local storage for 'cart'
-if (localStorage.getItem("cart") === null) {
-  localStorage.setItem("cart", `${JSON.stringify(cartDetails)}`);
+if (localStorage.getItem('cart') === null) {
+  localStorage.setItem('cart', `${JSON.stringify(cartDetails)}`);
   setCartQty(); // call setCartQty function
 } else {
-  localStorage.getItem("cart");
+  localStorage.getItem('cart');
   setCartQty(); // call setCartQty function
 }
 
@@ -76,34 +76,34 @@ const APIsearch = `${APIproducts}search?keyword=`;
 // Mobile search text input pop up
 function showMobileSearch() {
   // Remove top header
-  const topHeader = document.getElementById("top-header");
+  const topHeader = document.getElementById('top-header');
 
   topHeader.removeChild(topHeader.firstElementChild);
   topHeader.removeChild(topHeader.lastElementChild);
 
   // Add in text input
-  const searchFormMobile = document.createElement("form");
-  const searchInputMobile = document.createElement("input");
-  searchInputMobile.setAttribute("class", "nav-mobile-search");
-  searchInputMobile.setAttribute("type", "text");
+  const searchFormMobile = document.createElement('form');
+  const searchInputMobile = document.createElement('input');
+  searchInputMobile.setAttribute('class', 'nav-mobile-search');
+  searchInputMobile.setAttribute('type', 'text');
 
-  const searchSubmitMobile = document.createElement("button");
-  searchSubmitMobile.style.visibility = "hidden";
+  const searchSubmitMobile = document.createElement('button');
+  searchSubmitMobile.style.visibility = 'hidden';
 
   topHeader.appendChild(searchFormMobile);
   searchFormMobile.appendChild(searchInputMobile);
   searchFormMobile.appendChild(searchSubmitMobile);
 
   // Redirect search to index.html query string
-  document.querySelector("form").addEventListener("submit", e => {
+  document.querySelector('form').addEventListener('submit', e => {
     e.preventDefault();
-    window.location.href = `index.html?search=${searchInputMobile.value}`
-    console.log("mobiel search submit");
+    window.location.href = `index.html?search=${searchInputMobile.value}`;
+    console.log('mobiel search submit');
   });
 }
 
 // Redirect search to index.html query string
 function searchSubmit() {
-  const searchInput = document.querySelector(".nav-search").value;
+  const searchInput = document.querySelector('.nav-search').value;
   window.location.href = `index.html?search=${searchInput}`;
 }
