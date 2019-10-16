@@ -36,7 +36,7 @@ function renderProduct(list) {
   }
 
   // size
-  let APIsize = productData.sizes;
+  const APIsize = productData.sizes;
   APIsize.forEach(function(APIsize) {
     const sizes = document.querySelector('.size');
     const size = document.createElement('div');
@@ -111,10 +111,10 @@ function quantityBar(list) {
   const stockData = list.data.variants;
   function getStock() {
     for (let c = 0; c < stockData.length; c++) {
-      let selectColor = document
+      const selectColor = document
         .querySelector('.selectColor')
         .getAttribute('hex');
-      let selectSize = document.querySelector('.selectSize').innerHTML;
+      const selectSize = document.querySelector('.selectSize').innerHTML;
       if (
         selectColor === stockData[c].color_code &&
         selectSize === stockData[c].size
@@ -161,7 +161,7 @@ function quantityBar(list) {
       document.querySelector('.qty-no').textContent = 1; // resets qty to 1 whenever new select
 
       // When there is no stock, will change opacity & class name
-      let noStock = zeroStock();
+      const noStock = zeroStock();
       const size = document.querySelectorAll('.size-circle');
       for (let t = 0; t < size.length; t++) {
         size[t].style.opacity = 1; // resets opacity when clicked
@@ -203,7 +203,7 @@ function quantityBar(list) {
       document.querySelector('.selectSize') !== null
     ) {
       let number = document.querySelector('.qty-no').innerText;
-      let stock = getStock();
+      const stock = getStock();
 
       if (number < stock) {
         number = parseInt(number) + 1;
@@ -259,10 +259,10 @@ function cart(list) {
     const stockData = list.data.variants;
     function getStock() {
       for (let c = 0; c < stockData.length; c++) {
-        let selectColor = document
+        const selectColor = document
           .querySelector('.selectColor')
           .getAttribute('hex');
-        let selectSize = document.querySelector('.selectSize').innerHTML;
+        const selectSize = document.querySelector('.selectSize').innerHTML;
         if (
           selectColor === stockData[c].color_code &&
           selectSize === stockData[c].size
@@ -274,8 +274,8 @@ function cart(list) {
 
     // if no exisiting products in cart => create new array
     if (currentList.length === 0 || currentList === undefined) {
-      let stock = getStock();
-      let currentList = [
+      const stock = getStock();
+      const currentList = [
         {
           id: productData.id,
           name: `${productData.title}`,
@@ -304,8 +304,8 @@ function cart(list) {
         }
       }
       // if no duplicates
-      let stock = getStock();
-      let newItem = {
+      const stock = getStock();
+      const newItem = {
         id: productData.id,
         name: `${productData.title}`,
         price: productData.price,
@@ -326,8 +326,8 @@ function cart(list) {
 
   // Set up function to combine entire updated cart
   function updatedCart() {
-    let newList = addCartItem();
-    let cartDetails = {
+    const newList = addCartItem();
+    const cartDetails = {
       prime: '',
       order: {
         shipping: 'delivery',
@@ -349,7 +349,7 @@ function cart(list) {
   }
 
   // Set up event handler for on submit
-  let cartButton = document.querySelector('.add-cart');
+  const cartButton = document.querySelector('.add-cart');
   cartButton.addEventListener('submit', function(e) {
     event.preventDefault(e); // prevents page from reloading
     // if size and color are selected, proceed
@@ -358,7 +358,7 @@ function cart(list) {
       document.querySelector('.selectSize') !== null
     ) {
       // on submit will rewrite the local storage "cart"
-      let cartDetails = updatedCart();
+      const cartDetails = updatedCart();
       localStorage.setItem('cart', `${JSON.stringify(cartDetails)}`);
       setCartQty();
       alert('成功加入購物車!');
